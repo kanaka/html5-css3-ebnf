@@ -1,10 +1,11 @@
-(defproject html5-css3-ebnf "0.2.0"
+(defproject html5-css3-ebnf "0.3.0"
   :description "Generate EBNF grammars for HTML5 and CSS3 using W3C spec data."
   :url "http://example.com/FIXME"
   :license {:name "Mozilla Public License version 2"
             :url "https://www.mozilla.org/en-US/MPL/2.0/"}
 
   :source-paths ["src"]
+  :resource-paths ["resources" "data"]
 
   :dependencies [[org.clojure/clojure "1.10.0"]
                  [org.clojure/tools.cli "0.4.1"]
