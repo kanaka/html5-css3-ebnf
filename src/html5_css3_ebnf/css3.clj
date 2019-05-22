@@ -1,4 +1,4 @@
-(ns mend.w3c.css3
+(ns html5-css3-ebnf.css3
   (:require [clojure.data.json :as json]
             [clojure.string :as string]
             [clojure.tools.cli :refer [parse-opts]]

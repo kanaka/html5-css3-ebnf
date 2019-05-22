@@ -12,7 +12,6 @@ prop-unknown = #'[^";}]+' ;
 nonprop-all = prop-all ;
 
 
-
 css-known =
   (
     "align-content" S ":" S prop-align-content |
