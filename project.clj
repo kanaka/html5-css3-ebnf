@@ -1,4 +1,4 @@
-(defproject html5-css3-ebnf "0.3.0"
+(defproject kanaka/html5-css3-ebnf "0.4.0"
   :description "Generate EBNF grammars for HTML5 and CSS3 using W3C spec data."
   :url "http://example.com/FIXME"
   :license {:name "Mozilla Public License version 2"
