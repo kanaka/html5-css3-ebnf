@@ -1,4 +1,4 @@
-(defproject html5-css3-ebnf "0.1.0-SNAPSHOT"
+(defproject html5-css3-ebnf "0.2.0"
   :description "Generate EBNF grammars for HTML5 and CSS3 using W3C spec data."
   :url "http://example.com/FIXME"
   :license {:name "Mozilla Public License version 2"
