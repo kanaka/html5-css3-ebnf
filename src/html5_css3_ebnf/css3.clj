@@ -27,9 +27,9 @@
 		   defs)))
 
 (defn mangle-css-syntaxes
-  "Fix some bugs in the syntax definitions."
+  "Fixup syntax definitions."
   [syntaxes]
-  (into {} (for [[k {:strs [syntax]}] syntaxes]
+  (into {} (for [[k {:strs [syntax] :as v}] syntaxes]
              (cond
                ;; TODO: file bug against github.com/mdn/data
                (= syntax "<custom-ident>: <integer>+;")
@@ -37,48 +37,70 @@
 
                ;; TODO: file bug against github.com/mdn/data
                (= syntax "rect(<top>, <right>, <bottom>, <left>)")
-               [k {"syntax" "rect( <top>, <right>, <bottom>, <left> )"}]
+               [k {"syntax" "rect( <top>, <right>, <bottom>, <left> ) | rect( <top> <right> <bottom> <left> )"}]
 
-               ;; Remove recursive image definition
-               ;; TODO: is recursion really intended here (find W3C standard)
-               (= k "image")
-               [k {"syntax" "<url> | <element()>"}]
+               ;; <media-condition>, <media-condition-without-or>, and
+               ;; <supports-condition> are currently mutually
+               ;; recursive definitions (unsupported).  Rewrite them
+               ;; to pull in child syntax in order to make them
+               ;; directly recursive (supported).
 
-               ;; Remove recursive media type definition
-               (= k "media-in-parens")
-               [k {"syntax" "'STOP_RECURSE_media_in_parens'"}]
-               (= k "supports-in-parens")
-               [k {"syntax" "'STOP_RECURSE_supports_in_parens'"}]
+               ;; Original <media-condition> syntax:
+               ;;     "<media-not> | <media-and> | <media-or> | <media-in-parens>"
+               (= k "media-condition")
+               [k {"syntax" "[ not? [ ( <media-condition> ) | <media-feature> | <general-enclosed> ] ] | [ [ ( <media-condition> ) | <media-feature> | <general-enclosed> ] [ [ and | or ] [ ( <media-condition> ) | <media-feature> | <general-enclosed> ] ]+ ]"}]
+
+               ;; Original <media-condition-without-or> syntax:
+               ;;     "<media-not> | <media-and> | <media-in-parens>"
+               (= k "media-condition")
+               [k {"syntax" "[ not? [ ( <media-condition> ) | <media-feature> | <general-enclosed> ] ] | [ [ ( <media-condition> ) | <media-feature> | <general-enclosed> ] [ and [ ( <media-condition> ) | <media-feature> | <general-enclosed> ] ]+ ]"}]
+
+               ;; Original <supports-condition> syntax:
+               ;;     "not <supports-in-parens> | <supports-in-parens> [ and <supports-in-parens> ]* | <supports-in-parens> [ or <supports-in-parens> ]*"
+               (= k "supports-condition")
+               [k {"syntax" "not [ ( <supports-condition> ) | <supports-feature> | <general-enclosed> ] | [ ( <supports-condition> ) | <supports-feature> | <general-enclosed> ] [ and [ ( <supports-condition> ) | <supports-feature> | <general-enclosed> ] ]* | [ ( <supports-condition> ) | <supports-feature> | <general-enclosed> ] [ or [ ( <supports-condition> ) | <supports-feature> | <general-enclosed> ] ]*"}]
 
                ;; Drop unused syntaxes that also have recursion
                (= k "page-body")
                nil
-               ;;(.startsWith k "media-")
-               ;;nil
-               (.startsWith k "calc")
-               nil
 
                :else
-               [k {"syntax" syntax}]))))
+               [k v]))))
+
+(defn mangle-css-at-rules
+  "Fixup the at-rules definitions."
+  [at-rules]
+  (into {} (for [[k {:strs [syntax] :as v}] at-rules]
+             (cond
+               ;; TODO: MDN data doesn't have a way of representing
+               ;; non-standard descriptors in the parent syntax. Add
+               ;; non-standard font-display to parent.
+               (= k "@font-face")
+               [k (assoc v "syntax" (string/replace syntax #"\n*}$" " ||\n  [ font-display: <font-display>; ]\n}"))]
+               :else
+               [k v]))))
+
 
 ;; TODO: these from descriptors syntaxes are the only unique ones
 ;; actually referenced by at-rules: 'src', 'unicode-range',
 ;; 'font-variation-settings', 'suffix', 'speak-as', 'range', 'prefix',
-;; 'additive-symbols'
+;; 'additive-symbols'. 'font-display' isn't referenced in the parent
+;; but we add it above in the mangler.
 
-(def include-descriptors #{"src"})
+(def include-descriptors #{"src" "font-display"})
 
 (defn css-vds-combined [properties syntaxes at-rules]
   (let [syns (mangle-css-syntaxes syntaxes)
+        arules (mangle-css-at-rules at-rules)
         ps (for [[prop {:strs [syntax]}] (sort properties)]
              (if (= prop "all")
                (str "<'" prop "'> = " syntax "\n")
                (str "<'" prop "'> = <'all'> | " syntax "\n")))
         ss (for [[syn {:strs [syntax]}] (sort syns)]
              (str "<" syn "> = " syntax "\n"))
-        as (for [[rule-name {:strs [syntax]}] (sort at-rules)]
+        as (for [[rule-name {:strs [syntax]}] (sort arules)]
              (str "<'" rule-name "'> = " syntax "\n"))
-        ads (for [[_ {:strs [descriptors]}] (sort at-rules)
+        ads (for [[_ {:strs [descriptors]}] (sort arules)
                   [rule-name {:strs [syntax]}] (sort descriptors)
                   :when (get include-descriptors rule-name)]
               (str "<" rule-name "> = " syntax "\n"))]
@@ -242,15 +264,17 @@
   (str
     (condp = (first tree)
       :component-single     (component-single-ebnf (second tree) indent)
-      :component-multiplied (component-multiplied-ebnf (drop 1 tree) indent))
-    " S"))
+      :component-multiplied (component-multiplied-ebnf (drop 1 tree) indent))))
 
 (defn component-single-ebnf [tree indent]
   ;;(prn :** :component-single-ebnf (count tree) tree :indent indent)
   (let [pre (apply str (repeat indent "  "))]
     (condp = (first tree)
-      :literal       (str pre "'" (second tree) "'")
-      :keyword-value (str pre "'" (second tree) "'")
+      ;; TODO: these S suffixes need to go after multipliers. Right
+      ;; now "'foo'?" will become "'foo' S?" rather than the correct
+      ;; "'foo'? S"
+      :literal       (str pre "'" (second tree) "' S")
+      :keyword-value (str pre "'" (second tree) "' S")
       :non-property  (str pre (name-ebnf (second tree)))
       :property      (str pre (name-ebnf (second tree)))
       :brackets      (brackets-ebnf (drop 1 tree) indent)
@@ -267,7 +291,7 @@
       :asterisk    (str (single indent) "*")
       :plus        (str (single indent) "+")
       :hash        (str (single indent) " (\n"
-                        pre "  S ',' S\n"
+                        pre "  ',' S\n"
                         (single (+ 1 indent)) "\n"
                         pre ")*")
       :braces      (braces-ebnf (second (second multiplier))
@@ -284,17 +308,17 @@
 (defn func-ebnf [tree indent]
   ;;(prn :** :func-ebnf tree indent)
   (let [pre (apply str (repeat indent "  "))]
-    (str pre "'" (first tree) "('\n"
+    (str pre "'" (first tree) "(' S\n"
          (single-bar-ebnf (drop 1 (second tree)) (+ 1 indent)) "\n"
-         pre "')'")))
+         pre "')' S")))
 
 (defn block-ebnf [tree indent]
   ;;(prn :** :block-ebnf tree indent)
   (let [pre (apply str (repeat indent "  "))]
     (condp = (first (first tree))
-      \{         (str pre "'{'\n"
+      \{         (str pre "'{' S\n"
                       (single-bar-ebnf (drop 1 (second tree)) (+ 1 indent)) "\n"
-                      pre "'}'")
+                      pre "'}' S")
       :single-bar (single-bar-ebnf (drop 1 (first tree)) indent))))
 
 (defn braces-ebnf [kind hash? single indent]
@@ -387,8 +411,8 @@
     "Path to common rules to include in EBNF output"
     :default "./resources/common.ebnf"]])
 
-(defn css-known-ebnf [props]
-  (str "css-known =\n"
+(defn css-known-ebnf [suffix props]
+  (str "css-known-" suffix " =\n"
        "  (\n"
        (string/join
          " |\n"
@@ -399,12 +423,15 @@
 
 (defn ebnf-combined-str [css-map properties opts]
   (let [cfilt (fn [pred xs] (filter #(pred (get (val %) "status")) xs))
-        known (map first (cfilt #(= "standard" %) properties))]
+        standard (map first (cfilt #(= "standard" %) properties))
+        ;;nonstandard (map first (cfilt #(not= "standard" %) properties))
+        ]
     (string/join
       "\n\n"
       ["(* Generated by mend.w3c.css3 *)"
        (slurp (:ebnf-prefix opts))
-       (css-known-ebnf (sort known))
+       (css-known-ebnf "standard" (sort standard))
+       ;;(css-known-ebnf "nonstandard" (sort nonstandard))
        (map->ebnf (sort-by key css-map))
        (slurp (:ebnf-base opts))
        (slurp (:ebnf-common opts))])))

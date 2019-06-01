@@ -605,7 +605,7 @@ attr-val-fieldset__form = ''
 attr-val-fieldset__name = ''
                         | attribute-data
 attr-val-form__accept-charset = ''
-                              | 'STUB ASCII case-insensitive'
+                              | attribute-data
                               | 'STUB ASCII-compatible encodings'
                               | name ( <rS> name )*
                               | 'STUB labels'
@@ -643,7 +643,7 @@ attr-val-global__draggable = ''
                            | 'false'
                            | 'true'
 attr-val-global__dropzone = ''
-                          | 'STUB ASCII case-insensitive'
+                          | attribute-data
                           | name ( <rS> name )*
 attr-val-global__id = ''
                     | attribute-data
@@ -672,7 +672,7 @@ attr-val-iframe__sandbox = ''
                          | 'allow-same-origin'
                          | 'allow-scripts'
                          | 'allow-top-navigation'
-                         | 'STUB ASCII case-insensitive'
+                         | attribute-data
                          | name ( <rS> name )*
 attr-val-iframe__src = ''
                      | url
@@ -695,7 +695,7 @@ attr-val-img__sizes = ''
 attr-val-img__src = ''
                   | url
 attr-val-img__srcset = ''
-                     | 'STUB image candidate strings'
+                     | srcset
 attr-val-img__usemap = ''
                      | 'STUB Valid hash-name reference'
 attr-val-img__width = ''
@@ -880,7 +880,7 @@ attr-val-link__rel = ''
 attr-val-link__rev = ''
                    | name ( <rS> name )*
 attr-val-link__sizes = ''
-                     | 'STUB ASCII case-insensitive'
+                     | attribute-data
                      | name ( <rS> name )*
 attr-val-link__title = ''
                      | attribute-data
@@ -995,7 +995,7 @@ attr-val-source__sizes = ''
 attr-val-source__src = ''
                      | url
 attr-val-source__srcset = ''
-                        | 'STUB image candidate strings'
+                        | srcset
 attr-val-source__type = ''
                       | mime-type
 attr-val-style__media = ''
@@ -1115,6 +1115,17 @@ empty-tag = <'<'> name (<rS> attribute)* <S> <'/>'>
 
 start-tag = <'<'> name (<rS> attribute)* <S> <'>'>
 end-tag   = <'</'> name <S> <'>'>
+
+
+attribute       = name <S> '=' <S> attribute-value
+attribute-value = <'"'> (#'[^<&"]*' | reference)* <'"'>
+                | <"'"> (#"[^<&']*" | reference)* <"'">
+attribute-value = <'"'> (#'[A-Za-z0-9_<>/\\ .]*' | reference)* <'"'>
+                | <"'"> (#"[A-Za-z0-9_<>/\\ .]*" | reference)* <"'">
+
+
+char-data-generic = #'[^<&]*' !(#'[^<&]'* ']]>' #'[^<&]*' )
+char-data = #'[A-Za-z0-9_<>/\\ .]*'
 *)
 
 
@@ -1122,19 +1133,8 @@ content = char-data
         | reference
         | comment
 
-attribute       = name <S> '=' <S> attribute-value
-(*
-attribute-value = <'"'> (#'[^<&"]*' | reference)* <'"'>
-                | <"'"> (#"[^<&']*" | reference)* <"'">
-*)
-attribute-value = <'"'> (#'[A-Za-z0-9_<>/\\ .]*' | reference)* <'"'>
-                | <"'"> (#"[A-Za-z0-9_<>/\\ .]*" | reference)* <"'">
-
-(* char-data-generic = #'[^<&]*' !(#'[^<&]'* ']]>' #'[^<&]*' ) *)
 char-data-generic = #'[^<&]*'
-(*
-char-data = #'[A-Za-z0-9_<>/\\ .]*'
-*)
+
 (* Just include the Ahem glyphs that render differently *)
 char-data = ' ' | 'p' | '&#x00c9;' | 'X'
 
@@ -1166,7 +1166,7 @@ head-attribute = global-attribute
 title-attribute = global-attribute
 body-attribute = global-attribute
 
-attribute-data = #'[^"]*'
+attribute-data = #'[^"]*'  (* hickory convert '' strings to "" *)
 
 custom-data-attribute = 'data-' name '="' attribute-data '"'
 aria-attribute = 'aria-' name '="' attribute-data '"'
@@ -1177,9 +1177,9 @@ event-attribute = #'on[a-z]+="' attribute-data '"'
 Other hand-crafted (i.e. hard-coded) defintions
 *)
 
-url-generic = #'[A-Za-z0-9$-_@.&+%=;/#?:]+'
-
-url = 'http://STUB.com/'
+(* https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img *)
+srcset = url ( rS (any-number ( 'w' | 'x' ) ) )?
+         (',' S url ( rS (any-number ( 'w' | 'x' ) ) )? )* 
 
 encoding-label = 'utf-8'
 
@@ -1196,10 +1196,11 @@ rS         = #'\s+' ;
 
 (* HTML *)
 mime-type = #'[a-z]+/[a-z0-9+-]+'
-lang = #'[a-z][a-z](?:-[A-Za-z][A-Za-z])?'
+lang = #'[a-z]+(?:-[A-Za-z]+)?'
 integer = #"-?[0-9]+"
 non-negative-integer = #"[0-9]+"
 floating-point-number = #"-?[0-9]*.[0-9]+"
+any-number = integer | floating-point-number
 
 (* CSS *)
 number-float = #'-?[0-9]*.[0-9]+' ;
@@ -1210,6 +1211,8 @@ length-unit = 'em' | 'ex' | 'ch' | 'ic' | 'rem' | 'lh' | 'rlh'
 url = #'(?:https:|http:)?//[A-Za-z0-9._\-/&#=,?]+'
     | #'[A-Za-z0-9._\-/#=]+'
     | 'data:' mime-type ';base64,' #'[A-Za-z0-9+=/]*'
+
+url-generic = #'[A-Za-z0-9$-_@.&+%=;/#?:]+'
 
 charset = 'UTF-8'
         | 'utf-8'

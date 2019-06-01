@@ -356,6 +356,10 @@
 <blur()> = blur( <length> )
 <box> = border-box | padding-box | content-box
 <brightness()> = brightness( <number-percentage> )
+<calc()> = calc( <calc-sum> )
+<calc-product> = <calc-value> [ '*' <calc-value> | '/' <number> ]*
+<calc-sum> = <calc-product> [ [ '+' | '-' ] <calc-product> ]*
+<calc-value> = <number> | <dimension> | <percentage> | ( <calc-sum> )
 <cf-final-image> = <image> | <color>
 <cf-mixing-image> = <percentage>? && <image>
 <circle()> = circle( [ <shape-radius> ]? [ at <position> ]? )
@@ -438,7 +442,7 @@
 <hue> = <number> | <angle>
 <hue-rotate()> = hue-rotate( <angle> )
 <id-selector> = <hash-token>
-<image> = <url> | <element()>
+<image> = <url> | <image()> | <image-set()> | <element()> | <cross-fade()> | <gradient>
 <image()> = image( <image-tags>? [ <image-src>? , <color>? ]! )
 <image-set()> = image-set( <image-set-option># )
 <image-set-option> = [ <image> | <string> ] <resolution>
@@ -472,10 +476,10 @@
 <matrix3d()> = matrix3d( <number> [, <number> ]{15,15} )
 <max()> = max( <calc-sum># )
 <media-and> = <media-in-parens> [ and <media-in-parens> ]+
-<media-condition> = <media-not> | <media-and> | <media-or> | <media-in-parens>
+<media-condition> = [ not? [ ( <media-condition> ) | <media-feature> | <general-enclosed> ] ] | [ [ ( <media-condition> ) | <media-feature> | <general-enclosed> ] [ [ and | or ] [ ( <media-condition> ) | <media-feature> | <general-enclosed> ] ]+ ]
 <media-condition-without-or> = <media-not> | <media-and> | <media-in-parens>
 <media-feature> = ( [ <mf-plain> | <mf-boolean> | <mf-range> ] )
-<media-in-parens> = 'STOP_RECURSE_media_in_parens'
+<media-in-parens> = ( <media-condition> ) | <media-feature> | <general-enclosed>
 <media-not> = not <media-in-parens>
 <media-or> = <media-in-parens> [ or <media-in-parens> ]+
 <media-query> = <media-condition> | [ not | only ]? <media-type> [ and <media-condition-without-or> ]?
@@ -537,7 +541,7 @@
 <sepia()> = sepia( <number-percentage> )
 <shadow> = inset? && <length>{2,4} && <color>?
 <shadow-t> = [ <length>{2,3} && <color>? ]
-<shape> = rect( <top>, <right>, <bottom>, <left> )
+<shape> = rect( <top>, <right>, <bottom>, <left> ) | rect( <top> <right> <bottom> <left> )
 <shape-box> = <box> | margin-box
 <shape-radius> = <length-percentage> | closest-side | farthest-side
 <side-or-corner> = [ left | right ] || [ top | bottom ]
@@ -555,10 +559,10 @@
 <step-position> = jump-start | jump-end | jump-none | jump-both | start | end
 <step-timing-function> = step-start | step-end | steps(<integer>[, <step-position>]?)
 <subclass-selector> = <id-selector> | <class-selector> | <attribute-selector> | <pseudo-class-selector>
-<supports-condition> = not <supports-in-parens> | <supports-in-parens> [ and <supports-in-parens> ]* | <supports-in-parens> [ or <supports-in-parens> ]*
+<supports-condition> = not [ ( <supports-condition> ) | <supports-feature> | <general-enclosed> ] | [ ( <supports-condition> ) | <supports-feature> | <general-enclosed> ] [ and [ ( <supports-condition> ) | <supports-feature> | <general-enclosed> ] ]* | [ ( <supports-condition> ) | <supports-feature> | <general-enclosed> ] [ or [ ( <supports-condition> ) | <supports-feature> | <general-enclosed> ] ]*
 <supports-decl> = ( <declaration> )
 <supports-feature> = <supports-decl> | <supports-selector-fn>
-<supports-in-parens> = 'STOP_RECURSE_supports_in_parens'
+<supports-in-parens> = ( <supports-condition> ) | <supports-feature> | <general-enclosed>
 <supports-selector-fn> = selector( <complex-selector> )
 <symbol> = <string> | <image> | <custom-ident>
 <target> = <target-counter()> | <target-counters()> | <target-text()>
@@ -607,7 +611,8 @@
   [ font-variation-settings: <font-variation-settings>; ] ||
   [ font-stretch: <font-stretch>; ] ||
   [ font-weight: <font-weight>; ] ||
-  [ font-style: <font-style>; ]
+  [ font-style: <font-style>; ] ||
+  [ font-display: <font-display>; ]
 }
 <'@font-feature-values'> = @font-feature-values <family-name># {
   <feature-value-block-list>
@@ -631,4 +636,5 @@
 }
 
 
+<font-display> = [ auto | block | swap | fallback | optional ]
 <src> = [ <url> [ format( <string># ) ]? | local( <family-name> ) ]#

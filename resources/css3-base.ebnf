@@ -1,40 +1,38 @@
 (* Base CSS Types: https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Types *)
 
-nonprop-angle = nonprop-number ( 'deg' | 'grad' | 'rad' | 'turn' ) ;
-(* nonprop-basic-shape = ; *)
-(* nonprop-blend-mode = ; *)
-(* nonprop-color = ; *)
 (* https://developer.mozilla.org/en-US/docs/Web/CSS/custom-ident *)
-nonprop-custom-ident = #'(?:[A-Za-z_]|-[A-Za-z_]|\\[0-9A-F]{1,6})(?:[A-Za-z0-9_-]|\\[0-9A-F]{1,6})+' ;
-nonprop-flex = nonprop-number 'fr' ;
-nonprop-frequency = nonprop-number ( 'Hz' | 'kHz' ) ;
-(* nonprop-gradient = ; *)
-(* nonprop-image = ; *)
+nonprop-custom-ident = #'(?:[A-Za-z_]|-[A-Za-z_]|\\[0-9A-F]{1,6})(?:[A-Za-z0-9_-]|\\[0-9A-F]{1,6})+' S ;
+nonprop-flex = nonprop-number 'fr' S ;
+
+nonprop-angle = nonprop-number ( 'deg' | 'grad' | 'rad' | 'turn' ) ;
+nonprop-frequency = nonprop-number ( 'Hz' | 'kHz' ) S ;
 nonprop-integer = #'-?[0-9]+' ;
-nonprop-length = nonprop-number length-unit
-               | '0' ;
+nonprop-length = nonprop-number length-unit S
+               | '0' S ;
 nonprop-number = nonprop-integer | number-float ;
-nonprop-percentage = nonprop-number '%' ;
-(* nonprop-position = ; *)
+nonprop-percentage = nonprop-number '%' S ;
+nonprop-time = nonprop-number ( 's' | 'ms' ) S ;
+
 nonprop-ratio = nonprop-positive-integer '/' nonprop-positive-integer ;
-nonprop-resolution = nonprop-number ( 'dpi' | 'dpcm' | 'dppx' | 'px' ) ;
-(* nonprop-shape = ; *)
+nonprop-resolution = nonprop-number ( 'dpi' | 'dpcm' | 'dppx' | 'px' ) S ;
 (* TODO: improve strings: https://developer.mozilla.org/en-US/docs/Web/CSS/string *)
-nonprop-string = #"'[A-Za-z0-9 _\"\-^]*'"
-               | #"\"[A-Za-z0-9 _'\-^]*\"" ;
-nonprop-time = nonprop-number ( 's' | 'ms' ) ;
+nonprop-string = #"'[\"A-Za-z0-9 .,_:/%=#?+\-^]*'" S
+               | #"\"['A-Za-z0-9 .,_:/%=#?+\-^]*\"" S ;
 (* nonprop-transform-function = ; *)
 (* TODO: improve urls: https://developer.mozilla.org/en-US/docs/Web/CSS/url *)
-nonprop-url = 'url(' url ')'
-            | 'url("' url '")' ;
+(*
+nonprop-url = ( 'url(' url ')' S | 'url("' url '")' S )
+            / 'url(' nonprop-string ')' S;
+*)
+nonprop-url = 'url(' nonprop-string ')' S;
 
 nonprop-positive-integer = #'[0-9]+' ;
 
 nonprop-unicode-range = #'U[+](?:[0-9A-Fa-f]{1,4}-[0-9A-Fa-f]{1,4}|[0-9A-Fa-f?]{1,4})' ( ',' S nonprop-unicode-range )* ;
 
 nonprop-ident-token = "STUB_ident_token" ;
-nonprop-declaration = "STUB_declaration" ;
-nonprop-calc-sum = "STUB_calc_sum" ;
+nonprop-declaration = css-declaration ;
+(* nonprop-calc-sum = "STUB_calc_sum" ; *)
 
 nonprop-charset = charset ;
 
@@ -132,8 +130,8 @@ nonprop-min-width = prop-min-width ;
 (* Other Misc Missing *)
 (* TODO: figure out why these are missing. *)
 
-nonprop-hex-color = #'#[0-9A-Fa-f]{3}'
-                  | #'#[0-9A-Fa-f]{6}' ;
+nonprop-hex-color = #'#[0-9A-Fa-f]{3}' S
+                  | #'#[0-9A-Fa-f]{6}' S ;
 
 nonprop-id-selector = nonprop-custom-ident ;
 nonprop-ident = nonprop-custom-ident ;

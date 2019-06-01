@@ -1,10 +1,84 @@
-css-assignments = S | css-assignment S (';' S css-assignment S)* (';' S)* ;
+(* Basic CSS rules based on: https://www.w3.org/TR/CSS21/grammar.html *)
 
-css-assignment =
-  ( css-known / css-unknown )
-  ( '!important' S )? ;
+stylesheet = S ( css-ruleset | css-at-rule | css-comment )* ;
+
+css-ruleset = css-selector [ ',' S css-selector ]* '{' S css-assignments '}' S ;
+
+css-at-rule = prop-AT-charset
+	    | prop-AT-counter-style
+	    | prop-AT-font-face
+	    | prop-AT-font-feature-values
+	    | prop-AT-import
+	    | prop-AT-keyframes
+	    | prop-AT-media
+	    | prop-AT-namespace
+	    | prop-AT-page
+	    | prop-AT-supports
+	    | prop-AT-viewport
+
+css-comment = '/*' ( #"[^*]*" | #'[*][^/]' )* '*/' S ;
+
+css-selector = css-simple-selector [ css-combinator css-simple-selector ]* ;
+
+css-combinator = '+' S
+               | '>' S
+               | '~' S
+               | rS ;
+
+css-simple-selector = [ css-type | css-univ ]
+                      [ css-hash | css-class | css-attr | css-psuedo | css-negate ]*
+                    | [ css-hash | css-class | css-attr | css-psuedo | css-negate ]+ ;
+
+css-ns-pre = [ IDENT | '*' ]? '|' ;
+css-type   = [ css-ns-pre ]? IDENT ;
+css-univ   = [ css-ns-pre ]? '*' ;
+css-hash   = '#' IDENT ;
+css-class  = '.' IDENT ;
+css-attr   = '[' S [ css-ns-pre ]? IDENT S
+             [
+               [
+                 '^=' |
+                 '$=' |
+                 '*=' |
+                 '='  |
+                 '~=' |
+                 '|='
+               ]
+               S [ IDENT | STRING ] S
+             ]?
+             ']' ;
+css-psuedo = ':' ':'? [ IDENT | css-func ] ;
+css-func   = IDENT '(' S css-expr ')' S ;
+css-expr   = [ [ '+' | '-' | NUMBER '%' | NUMBER | STRING | IDENT ] S ]+ ;
+css-negate = ':not(' S [ css-type | css-univ | css-hash | css-class | css-attr | css-psuedo ] S ')' ;
+
+(* TODO: these should be merged with common definitions *)
+NAME        = #'[_A-Za-z0-9-]+' ;
+IDENT       = #'-?[_A-Za-z][_A-Za-z0-9-]*' ;
+STRING      = #'"[^"]*"'
+            | #"'[^']*'" ;
+NUMBER      = #"[0-9]+"
+            | #"[0-9]*\.[0-9]+" ;
+
+
+(* Hand-crafted assignments sequence definition. *)
+
+(* We start here if we only want to parse inline CSS properties. *)
+css-assignments = S | css-declaration S (';' S css-declaration S)* (';' S)* ;
+
+css-declaration = ( css-known-standard / css-unknown ) ( '!important' S )?
+                | css-comment ;
 
 css-unknown = #'[A-Za-z-]+' S ':' S ( prop-all | prop-unknown ) ;
 
-prop-unknown = #'[^";}]+' ;
+(* prop-unknown = #'[^";{}()]+' S ; *)
+prop-unknown = S ( nonprop-custom-ident |
+                   nonprop-string S |
+                   nonprop-number S |
+                   nonprop-percentage S |
+                   nonprop-hex-color S |
+                   func-calc
+                   (* '(' prop-unknown ')' S *)
+                 )*
 nonprop-all = prop-all ;
+

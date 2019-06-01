@@ -9,6 +9,17 @@ empty-tag = <'<'> name (<rS> attribute)* <S> <'/>'>
 
 start-tag = <'<'> name (<rS> attribute)* <S> <'>'>
 end-tag   = <'</'> name <S> <'>'>
+
+
+attribute       = name <S> '=' <S> attribute-value
+attribute-value = <'"'> (#'[^<&"]*' | reference)* <'"'>
+                | <"'"> (#"[^<&']*" | reference)* <"'">
+attribute-value = <'"'> (#'[A-Za-z0-9_<>/\\ .]*' | reference)* <'"'>
+                | <"'"> (#"[A-Za-z0-9_<>/\\ .]*" | reference)* <"'">
+
+
+char-data-generic = #'[^<&]*' !(#'[^<&]'* ']]>' #'[^<&]*' )
+char-data = #'[A-Za-z0-9_<>/\\ .]*'
 *)
 
 
@@ -16,19 +27,8 @@ content = char-data
         | reference
         | comment
 
-attribute       = name <S> '=' <S> attribute-value
-(*
-attribute-value = <'"'> (#'[^<&"]*' | reference)* <'"'>
-                | <"'"> (#"[^<&']*" | reference)* <"'">
-*)
-attribute-value = <'"'> (#'[A-Za-z0-9_<>/\\ .]*' | reference)* <'"'>
-                | <"'"> (#"[A-Za-z0-9_<>/\\ .]*" | reference)* <"'">
-
-(* char-data-generic = #'[^<&]*' !(#'[^<&]'* ']]>' #'[^<&]*' ) *)
 char-data-generic = #'[^<&]*'
-(*
-char-data = #'[A-Za-z0-9_<>/\\ .]*'
-*)
+
 (* Just include the Ahem glyphs that render differently *)
 char-data = ' ' | 'p' | '&#x00c9;' | 'X'
 
@@ -60,7 +60,7 @@ head-attribute = global-attribute
 title-attribute = global-attribute
 body-attribute = global-attribute
 
-attribute-data = #'[^"]*'
+attribute-data = #'[^"]*'  (* hickory convert '' strings to "" *)
 
 custom-data-attribute = 'data-' name '="' attribute-data '"'
 aria-attribute = 'aria-' name '="' attribute-data '"'
@@ -71,9 +71,9 @@ event-attribute = #'on[a-z]+="' attribute-data '"'
 Other hand-crafted (i.e. hard-coded) defintions
 *)
 
-url-generic = #'[A-Za-z0-9$-_@.&+%=;/#?:]+'
-
-url = 'http://STUB.com/'
+(* https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img *)
+srcset = url ( rS (any-number ( 'w' | 'x' ) ) )?
+         (',' S url ( rS (any-number ( 'w' | 'x' ) ) )? )* 
 
 encoding-label = 'utf-8'
 
