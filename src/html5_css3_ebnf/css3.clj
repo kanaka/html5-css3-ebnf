@@ -270,11 +270,8 @@
   ;;(prn :** :component-single-ebnf (count tree) tree :indent indent)
   (let [pre (apply str (repeat indent "  "))]
     (condp = (first tree)
-      ;; TODO: these S suffixes need to go after multipliers. Right
-      ;; now "'foo'?" will become "'foo' S?" rather than the correct
-      ;; "'foo'? S"
-      :literal       (str pre "'" (second tree) "' S")
-      :keyword-value (str pre "'" (second tree) "' S")
+      :literal       (str pre "('" (second tree) "' S)")
+      :keyword-value (str pre "('" (second tree) "' S)")
       :non-property  (str pre (name-ebnf (second tree)))
       :property      (str pre (name-ebnf (second tree)))
       :brackets      (brackets-ebnf (drop 1 tree) indent)

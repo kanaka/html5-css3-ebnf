@@ -1,38 +1,38 @@
 (* Base CSS Types: https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Types *)
 
+nonprop-positive-integer = positive-integer ;
+
+nonprop-angle      = any-number ( 'deg' | 'grad' | 'rad' | 'turn' ) ;
+nonprop-flex       = any-number 'fr' S ;
+nonprop-frequency  = any-number ( 'Hz' | 'kHz' ) S ;
+nonprop-integer    = integer ;
+nonprop-length     = any-number length-unit S
+                   | '0' S ;
+nonprop-number     = any-number S ;
+nonprop-percentage = any-number '%' S ;
+nonprop-resolution = any-number ( 'dpi' | 'dpcm' | 'dppx' | 'px' ) S ;
+nonprop-time       = any-number ( 's' | 'ms' ) S ;
+
+nonprop-ratio      = positive-integer '/' positive-integer ;
+
+nonprop-string = string ;
+
 (* https://developer.mozilla.org/en-US/docs/Web/CSS/custom-ident *)
 nonprop-custom-ident = #'(?:[A-Za-z_]|-[A-Za-z_]|\\[0-9A-F]{1,6})(?:[A-Za-z0-9_-]|\\[0-9A-F]{1,6})+' S ;
-nonprop-flex = nonprop-number 'fr' S ;
 
-nonprop-angle = nonprop-number ( 'deg' | 'grad' | 'rad' | 'turn' ) ;
-nonprop-frequency = nonprop-number ( 'Hz' | 'kHz' ) S ;
-nonprop-integer = #'-?[0-9]+' ;
-nonprop-length = nonprop-number length-unit S
-               | '0' S ;
-nonprop-number = nonprop-integer | number-float ;
-nonprop-percentage = nonprop-number '%' S ;
-nonprop-time = nonprop-number ( 's' | 'ms' ) S ;
-
-nonprop-ratio = nonprop-positive-integer '/' nonprop-positive-integer ;
-nonprop-resolution = nonprop-number ( 'dpi' | 'dpcm' | 'dppx' | 'px' ) S ;
-(* TODO: improve strings: https://developer.mozilla.org/en-US/docs/Web/CSS/string *)
-nonprop-string = #"'[\"A-Za-z0-9 .,_:/%=#?+\-^]*'" S
-               | #"\"['A-Za-z0-9 .,_:/%=#?+\-^]*\"" S ;
-(* nonprop-transform-function = ; *)
 (* TODO: improve urls: https://developer.mozilla.org/en-US/docs/Web/CSS/url *)
 (*
 nonprop-url = ( 'url(' url ')' S | 'url("' url '")' S )
-            / 'url(' nonprop-string ')' S;
+            / 'url(' string ')' S;
 *)
-nonprop-url = 'url(' nonprop-string ')' S;
+nonprop-url = 'url(' string ')' S;
 
-nonprop-positive-integer = #'[0-9]+' ;
 
-nonprop-unicode-range = #'U[+](?:[0-9A-Fa-f]{1,4}-[0-9A-Fa-f]{1,4}|[0-9A-Fa-f?]{1,4})' ( ',' S nonprop-unicode-range )* ;
+nonprop-unicode-range = #'U[+](?:[0-9A-Fa-f]{1,4}-[0-9A-Fa-f]{1,4}|[0-9A-Fa-f?]{1,4})'
+                        ( ',' S nonprop-unicode-range )* ;
 
 nonprop-ident-token = "STUB_ident_token" ;
 nonprop-declaration = css-declaration ;
-(* nonprop-calc-sum = "STUB_calc_sum" ; *)
 
 nonprop-charset = charset ;
 

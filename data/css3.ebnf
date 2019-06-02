@@ -423,68 +423,68 @@ css-known-standard =
 
 prop-AT-charset =
   (
-    '@charset' S
-    '"' S
+    ('@charset' S)
+    ('"' S)
     nonprop-charset
-    '"' S
-    ';' S
+    ('"' S)
+    (';' S)
   ) ;
 
 prop-AT-counter-style =
   (
-    '@counter-style' S
+    ('@counter-style' S)
     nonprop-counter-style-name
     '{' S
       ( (
         (
-          'system:' S
+          ('system:' S)
           nonprop-counter-system
-          ';' S
+          (';' S)
         ) |
         (
-          'symbols:' S
+          ('symbols:' S)
           nonprop-counter-symbols
-          ';' S
+          (';' S)
         ) |
         (
-          'additive-symbols:' S
+          ('additive-symbols:' S)
           nonprop-additive-symbols
-          ';' S
+          (';' S)
         ) |
         (
-          'negative:' S
+          ('negative:' S)
           nonprop-negative-symbol
-          ';' S
+          (';' S)
         ) |
         (
-          'prefix:' S
+          ('prefix:' S)
           nonprop-prefix
-          ';' S
+          (';' S)
         ) |
         (
-          'suffix:' S
+          ('suffix:' S)
           nonprop-suffix
-          ';' S
+          (';' S)
         ) |
         (
-          'range:' S
+          ('range:' S)
           nonprop-range
-          ';' S
+          (';' S)
         ) |
         (
-          'pad:' S
+          ('pad:' S)
           nonprop-padding
-          ';' S
+          (';' S)
         ) |
         (
-          'speak-as:' S
+          ('speak-as:' S)
           nonprop-speak-as
-          ';' S
+          (';' S)
         ) |
         (
-          'fallback:' S
+          ('fallback:' S)
           nonprop-counter-style-name
-          ';' S
+          (';' S)
         )
       )+ )
     '}' S
@@ -492,58 +492,58 @@ prop-AT-counter-style =
 
 prop-AT-font-face =
   (
-    '@font-face' S
+    ('@font-face' S)
     '{' S
       ( (
         (
-          'font-family:' S
+          ('font-family:' S)
           nonprop-family-name
-          ';' S
+          (';' S)
         ) |
         (
-          'src:' S
+          ('src:' S)
           nonprop-src
-          ';' S
+          (';' S)
         ) |
         (
-          'unicode-range:' S
+          ('unicode-range:' S)
           nonprop-unicode-range
-          ';' S
+          (';' S)
         ) |
         (
-          'font-variant:' S
+          ('font-variant:' S)
           nonprop-font-variant
-          ';' S
+          (';' S)
         ) |
         (
-          'font-feature-settings:' S
+          ('font-feature-settings:' S)
           nonprop-font-feature-settings
-          ';' S
+          (';' S)
         ) |
         (
-          'font-variation-settings:' S
+          ('font-variation-settings:' S)
           nonprop-font-variation-settings
-          ';' S
+          (';' S)
         ) |
         (
-          'font-stretch:' S
+          ('font-stretch:' S)
           nonprop-font-stretch
-          ';' S
+          (';' S)
         ) |
         (
-          'font-weight:' S
+          ('font-weight:' S)
           nonprop-font-weight
-          ';' S
+          (';' S)
         ) |
         (
-          'font-style:' S
+          ('font-style:' S)
           nonprop-font-style
-          ';' S
+          (';' S)
         ) |
         (
-          'font-display:' S
+          ('font-display:' S)
           nonprop-font-display
-          ';' S
+          (';' S)
         )
       )+ )
     '}' S
@@ -551,7 +551,7 @@ prop-AT-font-face =
 
 prop-AT-font-feature-values =
   (
-    '@font-feature-values' S
+    ('@font-feature-values' S)
     nonprop-family-name (
       ',' S
       nonprop-family-name
@@ -563,18 +563,18 @@ prop-AT-font-feature-values =
 
 prop-AT-import =
   (
-    '@import' S
+    ('@import' S)
     (
       nonprop-string |
       nonprop-url
     )
     nonprop-media-query-list?
-    ';' S
+    (';' S)
   ) ;
 
 prop-AT-keyframes =
   (
-    '@keyframes' S
+    ('@keyframes' S)
     nonprop-keyframes-name
     '{' S
       nonprop-keyframe-block-list
@@ -583,7 +583,7 @@ prop-AT-keyframes =
 
 prop-AT-media =
   (
-    '@media' S
+    ('@media' S)
     nonprop-media-query-list
     '{' S
       nonprop-group-rule-body
@@ -592,18 +592,18 @@ prop-AT-media =
 
 prop-AT-namespace =
   (
-    '@namespace' S
+    ('@namespace' S)
     nonprop-namespace-prefix?
     (
       nonprop-string |
       nonprop-url
     )
-    ';' S
+    (';' S)
   ) ;
 
 prop-AT-page =
   (
-    '@page' S
+    ('@page' S)
     nonprop-page-selector-list
     '{' S
       nonprop-page-body
@@ -612,7 +612,7 @@ prop-AT-page =
 
 prop-AT-supports =
   (
-    '@supports' S
+    ('@supports' S)
     nonprop-supports-condition
     '{' S
       nonprop-group-rule-body
@@ -621,7 +621,7 @@ prop-AT-supports =
 
 prop-AT-viewport =
   (
-    '@viewport' S
+    ('@viewport' S)
     '{' S
       nonprop-group-rule-body
     '}' S
@@ -630,7 +630,7 @@ prop-AT-viewport =
 prop-align-content =
   (
     nonprop-all |
-    'normal' S |
+    ('normal' S) |
     nonprop-baseline-position |
     nonprop-content-distribution |
     (
@@ -642,8 +642,8 @@ prop-align-content =
 prop-align-items =
   (
     nonprop-all |
-    'normal' S |
-    'stretch' S |
+    ('normal' S) |
+    ('stretch' S) |
     nonprop-baseline-position |
     (
       nonprop-overflow-position?
@@ -654,9 +654,9 @@ prop-align-items =
 prop-align-self =
   (
     nonprop-all |
-    'auto' S |
-    'normal' S |
-    'stretch' S |
+    ('auto' S) |
+    ('normal' S) |
+    ('stretch' S) |
     nonprop-baseline-position |
     (
       nonprop-overflow-position?
@@ -666,10 +666,10 @@ prop-align-self =
 
 prop-all =
   (
-    'initial' S |
-    'inherit' S |
-    'unset' S |
-    'revert' S
+    ('initial' S) |
+    ('inherit' S) |
+    ('unset' S) |
+    ('revert' S)
   ) ;
 
 prop-animation =
@@ -730,12 +730,12 @@ prop-animation-name =
   (
     nonprop-all |
     (
-      'none' S |
+      ('none' S) |
       nonprop-keyframes-name
     ) (
       ',' S
       (
-        'none' S |
+        ('none' S) |
         nonprop-keyframes-name
       )
     )*
@@ -762,8 +762,8 @@ prop-animation-timing-function =
 prop-backface-visibility =
   (
     nonprop-all |
-    'visible' S |
-    'hidden' S
+    ('visible' S) |
+    ('hidden' S)
   ) ;
 
 prop-background =
@@ -772,7 +772,7 @@ prop-background =
     (
       (
         nonprop-bg-layer
-        ',' S
+        (',' S)
       )*
       nonprop-final-bg-layer
     )
@@ -1017,8 +1017,8 @@ prop-border-bottom-width =
 prop-border-collapse =
   (
     nonprop-all |
-    'collapse' S |
-    'separate' S
+    ('collapse' S) |
+    ('separate' S)
   ) ;
 
 prop-border-color =
@@ -1073,13 +1073,13 @@ prop-border-image =
         nonprop-border-image-slice
         (
           (
-            '/' S
+            ('/' S)
             nonprop-border-image-width
           ) |
           (
-            '/' S
+            ('/' S)
             nonprop-border-image-width?
-            '/' S
+            ('/' S)
             nonprop-border-image-outset
           )
         )?
@@ -1143,22 +1143,22 @@ prop-border-image-repeat =
     (
       (
         (
-          'stretch' S |
-          'repeat' S |
-          'round' S |
-          'space' S
+          ('stretch' S) |
+          ('repeat' S) |
+          ('round' S) |
+          ('space' S)
         ) |
         (
-          'stretch' S |
-          'repeat' S |
-          'round' S |
-          'space' S
+          ('stretch' S) |
+          ('repeat' S) |
+          ('round' S) |
+          ('space' S)
         ) rS
         (
-          'stretch' S |
-          'repeat' S |
-          'round' S |
-          'space' S
+          ('stretch' S) |
+          ('repeat' S) |
+          ('round' S) |
+          ('space' S)
         )
       )
     )
@@ -1182,14 +1182,14 @@ prop-border-image-slice =
           nonprop-number-percentage
         )
       )
-      'fill' S?
+      ('fill' S)?
     )
   ) ;
 
 prop-border-image-source =
   (
     nonprop-all |
-    'none' S |
+    ('none' S) |
     nonprop-image
   ) ;
 
@@ -1201,52 +1201,52 @@ prop-border-image-width =
         (
           nonprop-length-percentage |
           nonprop-number |
-          'auto' S
+          ('auto' S)
         ) |
         (
           nonprop-length-percentage |
           nonprop-number |
-          'auto' S
+          ('auto' S)
         ) rS
         (
           nonprop-length-percentage |
           nonprop-number |
-          'auto' S
+          ('auto' S)
         ) |
         (
           nonprop-length-percentage |
           nonprop-number |
-          'auto' S
+          ('auto' S)
         ) rS
         (
           nonprop-length-percentage |
           nonprop-number |
-          'auto' S
+          ('auto' S)
         ) rS
         (
           nonprop-length-percentage |
           nonprop-number |
-          'auto' S
+          ('auto' S)
         ) |
         (
           nonprop-length-percentage |
           nonprop-number |
-          'auto' S
+          ('auto' S)
         ) rS
         (
           nonprop-length-percentage |
           nonprop-number |
-          'auto' S
+          ('auto' S)
         ) rS
         (
           nonprop-length-percentage |
           nonprop-number |
-          'auto' S
+          ('auto' S)
         ) rS
         (
           nonprop-length-percentage |
           nonprop-number |
-          'auto' S
+          ('auto' S)
         )
       )
     )
@@ -1389,7 +1389,7 @@ prop-border-radius =
         )
       )
       (
-        '/' S
+        ('/' S)
         (
           (
             nonprop-length-percentage |
@@ -1564,20 +1564,20 @@ prop-bottom =
     nonprop-all |
     nonprop-length |
     nonprop-percentage |
-    'auto' S
+    ('auto' S)
   ) ;
 
 prop-box-decoration-break =
   (
     nonprop-all |
-    'slice' S |
-    'clone' S
+    ('slice' S) |
+    ('clone' S)
   ) ;
 
 prop-box-shadow =
   (
     nonprop-all |
-    'none' S |
+    ('none' S) |
     nonprop-shadow (
       ',' S
       nonprop-shadow
@@ -1587,92 +1587,92 @@ prop-box-shadow =
 prop-box-sizing =
   (
     nonprop-all |
-    'content-box' S |
-    'border-box' S
+    ('content-box' S) |
+    ('border-box' S)
   ) ;
 
 prop-break-after =
   (
     nonprop-all |
-    'auto' S |
-    'avoid' S |
-    'always' S |
-    'all' S |
-    'avoid-page' S |
-    'page' S |
-    'left' S |
-    'right' S |
-    'recto' S |
-    'verso' S |
-    'avoid-column' S |
-    'column' S |
-    'avoid-region' S |
-    'region' S
+    ('auto' S) |
+    ('avoid' S) |
+    ('always' S) |
+    ('all' S) |
+    ('avoid-page' S) |
+    ('page' S) |
+    ('left' S) |
+    ('right' S) |
+    ('recto' S) |
+    ('verso' S) |
+    ('avoid-column' S) |
+    ('column' S) |
+    ('avoid-region' S) |
+    ('region' S)
   ) ;
 
 prop-break-before =
   (
     nonprop-all |
-    'auto' S |
-    'avoid' S |
-    'always' S |
-    'all' S |
-    'avoid-page' S |
-    'page' S |
-    'left' S |
-    'right' S |
-    'recto' S |
-    'verso' S |
-    'avoid-column' S |
-    'column' S |
-    'avoid-region' S |
-    'region' S
+    ('auto' S) |
+    ('avoid' S) |
+    ('always' S) |
+    ('all' S) |
+    ('avoid-page' S) |
+    ('page' S) |
+    ('left' S) |
+    ('right' S) |
+    ('recto' S) |
+    ('verso' S) |
+    ('avoid-column' S) |
+    ('column' S) |
+    ('avoid-region' S) |
+    ('region' S)
   ) ;
 
 prop-break-inside =
   (
     nonprop-all |
-    'auto' S |
-    'avoid' S |
-    'avoid-page' S |
-    'avoid-column' S |
-    'avoid-region' S
+    ('auto' S) |
+    ('avoid' S) |
+    ('avoid-page' S) |
+    ('avoid-column' S) |
+    ('avoid-region' S)
   ) ;
 
 prop-caption-side =
   (
     nonprop-all |
-    'top' S |
-    'bottom' S |
-    'block-start' S |
-    'block-end' S |
-    'inline-start' S |
-    'inline-end' S
+    ('top' S) |
+    ('bottom' S) |
+    ('block-start' S) |
+    ('block-end' S) |
+    ('inline-start' S) |
+    ('inline-end' S)
   ) ;
 
 prop-caret-color =
   (
     nonprop-all |
-    'auto' S |
+    ('auto' S) |
     nonprop-color
   ) ;
 
 prop-clear =
   (
     nonprop-all |
-    'none' S |
-    'left' S |
-    'right' S |
-    'both' S |
-    'inline-start' S |
-    'inline-end' S
+    ('none' S) |
+    ('left' S) |
+    ('right' S) |
+    ('both' S) |
+    ('inline-start' S) |
+    ('inline-end' S)
   ) ;
 
 prop-clip =
   (
     nonprop-all |
     nonprop-shape |
-    'auto' S
+    ('auto' S)
   ) ;
 
 prop-clip-path =
@@ -1683,7 +1683,7 @@ prop-clip-path =
       nonprop-basic-shape |
       nonprop-geometry-box
     )+ ) |
-    'none' S
+    ('none' S)
   ) ;
 
 prop-color =
@@ -1695,29 +1695,29 @@ prop-color =
 prop-color-adjust =
   (
     nonprop-all |
-    'economy' S |
-    'exact' S
+    ('economy' S) |
+    ('exact' S)
   ) ;
 
 prop-column-count =
   (
     nonprop-all |
     nonprop-integer |
-    'auto' S
+    ('auto' S)
   ) ;
 
 prop-column-fill =
   (
     nonprop-all |
-    'auto' S |
-    'balance' S |
-    'balance-all' S
+    ('auto' S) |
+    ('balance' S) |
+    ('balance-all' S)
   ) ;
 
 prop-column-gap =
   (
     nonprop-all |
-    'normal' S |
+    ('normal' S) |
     nonprop-length-percentage
   ) ;
 
@@ -1752,15 +1752,15 @@ prop-column-rule-width =
 prop-column-span =
   (
     nonprop-all |
-    'none' S |
-    'all' S
+    ('none' S) |
+    ('all' S)
   ) ;
 
 prop-column-width =
   (
     nonprop-all |
     nonprop-length |
-    'auto' S
+    ('auto' S)
   ) ;
 
 prop-columns =
@@ -1775,15 +1775,15 @@ prop-columns =
 prop-content =
   (
     nonprop-all |
-    'normal' S |
-    'none' S |
+    ('normal' S) |
+    ('none' S) |
     (
       (
         nonprop-content-replacement |
         nonprop-content-list
       )
       (
-        '/' S
+        ('/' S)
         nonprop-string
       )?
     )
@@ -1796,7 +1796,7 @@ prop-counter-increment =
       nonprop-custom-ident
       nonprop-integer?
     )+ |
-    'none' S
+    ('none' S)
   ) ;
 
 prop-counter-reset =
@@ -1806,7 +1806,7 @@ prop-counter-reset =
       nonprop-custom-ident
       nonprop-integer?
     )+ |
-    'none' S
+    ('none' S)
   ) ;
 
 prop-cursor =
@@ -1819,45 +1819,45 @@ prop-cursor =
           nonprop-x
           nonprop-y
         )?
-        ',' S
+        (',' S)
       )*
       (
-        'auto' S |
-        'default' S |
-        'none' S |
-        'context-menu' S |
-        'help' S |
-        'pointer' S |
-        'progress' S |
-        'wait' S |
-        'cell' S |
-        'crosshair' S |
-        'text' S |
-        'vertical-text' S |
-        'alias' S |
-        'copy' S |
-        'move' S |
-        'no-drop' S |
-        'not-allowed' S |
-        'e-resize' S |
-        'n-resize' S |
-        'ne-resize' S |
-        'nw-resize' S |
-        's-resize' S |
-        'se-resize' S |
-        'sw-resize' S |
-        'w-resize' S |
-        'ew-resize' S |
-        'ns-resize' S |
-        'nesw-resize' S |
-        'nwse-resize' S |
-        'col-resize' S |
-        'row-resize' S |
-        'all-scroll' S |
-        'zoom-in' S |
-        'zoom-out' S |
-        'grab' S |
-        'grabbing' S
+        ('auto' S) |
+        ('default' S) |
+        ('none' S) |
+        ('context-menu' S) |
+        ('help' S) |
+        ('pointer' S) |
+        ('progress' S) |
+        ('wait' S) |
+        ('cell' S) |
+        ('crosshair' S) |
+        ('text' S) |
+        ('vertical-text' S) |
+        ('alias' S) |
+        ('copy' S) |
+        ('move' S) |
+        ('no-drop' S) |
+        ('not-allowed' S) |
+        ('e-resize' S) |
+        ('n-resize' S) |
+        ('ne-resize' S) |
+        ('nw-resize' S) |
+        ('s-resize' S) |
+        ('se-resize' S) |
+        ('sw-resize' S) |
+        ('w-resize' S) |
+        ('ew-resize' S) |
+        ('ns-resize' S) |
+        ('nesw-resize' S) |
+        ('nwse-resize' S) |
+        ('col-resize' S) |
+        ('row-resize' S) |
+        ('all-scroll' S) |
+        ('zoom-in' S) |
+        ('zoom-out' S) |
+        ('grab' S) |
+        ('grabbing' S)
       )
     )
   ) ;
@@ -1865,8 +1865,8 @@ prop-cursor =
 prop-direction =
   (
     nonprop-all |
-    'ltr' S |
-    'rtl' S
+    ('ltr' S) |
+    ('rtl' S)
   ) ;
 
 prop-display =
@@ -1885,21 +1885,21 @@ prop-display =
 prop-empty-cells =
   (
     nonprop-all |
-    'show' S |
-    'hide' S
+    ('show' S) |
+    ('hide' S)
   ) ;
 
 prop-filter =
   (
     nonprop-all |
-    'none' S |
+    ('none' S) |
     nonprop-filter-function-list
   ) ;
 
 prop-flex =
   (
     nonprop-all |
-    'none' S |
+    ('none' S) |
     ( (
       (
         nonprop-flex-grow
@@ -1912,17 +1912,17 @@ prop-flex =
 prop-flex-basis =
   (
     nonprop-all |
-    'content' S |
+    ('content' S) |
     nonprop-width
   ) ;
 
 prop-flex-direction =
   (
     nonprop-all |
-    'row' S |
-    'row-reverse' S |
-    'column' S |
-    'column-reverse' S
+    ('row' S) |
+    ('row-reverse' S) |
+    ('column' S) |
+    ('column-reverse' S)
   ) ;
 
 prop-flex-flow =
@@ -1949,19 +1949,19 @@ prop-flex-shrink =
 prop-flex-wrap =
   (
     nonprop-all |
-    'nowrap' S |
-    'wrap' S |
-    'wrap-reverse' S
+    ('nowrap' S) |
+    ('wrap' S) |
+    ('wrap-reverse' S)
   ) ;
 
 prop-float =
   (
     nonprop-all |
-    'left' S |
-    'right' S |
-    'none' S |
-    'inline-start' S |
-    'inline-end' S
+    ('left' S) |
+    ('right' S) |
+    ('none' S) |
+    ('inline-start' S) |
+    ('inline-end' S)
   ) ;
 
 prop-font =
@@ -1976,17 +1976,17 @@ prop-font =
       )+ )?
       nonprop-font-size
       (
-        '/' S
+        ('/' S)
         nonprop-line-height
       )?
       nonprop-font-family
     ) |
-    'caption' S |
-    'icon' S |
-    'menu' S |
-    'message-box' S |
-    'small-caption' S |
-    'status-bar' S
+    ('caption' S) |
+    ('icon' S) |
+    ('menu' S) |
+    ('message-box' S) |
+    ('small-caption' S) |
+    ('status-bar' S)
   ) ;
 
 prop-font-family =
@@ -2007,7 +2007,7 @@ prop-font-family =
 prop-font-feature-settings =
   (
     nonprop-all |
-    'normal' S |
+    ('normal' S) |
     nonprop-feature-tag-value (
       ',' S
       nonprop-feature-tag-value
@@ -2017,23 +2017,23 @@ prop-font-feature-settings =
 prop-font-kerning =
   (
     nonprop-all |
-    'auto' S |
-    'normal' S |
-    'none' S
+    ('auto' S) |
+    ('normal' S) |
+    ('none' S)
   ) ;
 
 prop-font-language-override =
   (
     nonprop-all |
-    'normal' S |
+    ('normal' S) |
     nonprop-string
   ) ;
 
 prop-font-optical-sizing =
   (
     nonprop-all |
-    'auto' S |
-    'none' S
+    ('auto' S) |
+    ('none' S)
   ) ;
 
 prop-font-size =
@@ -2047,7 +2047,7 @@ prop-font-size =
 prop-font-size-adjust =
   (
     nonprop-all |
-    'none' S |
+    ('none' S) |
     nonprop-number
   ) ;
 
@@ -2060,10 +2060,10 @@ prop-font-stretch =
 prop-font-style =
   (
     nonprop-all |
-    'normal' S |
-    'italic' S |
+    ('normal' S) |
+    ('italic' S) |
     (
-      'oblique' S
+      ('oblique' S)
       nonprop-angle?
     )
   ) ;
@@ -2071,132 +2071,132 @@ prop-font-style =
 prop-font-synthesis =
   (
     nonprop-all |
-    'none' S |
+    ('none' S) |
     ( (
-      'weight' S |
-      'style' S
+      ('weight' S) |
+      ('style' S)
     )+ )
   ) ;
 
 prop-font-variant =
   (
     nonprop-all |
-    'normal' S |
-    'none' S |
+    ('normal' S) |
+    ('none' S) |
     ( (
       nonprop-common-lig-values |
       nonprop-discretionary-lig-values |
       nonprop-historical-lig-values |
       nonprop-contextual-alt-values |
       (
-        'stylistic' S
-        '(' S
+        ('stylistic' S)
+        ('(' S)
         nonprop-feature-value-name
-        ')' S
+        (')' S)
       ) |
-      'historical-forms' S |
+      ('historical-forms' S) |
       (
-        'styleset' S
-        '(' S
+        ('styleset' S)
+        ('(' S)
         nonprop-feature-value-name (
           ',' S
           nonprop-feature-value-name
         )*
-        ')' S
+        (')' S)
       ) |
       (
-        'character-variant' S
-        '(' S
+        ('character-variant' S)
+        ('(' S)
         nonprop-feature-value-name (
           ',' S
           nonprop-feature-value-name
         )*
-        ')' S
+        (')' S)
       ) |
       (
-        'swash' S
-        '(' S
+        ('swash' S)
+        ('(' S)
         nonprop-feature-value-name
-        ')' S
+        (')' S)
       ) |
       (
-        'ornaments' S
-        '(' S
+        ('ornaments' S)
+        ('(' S)
         nonprop-feature-value-name
-        ')' S
+        (')' S)
       ) |
       (
-        'annotation' S
-        '(' S
+        ('annotation' S)
+        ('(' S)
         nonprop-feature-value-name
-        ')' S
+        (')' S)
       ) |
       (
-        'small-caps' S |
-        'all-small-caps' S |
-        'petite-caps' S |
-        'all-petite-caps' S |
-        'unicase' S |
-        'titling-caps' S
+        ('small-caps' S) |
+        ('all-small-caps' S) |
+        ('petite-caps' S) |
+        ('all-petite-caps' S) |
+        ('unicase' S) |
+        ('titling-caps' S)
       ) |
       nonprop-numeric-figure-values |
       nonprop-numeric-spacing-values |
       nonprop-numeric-fraction-values |
-      'ordinal' S |
-      'slashed-zero' S |
+      ('ordinal' S) |
+      ('slashed-zero' S) |
       nonprop-east-asian-variant-values |
       nonprop-east-asian-width-values |
-      'ruby' S
+      ('ruby' S)
     )+ )
   ) ;
 
 prop-font-variant-alternates =
   (
     nonprop-all |
-    'normal' S |
+    ('normal' S) |
     ( (
       (
-        'stylistic' S
-        '(' S
+        ('stylistic' S)
+        ('(' S)
         nonprop-feature-value-name
-        ')' S
+        (')' S)
       ) |
-      'historical-forms' S |
+      ('historical-forms' S) |
       (
-        'styleset' S
-        '(' S
+        ('styleset' S)
+        ('(' S)
         nonprop-feature-value-name (
           ',' S
           nonprop-feature-value-name
         )*
-        ')' S
+        (')' S)
       ) |
       (
-        'character-variant' S
-        '(' S
+        ('character-variant' S)
+        ('(' S)
         nonprop-feature-value-name (
           ',' S
           nonprop-feature-value-name
         )*
-        ')' S
+        (')' S)
       ) |
       (
-        'swash' S
-        '(' S
+        ('swash' S)
+        ('(' S)
         nonprop-feature-value-name
-        ')' S
+        (')' S)
       ) |
       (
-        'ornaments' S
-        '(' S
+        ('ornaments' S)
+        ('(' S)
         nonprop-feature-value-name
-        ')' S
+        (')' S)
       ) |
       (
-        'annotation' S
-        '(' S
+        ('annotation' S)
+        ('(' S)
         nonprop-feature-value-name
-        ')' S
+        (')' S)
       )
     )+ )
   ) ;
@@ -2204,31 +2204,31 @@ prop-font-variant-alternates =
 prop-font-variant-caps =
   (
     nonprop-all |
-    'normal' S |
-    'small-caps' S |
-    'all-small-caps' S |
-    'petite-caps' S |
-    'all-petite-caps' S |
-    'unicase' S |
-    'titling-caps' S
+    ('normal' S) |
+    ('small-caps' S) |
+    ('all-small-caps' S) |
+    ('petite-caps' S) |
+    ('all-petite-caps' S) |
+    ('unicase' S) |
+    ('titling-caps' S)
   ) ;
 
 prop-font-variant-east-asian =
   (
     nonprop-all |
-    'normal' S |
+    ('normal' S) |
     ( (
       nonprop-east-asian-variant-values |
       nonprop-east-asian-width-values |
-      'ruby' S
+      ('ruby' S)
     )+ )
   ) ;
 
 prop-font-variant-ligatures =
   (
     nonprop-all |
-    'normal' S |
-    'none' S |
+    ('normal' S) |
+    ('none' S) |
     ( (
       nonprop-common-lig-values |
       nonprop-discretionary-lig-values |
@@ -2240,30 +2240,30 @@ prop-font-variant-ligatures =
 prop-font-variant-numeric =
   (
     nonprop-all |
-    'normal' S |
+    ('normal' S) |
     ( (
       nonprop-numeric-figure-values |
       nonprop-numeric-spacing-values |
       nonprop-numeric-fraction-values |
-      'ordinal' S |
-      'slashed-zero' S
+      ('ordinal' S) |
+      ('slashed-zero' S)
     )+ )
   ) ;
 
 prop-font-variant-position =
   (
     nonprop-all |
-    'normal' S |
-    'sub' S |
-    'super' S
+    ('normal' S) |
+    ('sub' S) |
+    ('super' S)
   ) ;
 
 prop-font-weight =
   (
     nonprop-all |
     nonprop-font-weight-absolute |
-    'bolder' S |
-    'lighter' S
+    ('bolder' S) |
+    ('lighter' S)
   ) ;
 
 prop-gap =
@@ -2281,20 +2281,20 @@ prop-grid =
     nonprop-grid-template |
     (
       nonprop-grid-template-rows
-      '/' S
+      ('/' S)
       (
-        'auto-flow' S
-        'dense' S?
+        ('auto-flow' S)
+        ('dense' S)?
       )
       nonprop-grid-auto-columns?
     ) |
     (
       (
-        'auto-flow' S
-        'dense' S?
+        ('auto-flow' S)
+        ('dense' S)?
       )
       nonprop-grid-auto-rows?
-      '/' S
+      ('/' S)
       nonprop-grid-template-columns
     )
   ) ;
@@ -2315,27 +2315,27 @@ prop-grid-area =
 ' rS
 ' |
           (
-            '/' S
+            ('/' S)
             nonprop-grid-line
           ) |
           (
-            '/' S
+            ('/' S)
             nonprop-grid-line
           ) rS
           (
-            '/' S
+            ('/' S)
             nonprop-grid-line
           ) |
           (
-            '/' S
+            ('/' S)
             nonprop-grid-line
           ) rS
           (
-            '/' S
+            ('/' S)
             nonprop-grid-line
           ) rS
           (
-            '/' S
+            ('/' S)
             nonprop-grid-line
           )
         )
@@ -2354,10 +2354,10 @@ prop-grid-auto-flow =
     nonprop-all |
     ( (
       (
-        'row' S |
-        'column' S
+        ('row' S) |
+        ('column' S)
       ) |
-      'dense' S
+      ('dense' S)
     )+ )
   ) ;
 
@@ -2373,7 +2373,7 @@ prop-grid-column =
     (
       nonprop-grid-line
       (
-        '/' S
+        ('/' S)
         nonprop-grid-line
       )?
     )
@@ -2397,7 +2397,7 @@ prop-grid-row =
     (
       nonprop-grid-line
       (
-        '/' S
+        ('/' S)
         nonprop-grid-line
       )?
     )
@@ -2418,10 +2418,10 @@ prop-grid-row-start =
 prop-grid-template =
   (
     nonprop-all |
-    'none' S |
+    ('none' S) |
     (
       nonprop-grid-template-rows
-      '/' S
+      ('/' S)
       nonprop-grid-template-columns
     ) |
     (
@@ -2432,7 +2432,7 @@ prop-grid-template =
         nonprop-line-names?
       )+
       (
-        '/' S
+        ('/' S)
         nonprop-explicit-track-list
       )?
     )
@@ -2441,14 +2441,14 @@ prop-grid-template =
 prop-grid-template-areas =
   (
     nonprop-all |
-    'none' S |
+    ('none' S) |
     nonprop-string+
   ) ;
 
 prop-grid-template-columns =
   (
     nonprop-all |
-    'none' S |
+    ('none' S) |
     nonprop-track-list |
     nonprop-auto-track-list
   ) ;
@@ -2456,7 +2456,7 @@ prop-grid-template-columns =
 prop-grid-template-rows =
   (
     nonprop-all |
-    'none' S |
+    ('none' S) |
     nonprop-track-list |
     nonprop-auto-track-list
   ) ;
@@ -2464,14 +2464,14 @@ prop-grid-template-rows =
 prop-hanging-punctuation =
   (
     nonprop-all |
-    'none' S |
+    ('none' S) |
     ( (
-      'first' S |
+      ('first' S) |
       (
-        'force-end' S |
-        'allow-end' S
+        ('force-end' S) |
+        ('allow-end' S)
       ) |
-      'last' S
+      ('last' S)
     )+ )
   ) ;
 
@@ -2484,42 +2484,42 @@ prop-height =
         nonprop-percentage
       )
       (
-        'border-box' S |
-        'content-box' S
+        ('border-box' S) |
+        ('content-box' S)
       )?
     ) |
-    'available' S |
-    'min-content' S |
-    'max-content' S |
-    'fit-content' S |
-    'auto' S
+    ('available' S) |
+    ('min-content' S) |
+    ('max-content' S) |
+    ('fit-content' S) |
+    ('auto' S)
   ) ;
 
 prop-hyphens =
   (
     nonprop-all |
-    'none' S |
-    'manual' S |
-    'auto' S
+    ('none' S) |
+    ('manual' S) |
+    ('auto' S)
   ) ;
 
 prop-image-orientation =
   (
     nonprop-all |
-    'from-image' S |
+    ('from-image' S) |
     nonprop-angle |
     (
       nonprop-angle?
-      'flip' S
+      ('flip' S)
     )
   ) ;
 
 prop-image-rendering =
   (
     nonprop-all |
-    'auto' S |
-    'crisp-edges' S |
-    'pixelated' S
+    ('auto' S) |
+    ('crisp-edges' S) |
+    ('pixelated' S)
   ) ;
 
 prop-inline-size =
@@ -2598,21 +2598,21 @@ prop-inset-inline-start =
 prop-isolation =
   (
     nonprop-all |
-    'auto' S |
-    'isolate' S
+    ('auto' S) |
+    ('isolate' S)
   ) ;
 
 prop-justify-content =
   (
     nonprop-all |
-    'normal' S |
+    ('normal' S) |
     nonprop-content-distribution |
     (
       nonprop-overflow-position?
       (
         nonprop-content-position |
-        'left' S |
-        'right' S
+        ('left' S) |
+        ('right' S)
       )
     )
   ) ;
@@ -2620,24 +2620,24 @@ prop-justify-content =
 prop-justify-items =
   (
     nonprop-all |
-    'normal' S |
-    'stretch' S |
+    ('normal' S) |
+    ('stretch' S) |
     nonprop-baseline-position |
     (
       nonprop-overflow-position?
       (
         nonprop-self-position |
-        'left' S |
-        'right' S
+        ('left' S) |
+        ('right' S)
       )
     ) |
-    'legacy' S |
+    ('legacy' S) |
     (
-      'legacy' S
+      ('legacy' S)
       (
-        'left' S |
-        'right' S |
-        'center' S
+        ('left' S) |
+        ('right' S) |
+        ('center' S)
       )
     )
   ) ;
@@ -2645,16 +2645,16 @@ prop-justify-items =
 prop-justify-self =
   (
     nonprop-all |
-    'auto' S |
-    'normal' S |
-    'stretch' S |
+    ('auto' S) |
+    ('normal' S) |
+    ('stretch' S) |
     nonprop-baseline-position |
     (
       nonprop-overflow-position?
       (
         nonprop-self-position |
-        'left' S |
-        'right' S
+        ('left' S) |
+        ('right' S)
       )
     )
   ) ;
@@ -2664,29 +2664,29 @@ prop-left =
     nonprop-all |
     nonprop-length |
     nonprop-percentage |
-    'auto' S
+    ('auto' S)
   ) ;
 
 prop-letter-spacing =
   (
     nonprop-all |
-    'normal' S |
+    ('normal' S) |
     nonprop-length
   ) ;
 
 prop-line-break =
   (
     nonprop-all |
-    'auto' S |
-    'loose' S |
-    'normal' S |
-    'strict' S
+    ('auto' S) |
+    ('loose' S) |
+    ('normal' S) |
+    ('strict' S)
   ) ;
 
 prop-line-height =
   (
     nonprop-all |
-    'normal' S |
+    ('normal' S) |
     nonprop-number |
     nonprop-length |
     nonprop-percentage
@@ -2706,14 +2706,14 @@ prop-list-style-image =
   (
     nonprop-all |
     nonprop-url |
-    'none' S
+    ('none' S)
   ) ;
 
 prop-list-style-position =
   (
     nonprop-all |
-    'inside' S |
-    'outside' S
+    ('inside' S) |
+    ('outside' S)
   ) ;
 
 prop-list-style-type =
@@ -2721,7 +2721,7 @@ prop-list-style-type =
     nonprop-all |
     nonprop-counter-style |
     nonprop-string |
-    'none' S
+    ('none' S)
   ) ;
 
 prop-margin =
@@ -2732,52 +2732,52 @@ prop-margin =
         (
           nonprop-length |
           nonprop-percentage |
-          'auto' S
+          ('auto' S)
         ) |
         (
           nonprop-length |
           nonprop-percentage |
-          'auto' S
+          ('auto' S)
         ) rS
         (
           nonprop-length |
           nonprop-percentage |
-          'auto' S
+          ('auto' S)
         ) |
         (
           nonprop-length |
           nonprop-percentage |
-          'auto' S
+          ('auto' S)
         ) rS
         (
           nonprop-length |
           nonprop-percentage |
-          'auto' S
+          ('auto' S)
         ) rS
         (
           nonprop-length |
           nonprop-percentage |
-          'auto' S
+          ('auto' S)
         ) |
         (
           nonprop-length |
           nonprop-percentage |
-          'auto' S
+          ('auto' S)
         ) rS
         (
           nonprop-length |
           nonprop-percentage |
-          'auto' S
+          ('auto' S)
         ) rS
         (
           nonprop-length |
           nonprop-percentage |
-          'auto' S
+          ('auto' S)
         ) rS
         (
           nonprop-length |
           nonprop-percentage |
-          'auto' S
+          ('auto' S)
         )
       )
     )
@@ -2812,7 +2812,7 @@ prop-margin-bottom =
     nonprop-all |
     nonprop-length |
     nonprop-percentage |
-    'auto' S
+    ('auto' S)
   ) ;
 
 prop-margin-inline =
@@ -2844,7 +2844,7 @@ prop-margin-left =
     nonprop-all |
     nonprop-length |
     nonprop-percentage |
-    'auto' S
+    ('auto' S)
   ) ;
 
 prop-margin-right =
@@ -2852,7 +2852,7 @@ prop-margin-right =
     nonprop-all |
     nonprop-length |
     nonprop-percentage |
-    'auto' S
+    ('auto' S)
   ) ;
 
 prop-margin-top =
@@ -2860,7 +2860,7 @@ prop-margin-top =
     nonprop-all |
     nonprop-length |
     nonprop-percentage |
-    'auto' S
+    ('auto' S)
   ) ;
 
 prop-mask =
@@ -2877,12 +2877,12 @@ prop-mask-clip =
     nonprop-all |
     (
       nonprop-geometry-box |
-      'no-clip' S
+      ('no-clip' S)
     ) (
       ',' S
       (
         nonprop-geometry-box |
-        'no-clip' S
+        ('no-clip' S)
       )
     )*
   ) ;
@@ -2953,8 +2953,8 @@ prop-mask-size =
 prop-mask-type =
   (
     nonprop-all |
-    'luminance' S |
-    'alpha' S
+    ('luminance' S) |
+    ('alpha' S)
   ) ;
 
 prop-max-height =
@@ -2962,11 +2962,11 @@ prop-max-height =
     nonprop-all |
     nonprop-length |
     nonprop-percentage |
-    'none' S |
-    'max-content' S |
-    'min-content' S |
-    'fit-content' S |
-    'fill-available' S
+    ('none' S) |
+    ('max-content' S) |
+    ('min-content' S) |
+    ('fit-content' S) |
+    ('fill-available' S)
   ) ;
 
 prop-max-width =
@@ -2974,11 +2974,11 @@ prop-max-width =
     nonprop-all |
     nonprop-length |
     nonprop-percentage |
-    'none' S |
-    'max-content' S |
-    'min-content' S |
-    'fit-content' S |
-    'fill-available' S
+    ('none' S) |
+    ('max-content' S) |
+    ('min-content' S) |
+    ('fit-content' S) |
+    ('fill-available' S)
   ) ;
 
 prop-min-block-size =
@@ -2992,11 +2992,11 @@ prop-min-height =
     nonprop-all |
     nonprop-length |
     nonprop-percentage |
-    'auto' S |
-    'max-content' S |
-    'min-content' S |
-    'fit-content' S |
-    'fill-available' S
+    ('auto' S) |
+    ('max-content' S) |
+    ('min-content' S) |
+    ('fit-content' S) |
+    ('fill-available' S)
   ) ;
 
 prop-min-inline-size =
@@ -3010,11 +3010,11 @@ prop-min-width =
     nonprop-all |
     nonprop-length |
     nonprop-percentage |
-    'auto' S |
-    'max-content' S |
-    'min-content' S |
-    'fit-content' S |
-    'fill-available' S
+    ('auto' S) |
+    ('max-content' S) |
+    ('min-content' S) |
+    ('fit-content' S) |
+    ('fill-available' S)
   ) ;
 
 prop-mix-blend-mode =
@@ -3026,11 +3026,11 @@ prop-mix-blend-mode =
 prop-object-fit =
   (
     nonprop-all |
-    'fill' S |
-    'contain' S |
-    'cover' S |
-    'none' S |
-    'scale-down' S
+    ('fill' S) |
+    ('contain' S) |
+    ('cover' S) |
+    ('none' S) |
+    ('scale-down' S)
   ) ;
 
 prop-object-position =
@@ -3071,7 +3071,7 @@ prop-outline-color =
   (
     nonprop-all |
     nonprop-color |
-    'invert' S
+    ('invert' S)
   ) ;
 
 prop-outline-offset =
@@ -3083,7 +3083,7 @@ prop-outline-offset =
 prop-outline-style =
   (
     nonprop-all |
-    'auto' S |
+    ('auto' S) |
     nonprop-border-style
   ) ;
 
@@ -3099,25 +3099,25 @@ prop-overflow =
     (
       (
         (
-          'visible' S |
-          'hidden' S |
-          'clip' S |
-          'scroll' S |
-          'auto' S
+          ('visible' S) |
+          ('hidden' S) |
+          ('clip' S) |
+          ('scroll' S) |
+          ('auto' S)
         ) |
         (
-          'visible' S |
-          'hidden' S |
-          'clip' S |
-          'scroll' S |
-          'auto' S
+          ('visible' S) |
+          ('hidden' S) |
+          ('clip' S) |
+          ('scroll' S) |
+          ('auto' S)
         ) rS
         (
-          'visible' S |
-          'hidden' S |
-          'clip' S |
-          'scroll' S |
-          'auto' S
+          ('visible' S) |
+          ('hidden' S) |
+          ('clip' S) |
+          ('scroll' S) |
+          ('auto' S)
         )
       )
     )
@@ -3126,29 +3126,29 @@ prop-overflow =
 prop-overflow-wrap =
   (
     nonprop-all |
-    'normal' S |
-    'break-word' S |
-    'anywhere' S
+    ('normal' S) |
+    ('break-word' S) |
+    ('anywhere' S)
   ) ;
 
 prop-overflow-x =
   (
     nonprop-all |
-    'visible' S |
-    'hidden' S |
-    'clip' S |
-    'scroll' S |
-    'auto' S
+    ('visible' S) |
+    ('hidden' S) |
+    ('clip' S) |
+    ('scroll' S) |
+    ('auto' S)
   ) ;
 
 prop-overflow-y =
   (
     nonprop-all |
-    'visible' S |
-    'hidden' S |
-    'clip' S |
-    'scroll' S |
-    'auto' S
+    ('visible' S) |
+    ('hidden' S) |
+    ('clip' S) |
+    ('scroll' S) |
+    ('auto' S)
   ) ;
 
 prop-padding =
@@ -3279,38 +3279,38 @@ prop-padding-top =
 prop-page-break-after =
   (
     nonprop-all |
-    'auto' S |
-    'always' S |
-    'avoid' S |
-    'left' S |
-    'right' S |
-    'recto' S |
-    'verso' S
+    ('auto' S) |
+    ('always' S) |
+    ('avoid' S) |
+    ('left' S) |
+    ('right' S) |
+    ('recto' S) |
+    ('verso' S)
   ) ;
 
 prop-page-break-before =
   (
     nonprop-all |
-    'auto' S |
-    'always' S |
-    'avoid' S |
-    'left' S |
-    'right' S |
-    'recto' S |
-    'verso' S
+    ('auto' S) |
+    ('always' S) |
+    ('avoid' S) |
+    ('left' S) |
+    ('right' S) |
+    ('recto' S) |
+    ('verso' S)
   ) ;
 
 prop-page-break-inside =
   (
     nonprop-all |
-    'auto' S |
-    'avoid' S
+    ('auto' S) |
+    ('avoid' S)
   ) ;
 
 prop-perspective =
   (
     nonprop-all |
-    'none' S |
+    ('none' S) |
     nonprop-length
   ) ;
 
@@ -3350,33 +3350,33 @@ prop-place-self =
 prop-pointer-events =
   (
     nonprop-all |
-    'auto' S |
-    'none' S |
-    'visiblePainted' S |
-    'visibleFill' S |
-    'visibleStroke' S |
-    'visible' S |
-    'painted' S |
-    'fill' S |
-    'stroke' S |
-    'all' S |
-    'inherit' S
+    ('auto' S) |
+    ('none' S) |
+    ('visiblePainted' S) |
+    ('visibleFill' S) |
+    ('visibleStroke' S) |
+    ('visible' S) |
+    ('painted' S) |
+    ('fill' S) |
+    ('stroke' S) |
+    ('all' S) |
+    ('inherit' S)
   ) ;
 
 prop-position =
   (
     nonprop-all |
-    'static' S |
-    'relative' S |
-    'absolute' S |
-    'sticky' S |
-    'fixed' S
+    ('static' S) |
+    ('relative' S) |
+    ('absolute' S) |
+    ('sticky' S) |
+    ('fixed' S)
   ) ;
 
 prop-quotes =
   (
     nonprop-all |
-    'none' S |
+    ('none' S) |
     (
       nonprop-string
       nonprop-string
@@ -3386,12 +3386,12 @@ prop-quotes =
 prop-resize =
   (
     nonprop-all |
-    'none' S |
-    'both' S |
-    'horizontal' S |
-    'vertical' S |
-    'block' S |
-    'inline' S
+    ('none' S) |
+    ('both' S) |
+    ('horizontal' S) |
+    ('vertical' S) |
+    ('block' S) |
+    ('inline' S)
   ) ;
 
 prop-right =
@@ -3399,19 +3399,19 @@ prop-right =
     nonprop-all |
     nonprop-length |
     nonprop-percentage |
-    'auto' S
+    ('auto' S)
   ) ;
 
 prop-rotate =
   (
     nonprop-all |
-    'none' S |
+    ('none' S) |
     nonprop-angle |
     (
       (
-        'x' S |
-        'y' S |
-        'z' S |
+        ('x' S) |
+        ('y' S) |
+        ('z' S) |
         (
           (
             nonprop-number rS
@@ -3427,14 +3427,14 @@ prop-rotate =
 prop-row-gap =
   (
     nonprop-all |
-    'normal' S |
+    ('normal' S) |
     nonprop-length-percentage
   ) ;
 
 prop-scale =
   (
     nonprop-all |
-    'none' S |
+    ('none' S) |
     (
       (
         nonprop-number |
@@ -3450,8 +3450,8 @@ prop-scale =
 prop-scroll-behavior =
   (
     nonprop-all |
-    'auto' S |
-    'smooth' S
+    ('auto' S) |
+    ('smooth' S)
   ) ;
 
 prop-scroll-margin =
@@ -3460,43 +3460,43 @@ prop-scroll-margin =
     (
       (
         (
-          'auto' S |
+          ('auto' S) |
           nonprop-length
         ) |
         (
-          'auto' S |
+          ('auto' S) |
           nonprop-length
         ) rS
         (
-          'auto' S |
+          ('auto' S) |
           nonprop-length
         ) |
         (
-          'auto' S |
+          ('auto' S) |
           nonprop-length
         ) rS
         (
-          'auto' S |
+          ('auto' S) |
           nonprop-length
         ) rS
         (
-          'auto' S |
+          ('auto' S) |
           nonprop-length
         ) |
         (
-          'auto' S |
+          ('auto' S) |
           nonprop-length
         ) rS
         (
-          'auto' S |
+          ('auto' S) |
           nonprop-length
         ) rS
         (
-          'auto' S |
+          ('auto' S) |
           nonprop-length
         ) rS
         (
-          'auto' S |
+          ('auto' S) |
           nonprop-length
         )
       )
@@ -3509,15 +3509,15 @@ prop-scroll-margin-block =
     (
       (
         (
-          'auto' S |
+          ('auto' S) |
           nonprop-length
         ) |
         (
-          'auto' S |
+          ('auto' S) |
           nonprop-length
         ) rS
         (
-          'auto' S |
+          ('auto' S) |
           nonprop-length
         )
       )
@@ -3527,21 +3527,21 @@ prop-scroll-margin-block =
 prop-scroll-margin-block-end =
   (
     nonprop-all |
-    'auto' S |
+    ('auto' S) |
     nonprop-length
   ) ;
 
 prop-scroll-margin-block-start =
   (
     nonprop-all |
-    'auto' S |
+    ('auto' S) |
     nonprop-length
   ) ;
 
 prop-scroll-margin-bottom =
   (
     nonprop-all |
-    'auto' S |
+    ('auto' S) |
     nonprop-length
   ) ;
 
@@ -3551,15 +3551,15 @@ prop-scroll-margin-inline =
     (
       (
         (
-          'auto' S |
+          ('auto' S) |
           nonprop-length
         ) |
         (
-          'auto' S |
+          ('auto' S) |
           nonprop-length
         ) rS
         (
-          'auto' S |
+          ('auto' S) |
           nonprop-length
         )
       )
@@ -3569,35 +3569,35 @@ prop-scroll-margin-inline =
 prop-scroll-margin-inline-end =
   (
     nonprop-all |
-    'auto' S |
+    ('auto' S) |
     nonprop-length
   ) ;
 
 prop-scroll-margin-inline-start =
   (
     nonprop-all |
-    'auto' S |
+    ('auto' S) |
     nonprop-length
   ) ;
 
 prop-scroll-margin-left =
   (
     nonprop-all |
-    'auto' S |
+    ('auto' S) |
     nonprop-length
   ) ;
 
 prop-scroll-margin-right =
   (
     nonprop-all |
-    'auto' S |
+    ('auto' S) |
     nonprop-length
   ) ;
 
 prop-scroll-margin-top =
   (
     nonprop-all |
-    'auto' S |
+    ('auto' S) |
     nonprop-length
   ) ;
 
@@ -3607,52 +3607,52 @@ prop-scroll-padding =
     (
       (
         (
-          'auto' S |
+          ('auto' S) |
           nonprop-length |
           nonprop-percentage
         ) |
         (
-          'auto' S |
+          ('auto' S) |
           nonprop-length |
           nonprop-percentage
         ) rS
         (
-          'auto' S |
+          ('auto' S) |
           nonprop-length |
           nonprop-percentage
         ) |
         (
-          'auto' S |
+          ('auto' S) |
           nonprop-length |
           nonprop-percentage
         ) rS
         (
-          'auto' S |
+          ('auto' S) |
           nonprop-length |
           nonprop-percentage
         ) rS
         (
-          'auto' S |
+          ('auto' S) |
           nonprop-length |
           nonprop-percentage
         ) |
         (
-          'auto' S |
+          ('auto' S) |
           nonprop-length |
           nonprop-percentage
         ) rS
         (
-          'auto' S |
+          ('auto' S) |
           nonprop-length |
           nonprop-percentage
         ) rS
         (
-          'auto' S |
+          ('auto' S) |
           nonprop-length |
           nonprop-percentage
         ) rS
         (
-          'auto' S |
+          ('auto' S) |
           nonprop-length |
           nonprop-percentage
         )
@@ -3666,17 +3666,17 @@ prop-scroll-padding-block =
     (
       (
         (
-          'auto' S |
+          ('auto' S) |
           nonprop-length |
           nonprop-percentage
         ) |
         (
-          'auto' S |
+          ('auto' S) |
           nonprop-length |
           nonprop-percentage
         ) rS
         (
-          'auto' S |
+          ('auto' S) |
           nonprop-length |
           nonprop-percentage
         )
@@ -3687,7 +3687,7 @@ prop-scroll-padding-block =
 prop-scroll-padding-block-end =
   (
     nonprop-all |
-    'auto' S |
+    ('auto' S) |
     nonprop-length |
     nonprop-percentage
   ) ;
@@ -3695,7 +3695,7 @@ prop-scroll-padding-block-end =
 prop-scroll-padding-block-start =
   (
     nonprop-all |
-    'auto' S |
+    ('auto' S) |
     nonprop-length |
     nonprop-percentage
   ) ;
@@ -3703,7 +3703,7 @@ prop-scroll-padding-block-start =
 prop-scroll-padding-bottom =
   (
     nonprop-all |
-    'auto' S |
+    ('auto' S) |
     nonprop-length |
     nonprop-percentage
   ) ;
@@ -3714,17 +3714,17 @@ prop-scroll-padding-inline =
     (
       (
         (
-          'auto' S |
+          ('auto' S) |
           nonprop-length |
           nonprop-percentage
         ) |
         (
-          'auto' S |
+          ('auto' S) |
           nonprop-length |
           nonprop-percentage
         ) rS
         (
-          'auto' S |
+          ('auto' S) |
           nonprop-length |
           nonprop-percentage
         )
@@ -3735,7 +3735,7 @@ prop-scroll-padding-inline =
 prop-scroll-padding-inline-end =
   (
     nonprop-all |
-    'auto' S |
+    ('auto' S) |
     nonprop-length |
     nonprop-percentage
   ) ;
@@ -3743,7 +3743,7 @@ prop-scroll-padding-inline-end =
 prop-scroll-padding-inline-start =
   (
     nonprop-all |
-    'auto' S |
+    ('auto' S) |
     nonprop-length |
     nonprop-percentage
   ) ;
@@ -3751,7 +3751,7 @@ prop-scroll-padding-inline-start =
 prop-scroll-padding-left =
   (
     nonprop-all |
-    'auto' S |
+    ('auto' S) |
     nonprop-length |
     nonprop-percentage
   ) ;
@@ -3759,7 +3759,7 @@ prop-scroll-padding-left =
 prop-scroll-padding-right =
   (
     nonprop-all |
-    'auto' S |
+    ('auto' S) |
     nonprop-length |
     nonprop-percentage
   ) ;
@@ -3767,7 +3767,7 @@ prop-scroll-padding-right =
 prop-scroll-padding-top =
   (
     nonprop-all |
-    'auto' S |
+    ('auto' S) |
     nonprop-length |
     nonprop-percentage
   ) ;
@@ -3778,22 +3778,22 @@ prop-scroll-snap-align =
     (
       (
         (
-          'none' S |
-          'start' S |
-          'end' S |
-          'center' S
+          ('none' S) |
+          ('start' S) |
+          ('end' S) |
+          ('center' S)
         ) |
         (
-          'none' S |
-          'start' S |
-          'end' S |
-          'center' S
+          ('none' S) |
+          ('start' S) |
+          ('end' S) |
+          ('center' S)
         ) rS
         (
-          'none' S |
-          'start' S |
-          'end' S |
-          'center' S
+          ('none' S) |
+          ('start' S) |
+          ('end' S) |
+          ('center' S)
         )
       )
     )
@@ -3802,25 +3802,25 @@ prop-scroll-snap-align =
 prop-scroll-snap-stop =
   (
     nonprop-all |
-    'normal' S |
-    'always' S
+    ('normal' S) |
+    ('always' S)
   ) ;
 
 prop-scroll-snap-type =
   (
     nonprop-all |
-    'none' S |
+    ('none' S) |
     (
       (
-        'x' S |
-        'y' S |
-        'block' S |
-        'inline' S |
-        'both' S
+        ('x' S) |
+        ('y' S) |
+        ('block' S) |
+        ('inline' S) |
+        ('both' S)
       )
       (
-        'mandatory' S |
-        'proximity' S
+        ('mandatory' S) |
+        ('proximity' S)
       )
     )
   ) ;
@@ -3828,9 +3828,9 @@ prop-scroll-snap-type =
 prop-scrollbar-color =
   (
     nonprop-all |
-    'auto' S |
-    'dark' S |
-    'light' S |
+    ('auto' S) |
+    ('dark' S) |
+    ('light' S) |
     (
       (
         nonprop-color rS
@@ -3842,9 +3842,9 @@ prop-scrollbar-color =
 prop-scrollbar-width =
   (
     nonprop-all |
-    'auto' S |
-    'thin' S |
-    'none' S
+    ('auto' S) |
+    ('thin' S) |
+    ('none' S)
   ) ;
 
 prop-shape-image-threshold =
@@ -3862,7 +3862,7 @@ prop-shape-margin =
 prop-shape-outside =
   (
     nonprop-all |
-    'none' S |
+    ('none' S) |
     ( (
       nonprop-shape-box |
       nonprop-basic-shape
@@ -3880,41 +3880,41 @@ prop-tab-size =
 prop-table-layout =
   (
     nonprop-all |
-    'auto' S |
-    'fixed' S
+    ('auto' S) |
+    ('fixed' S)
   ) ;
 
 prop-text-align =
   (
     nonprop-all |
-    'start' S |
-    'end' S |
-    'left' S |
-    'right' S |
-    'center' S |
-    'justify' S |
-    'match-parent' S
+    ('start' S) |
+    ('end' S) |
+    ('left' S) |
+    ('right' S) |
+    ('center' S) |
+    ('justify' S) |
+    ('match-parent' S)
   ) ;
 
 prop-text-align-last =
   (
     nonprop-all |
-    'auto' S |
-    'start' S |
-    'end' S |
-    'left' S |
-    'right' S |
-    'center' S |
-    'justify' S
+    ('auto' S) |
+    ('start' S) |
+    ('end' S) |
+    ('left' S) |
+    ('right' S) |
+    ('center' S) |
+    ('justify' S)
   ) ;
 
 prop-text-combine-upright =
   (
     nonprop-all |
-    'none' S |
-    'all' S |
+    ('none' S) |
+    ('all' S) |
     (
-      'digits' S
+      ('digits' S)
       nonprop-integer?
     )
   ) ;
@@ -3938,23 +3938,23 @@ prop-text-decoration-color =
 prop-text-decoration-line =
   (
     nonprop-all |
-    'none' S |
+    ('none' S) |
     ( (
-      'underline' S |
-      'overline' S |
-      'line-through' S |
-      'blink' S
+      ('underline' S) |
+      ('overline' S) |
+      ('line-through' S) |
+      ('blink' S)
     )+ )
   ) ;
 
 prop-text-decoration-style =
   (
     nonprop-all |
-    'solid' S |
-    'double' S |
-    'dotted' S |
-    'dashed' S |
-    'wavy' S
+    ('solid' S) |
+    ('double' S) |
+    ('dotted' S) |
+    ('dashed' S) |
+    ('wavy' S)
   ) ;
 
 prop-text-emphasis =
@@ -3977,12 +3977,12 @@ prop-text-emphasis-position =
     nonprop-all |
     (
       (
-        'over' S |
-        'under' S
+        ('over' S) |
+        ('under' S)
       )
       (
-        'right' S |
-        'left' S
+        ('right' S) |
+        ('left' S)
       )
     )
   ) ;
@@ -3990,18 +3990,18 @@ prop-text-emphasis-position =
 prop-text-emphasis-style =
   (
     nonprop-all |
-    'none' S |
+    ('none' S) |
     ( (
       (
-        'filled' S |
-        'open' S
+        ('filled' S) |
+        ('open' S)
       ) |
       (
-        'dot' S |
-        'circle' S |
-        'double-circle' S |
-        'triangle' S |
-        'sesame' S
+        ('dot' S) |
+        ('circle' S) |
+        ('double-circle' S) |
+        ('triangle' S) |
+        ('sesame' S)
       )
     )+ ) |
     nonprop-string
@@ -4012,26 +4012,26 @@ prop-text-indent =
     nonprop-all |
     (
       nonprop-length-percentage
-      'hanging' S?
-      'each-line' S?
+      ('hanging' S)?
+      ('each-line' S)?
     )
   ) ;
 
 prop-text-justify =
   (
     nonprop-all |
-    'auto' S |
-    'inter-character' S |
-    'inter-word' S |
-    'none' S
+    ('auto' S) |
+    ('inter-character' S) |
+    ('inter-word' S) |
+    ('none' S)
   ) ;
 
 prop-text-orientation =
   (
     nonprop-all |
-    'mixed' S |
-    'upright' S |
-    'sideways' S
+    ('mixed' S) |
+    ('upright' S) |
+    ('sideways' S)
   ) ;
 
 prop-text-overflow =
@@ -4040,18 +4040,18 @@ prop-text-overflow =
     (
       (
         (
-          'clip' S |
-          'ellipsis' S |
+          ('clip' S) |
+          ('ellipsis' S) |
           nonprop-string
         ) |
         (
-          'clip' S |
-          'ellipsis' S |
+          ('clip' S) |
+          ('ellipsis' S) |
           nonprop-string
         ) rS
         (
-          'clip' S |
-          'ellipsis' S |
+          ('clip' S) |
+          ('ellipsis' S) |
           nonprop-string
         )
       )
@@ -4061,16 +4061,16 @@ prop-text-overflow =
 prop-text-rendering =
   (
     nonprop-all |
-    'auto' S |
-    'optimizeSpeed' S |
-    'optimizeLegibility' S |
-    'geometricPrecision' S
+    ('auto' S) |
+    ('optimizeSpeed' S) |
+    ('optimizeLegibility' S) |
+    ('geometricPrecision' S)
   ) ;
 
 prop-text-shadow =
   (
     nonprop-all |
-    'none' S |
+    ('none' S) |
     nonprop-shadow-t (
       ',' S
       nonprop-shadow-t
@@ -4080,23 +4080,23 @@ prop-text-shadow =
 prop-text-transform =
   (
     nonprop-all |
-    'none' S |
-    'capitalize' S |
-    'uppercase' S |
-    'lowercase' S |
-    'full-width' S |
-    'full-size-kana' S
+    ('none' S) |
+    ('capitalize' S) |
+    ('uppercase' S) |
+    ('lowercase' S) |
+    ('full-width' S) |
+    ('full-size-kana' S)
   ) ;
 
 prop-text-underline-position =
   (
     nonprop-all |
-    'auto' S |
+    ('auto' S) |
     ( (
-      'under' S |
+      ('under' S) |
       (
-        'left' S |
-        'right' S
+        ('left' S) |
+        ('right' S)
       )
     )+ )
   ) ;
@@ -4106,43 +4106,43 @@ prop-top =
     nonprop-all |
     nonprop-length |
     nonprop-percentage |
-    'auto' S
+    ('auto' S)
   ) ;
 
 prop-touch-action =
   (
     nonprop-all |
-    'auto' S |
-    'none' S |
+    ('auto' S) |
+    ('none' S) |
     ( (
       (
-        'pan-x' S |
-        'pan-left' S |
-        'pan-right' S
+        ('pan-x' S) |
+        ('pan-left' S) |
+        ('pan-right' S)
       ) |
       (
-        'pan-y' S |
-        'pan-up' S |
-        'pan-down' S
+        ('pan-y' S) |
+        ('pan-up' S) |
+        ('pan-down' S)
       ) |
-      'pinch-zoom' S
+      ('pinch-zoom' S)
     )+ ) |
-    'manipulation' S
+    ('manipulation' S)
   ) ;
 
 prop-transform =
   (
     nonprop-all |
-    'none' S |
+    ('none' S) |
     nonprop-transform-list
   ) ;
 
 prop-transform-box =
   (
     nonprop-all |
-    'border-box' S |
-    'fill-box' S |
-    'view-box' S
+    ('border-box' S) |
+    ('fill-box' S) |
+    ('view-box' S)
   ) ;
 
 prop-transform-origin =
@@ -4150,25 +4150,25 @@ prop-transform-origin =
     nonprop-all |
     (
       nonprop-length-percentage |
-      'left' S |
-      'center' S |
-      'right' S |
-      'top' S |
-      'bottom' S
+      ('left' S) |
+      ('center' S) |
+      ('right' S) |
+      ('top' S) |
+      ('bottom' S)
     ) |
     (
       (
         (
           nonprop-length-percentage |
-          'left' S |
-          'center' S |
-          'right' S
+          ('left' S) |
+          ('center' S) |
+          ('right' S)
         )
         (
           nonprop-length-percentage |
-          'top' S |
-          'center' S |
-          'bottom' S
+          ('top' S) |
+          ('center' S) |
+          ('bottom' S)
         )
       )
       nonprop-length?
@@ -4178,8 +4178,8 @@ prop-transform-origin =
 prop-transform-style =
   (
     nonprop-all |
-    'flat' S |
-    'preserve-3d' S
+    ('flat' S) |
+    ('preserve-3d' S)
   ) ;
 
 prop-transition =
@@ -4212,7 +4212,7 @@ prop-transition-duration =
 prop-transition-property =
   (
     nonprop-all |
-    'none' S |
+    ('none' S) |
     nonprop-single-transition-property (
       ',' S
       nonprop-single-transition-property
@@ -4231,7 +4231,7 @@ prop-transition-timing-function =
 prop-translate =
   (
     nonprop-all |
-    'none' S |
+    ('none' S) |
     (
       nonprop-length-percentage
       (
@@ -4244,25 +4244,25 @@ prop-translate =
 prop-unicode-bidi =
   (
     nonprop-all |
-    'normal' S |
-    'embed' S |
-    'isolate' S |
-    'bidi-override' S |
-    'isolate-override' S |
-    'plaintext' S
+    ('normal' S) |
+    ('embed' S) |
+    ('isolate' S) |
+    ('bidi-override' S) |
+    ('isolate-override' S) |
+    ('plaintext' S)
   ) ;
 
 prop-vertical-align =
   (
     nonprop-all |
-    'baseline' S |
-    'sub' S |
-    'super' S |
-    'text-top' S |
-    'text-bottom' S |
-    'middle' S |
-    'top' S |
-    'bottom' S |
+    ('baseline' S) |
+    ('sub' S) |
+    ('super' S) |
+    ('text-top' S) |
+    ('text-bottom' S) |
+    ('middle' S) |
+    ('top' S) |
+    ('bottom' S) |
     nonprop-percentage |
     nonprop-length
   ) ;
@@ -4270,19 +4270,19 @@ prop-vertical-align =
 prop-visibility =
   (
     nonprop-all |
-    'visible' S |
-    'hidden' S |
-    'collapse' S
+    ('visible' S) |
+    ('hidden' S) |
+    ('collapse' S)
   ) ;
 
 prop-white-space =
   (
     nonprop-all |
-    'normal' S |
-    'pre' S |
-    'nowrap' S |
-    'pre-wrap' S |
-    'pre-line' S
+    ('normal' S) |
+    ('pre' S) |
+    ('nowrap' S) |
+    ('pre-wrap' S) |
+    ('pre-line' S)
   ) ;
 
 prop-widows =
@@ -4300,21 +4300,21 @@ prop-width =
         nonprop-percentage
       )
       (
-        'border-box' S |
-        'content-box' S
+        ('border-box' S) |
+        ('content-box' S)
       )?
     ) |
-    'available' S |
-    'min-content' S |
-    'max-content' S |
-    'fit-content' S |
-    'auto' S
+    ('available' S) |
+    ('min-content' S) |
+    ('max-content' S) |
+    ('fit-content' S) |
+    ('auto' S)
   ) ;
 
 prop-will-change =
   (
     nonprop-all |
-    'auto' S |
+    ('auto' S) |
     nonprop-animateable-feature (
       ',' S
       nonprop-animateable-feature
@@ -4324,52 +4324,52 @@ prop-will-change =
 prop-word-break =
   (
     nonprop-all |
-    'normal' S |
-    'break-all' S |
-    'keep-all' S |
-    'break-word' S
+    ('normal' S) |
+    ('break-all' S) |
+    ('keep-all' S) |
+    ('break-word' S)
   ) ;
 
 prop-word-spacing =
   (
     nonprop-all |
-    'normal' S |
+    ('normal' S) |
     nonprop-length-percentage
   ) ;
 
 prop-word-wrap =
   (
     nonprop-all |
-    'normal' S |
-    'break-word' S
+    ('normal' S) |
+    ('break-word' S)
   ) ;
 
 prop-writing-mode =
   (
     nonprop-all |
-    'horizontal-tb' S |
-    'vertical-rl' S |
-    'vertical-lr' S |
-    'sideways-rl' S |
-    'sideways-lr' S
+    ('horizontal-tb' S) |
+    ('vertical-rl' S) |
+    ('vertical-lr' S) |
+    ('sideways-rl' S) |
+    ('sideways-lr' S)
   ) ;
 
 prop-z-index =
   (
     nonprop-all |
-    'auto' S |
+    ('auto' S) |
     nonprop-integer
   ) ;
 
 nonprop-absolute-size =
   (
-    'xx-small' S |
-    'x-small' S |
-    'small' S |
-    'medium' S |
-    'large' S |
-    'x-large' S |
-    'xx-large' S
+    ('xx-small' S) |
+    ('x-small' S) |
+    ('small' S) |
+    ('medium' S) |
+    ('large' S) |
+    ('x-large' S) |
+    ('xx-large' S)
   ) ;
 
 nonprop-alpha-value =
@@ -4398,7 +4398,7 @@ nonprop-angular-color-stop-list =
     (
       nonprop-angular-color-stop
       (
-        ',' S
+        (',' S)
         nonprop-angular-color-hint
       )?
     ) (
@@ -4406,69 +4406,69 @@ nonprop-angular-color-stop-list =
       (
         nonprop-angular-color-stop
         (
-          ',' S
+          (',' S)
           nonprop-angular-color-hint
         )?
       )
     )*
-    ',' S
+    (',' S)
     nonprop-angular-color-stop
   ) ;
 
 nonprop-animateable-feature =
   (
-    'scroll-position' S |
-    'contents' S |
+    ('scroll-position' S) |
+    ('contents' S) |
     nonprop-custom-ident
   ) ;
 
 nonprop-attachment =
   (
-    'scroll' S |
-    'fixed' S |
-    'local' S
+    ('scroll' S) |
+    ('fixed' S) |
+    ('local' S)
   ) ;
 
 func-attr =
   (
-    'attr' S
-    '(' S
+    ('attr' S)
+    ('(' S)
     nonprop-attr-name
     nonprop-type-or-unit?
     (
-      ',' S
+      (',' S)
       nonprop-attr-fallback
     )?
-    ')' S
+    (')' S)
   ) ;
 
 nonprop-attr-matcher =
   (
     (
-      '~' S |
-      '|' S |
-      '^' S |
-      '$' S |
-      '*' S
+      ('~' S) |
+      ('|' S) |
+      ('^' S) |
+      ('$' S) |
+      ('*' S)
     )?
-    '=' S
+    ('=' S)
   ) ;
 
 nonprop-attr-modifier =
   (
-    'i' S |
-    's' S
+    ('i' S) |
+    ('s' S)
   ) ;
 
 nonprop-attribute-selector =
   (
     (
-      '[' S
+      ('[' S)
       nonprop-wq-name
-      ']' S
+      (']' S)
     ) |
     (
-      '[' S
+      ('[' S)
       nonprop-wq-name
       nonprop-attr-matcher
       (
@@ -4476,25 +4476,25 @@ nonprop-attribute-selector =
         nonprop-ident-token
       )
       nonprop-attr-modifier?
-      ']' S
+      (']' S)
     )
   ) ;
 
 nonprop-auto-repeat =
   (
-    'repeat' S
-    '(' S
+    ('repeat' S)
+    ('(' S)
     (
-      'auto-fill' S |
-      'auto-fit' S
+      ('auto-fill' S) |
+      ('auto-fit' S)
     )
-    ',' S
+    (',' S)
     (
       nonprop-line-names?
       nonprop-fixed-size
     )+
     nonprop-line-names?
-    ')' S
+    (')' S)
   ) ;
 
 nonprop-auto-track-list =
@@ -4521,10 +4521,10 @@ nonprop-auto-track-list =
 nonprop-baseline-position =
   (
     (
-      'first' S |
-      'last' S
+      ('first' S) |
+      ('last' S)
     )?
-    'baseline' S
+    ('baseline' S)
   ) ;
 
 nonprop-basic-shape =
@@ -4537,7 +4537,7 @@ nonprop-basic-shape =
 
 nonprop-bg-image =
   (
-    'none' S |
+    ('none' S) |
     nonprop-image
   ) ;
 
@@ -4547,7 +4547,7 @@ nonprop-bg-layer =
     (
       nonprop-bg-position
       (
-        '/' S
+        ('/' S)
         nonprop-bg-size
       )?
     ) |
@@ -4560,44 +4560,44 @@ nonprop-bg-layer =
 nonprop-bg-position =
   (
     (
-      'left' S |
-      'center' S |
-      'right' S |
-      'top' S |
-      'bottom' S |
+      ('left' S) |
+      ('center' S) |
+      ('right' S) |
+      ('top' S) |
+      ('bottom' S) |
       nonprop-length-percentage
     ) |
     (
       (
-        'left' S |
-        'center' S |
-        'right' S |
+        ('left' S) |
+        ('center' S) |
+        ('right' S) |
         nonprop-length-percentage
       )
       (
-        'top' S |
-        'center' S |
-        'bottom' S |
+        ('top' S) |
+        ('center' S) |
+        ('bottom' S) |
         nonprop-length-percentage
       )
     ) |
     (
       (
-        'center' S |
+        ('center' S) |
         (
           (
-            'left' S |
-            'right' S
+            ('left' S) |
+            ('right' S)
           )
           nonprop-length-percentage?
         )
       )
       (
-        'center' S |
+        ('center' S) |
         (
           (
-            'top' S |
-            'bottom' S
+            ('top' S) |
+            ('bottom' S)
           )
           nonprop-length-percentage?
         )
@@ -4611,71 +4611,71 @@ nonprop-bg-size =
       (
         (
           nonprop-length-percentage |
-          'auto' S
+          ('auto' S)
         ) |
         (
           nonprop-length-percentage |
-          'auto' S
+          ('auto' S)
         ) rS
         (
           nonprop-length-percentage |
-          'auto' S
+          ('auto' S)
         )
       )
     ) |
-    'cover' S |
-    'contain' S
+    ('cover' S) |
+    ('contain' S)
   ) ;
 
 nonprop-blend-mode =
   (
-    'normal' S |
-    'multiply' S |
-    'screen' S |
-    'overlay' S |
-    'darken' S |
-    'lighten' S |
-    'color-dodge' S |
-    'color-burn' S |
-    'hard-light' S |
-    'soft-light' S |
-    'difference' S |
-    'exclusion' S |
-    'hue' S |
-    'saturation' S |
-    'color' S |
-    'luminosity' S
+    ('normal' S) |
+    ('multiply' S) |
+    ('screen' S) |
+    ('overlay' S) |
+    ('darken' S) |
+    ('lighten' S) |
+    ('color-dodge' S) |
+    ('color-burn' S) |
+    ('hard-light' S) |
+    ('soft-light' S) |
+    ('difference' S) |
+    ('exclusion' S) |
+    ('hue' S) |
+    ('saturation' S) |
+    ('color' S) |
+    ('luminosity' S)
   ) ;
 
 func-blur =
   (
-    'blur' S
-    '(' S
+    ('blur' S)
+    ('(' S)
     nonprop-length
-    ')' S
+    (')' S)
   ) ;
 
 nonprop-box =
   (
-    'border-box' S |
-    'padding-box' S |
-    'content-box' S
+    ('border-box' S) |
+    ('padding-box' S) |
+    ('content-box' S)
   ) ;
 
 func-brightness =
   (
-    'brightness' S
-    '(' S
+    ('brightness' S)
+    ('(' S)
     nonprop-number-percentage
-    ')' S
+    (')' S)
   ) ;
 
 func-calc =
   (
-    'calc' S
-    '(' S
+    ('calc' S)
+    ('(' S)
     nonprop-calc-sum
-    ')' S
+    (')' S)
   ) ;
 
 nonprop-calc-product =
@@ -4683,11 +4683,11 @@ nonprop-calc-product =
     nonprop-calc-value
     (
       (
-        '*' S
+        ('*' S)
         nonprop-calc-value
       ) |
       (
-        '/' S
+        ('/' S)
         nonprop-number
       )
     )*
@@ -4698,8 +4698,8 @@ nonprop-calc-sum =
     nonprop-calc-product
     (
       (
-        '+' S |
-        '-' S
+        ('+' S) |
+        ('-' S)
       )
       nonprop-calc-product
     )*
@@ -4711,9 +4711,9 @@ nonprop-calc-value =
     nonprop-dimension |
     nonprop-percentage |
     (
-      '(' S
+      ('(' S)
       nonprop-calc-sum
-      ')' S
+      (')' S)
     )
   ) ;
 
@@ -4731,20 +4731,20 @@ nonprop-cf-mixing-image =
 
 func-circle =
   (
-    'circle' S
-    '(' S
+    ('circle' S)
+    ('(' S)
     nonprop-shape-radius?
     (
-      'at' S
+      ('at' S)
       nonprop-position
     )?
-    ')' S
+    (')' S)
   ) ;
 
 func-clamp =
   (
-    'clamp' S
-    '(' S
+    ('clamp' S)
+    ('(' S)
     (
       (
         nonprop-calc-sum ',' S
@@ -4752,12 +4752,12 @@ func-clamp =
         nonprop-calc-sum
       )
     )
-    ')' S
+    (')' S)
   ) ;
 
 nonprop-class-selector =
   (
-    '.' S
+    ('.' S)
     nonprop-ident-token
   ) ;
 
@@ -4772,7 +4772,7 @@ nonprop-color =
     func-hsla |
     nonprop-hex-color |
     nonprop-named-color |
-    'currentcolor' S |
+    ('currentcolor' S) |
     nonprop-deprecated-system-color
   ) ;
 
@@ -4805,7 +4805,7 @@ nonprop-color-stop-list =
     (
       nonprop-linear-color-stop
       (
-        ',' S
+        (',' S)
         nonprop-linear-color-hint
       )?
     ) (
@@ -4813,44 +4813,44 @@ nonprop-color-stop-list =
       (
         nonprop-linear-color-stop
         (
-          ',' S
+          (',' S)
           nonprop-linear-color-hint
         )?
       )
     )*
-    ',' S
+    (',' S)
     nonprop-linear-color-stop
   ) ;
 
 nonprop-combinator =
   (
-    '>' S |
-    '+' S |
-    '~' S |
-    '||' S
+    ('>' S) |
+    ('+' S) |
+    ('~' S) |
+    ('||' S)
   ) ;
 
 nonprop-common-lig-values =
   (
-    'common-ligatures' S |
-    'no-common-ligatures' S
+    ('common-ligatures' S) |
+    ('no-common-ligatures' S)
   ) ;
 
 nonprop-compat =
   (
-    'searchfield' S |
-    'textarea' S |
-    'push-button' S |
-    'button-bevel' S |
-    'slider-horizontal' S |
-    'checkbox' S |
-    'radio' S |
-    'square-button' S |
-    'menulist' S |
-    'menulist-button' S |
-    'listbox' S |
-    'meter' S |
-    'progress-bar' S
+    ('searchfield' S) |
+    ('textarea' S) |
+    ('push-button' S) |
+    ('button-bevel' S) |
+    ('slider-horizontal' S) |
+    ('checkbox' S) |
+    ('radio' S) |
+    ('square-button' S) |
+    ('menulist' S) |
+    ('menulist-button' S) |
+    ('listbox' S) |
+    ('meter' S) |
+    ('progress-bar' S)
   ) ;
 
 nonprop-complex-selector =
@@ -4870,25 +4870,25 @@ nonprop-complex-selector-list =
 
 nonprop-composite-style =
   (
-    'clear' S |
-    'copy' S |
-    'source-over' S |
-    'source-in' S |
-    'source-out' S |
-    'source-atop' S |
-    'destination-over' S |
-    'destination-in' S |
-    'destination-out' S |
-    'destination-atop' S |
-    'xor' S
+    ('clear' S) |
+    ('copy' S) |
+    ('source-over' S) |
+    ('source-in' S) |
+    ('source-out' S) |
+    ('source-atop' S) |
+    ('destination-over' S) |
+    ('destination-in' S) |
+    ('destination-out' S) |
+    ('destination-atop' S) |
+    ('xor' S)
   ) ;
 
 nonprop-compositing-operator =
   (
-    'add' S |
-    'subtract' S |
-    'intersect' S |
-    'exclude' S
+    ('add' S) |
+    ('subtract' S) |
+    ('intersect' S) |
+    ('exclude' S)
   ) ;
 
 nonprop-compound-selector =
@@ -4909,33 +4909,33 @@ nonprop-compound-selector-list =
 
 func-conic-gradient =
   (
-    'conic-gradient' S
-    '(' S
+    ('conic-gradient' S)
+    ('(' S)
     (
-      'from' S
+      ('from' S)
       nonprop-angle
     )?
     (
-      'at' S
+      ('at' S)
       nonprop-position
     )?
     ',' S
     nonprop-angular-color-stop-list
-    ')' S
+    (')' S)
   ) ;
 
 nonprop-content-distribution =
   (
-    'space-between' S |
-    'space-around' S |
-    'space-evenly' S |
-    'stretch' S
+    ('space-between' S) |
+    ('space-around' S) |
+    ('space-evenly' S) |
+    ('stretch' S)
   ) ;
 
 nonprop-content-list =
   (
     nonprop-string |
-    'contents' S |
+    ('contents' S) |
     nonprop-image |
     nonprop-quote |
     nonprop-target |
@@ -4944,11 +4944,11 @@ nonprop-content-list =
 
 nonprop-content-position =
   (
-    'center' S |
-    'start' S |
-    'end' S |
-    'flex-start' S |
-    'flex-end' S
+    ('center' S) |
+    ('start' S) |
+    ('end' S) |
+    ('flex-start' S) |
+    ('flex-end' S)
   ) ;
 
 nonprop-content-replacement =
@@ -4956,38 +4956,38 @@ nonprop-content-replacement =
 
 nonprop-contextual-alt-values =
   (
-    'contextual' S |
-    'no-contextual' S
+    ('contextual' S) |
+    ('no-contextual' S)
   ) ;
 
 func-contrast =
   (
-    'contrast' S
-    '(' S
+    ('contrast' S)
+    ('(' S)
     nonprop-number-percentage
-    ')' S
+    (')' S)
   ) ;
 
 func-counter =
   (
-    'counter' S
-    '(' S
+    ('counter' S)
+    ('(' S)
     nonprop-custom-ident
-    ',' S
+    (',' S)
     (
       nonprop-counter-style |
-      'none' S
+      ('none' S)
     )?
-    ')' S
+    (')' S)
   ) ;
 
 nonprop-counter-style =
   (
     nonprop-counter-style-name |
     (
-      'symbols' S
-      '(' S
-      ')' S
+      ('symbols' S)
+      ('(' S)
+      (')' S)
     )
   ) ;
 
@@ -4996,149 +4996,149 @@ nonprop-counter-style-name =
 
 func-counters =
   (
-    'counters' S
-    '(' S
+    ('counters' S)
+    ('(' S)
     nonprop-custom-ident
-    ',' S
+    (',' S)
     nonprop-string
     ',' S
     (
       nonprop-counter-style |
-      'none' S
+      ('none' S)
     )?
-    ')' S
+    (')' S)
   ) ;
 
 func-cross-fade =
   (
-    'cross-fade' S
-    '(' S
+    ('cross-fade' S)
+    ('(' S)
     nonprop-cf-mixing-image
-    ',' S
+    (',' S)
     nonprop-cf-final-image?
-    ')' S
+    (')' S)
   ) ;
 
 nonprop-cubic-bezier-timing-function =
   (
-    'ease' S |
-    'ease-in' S |
-    'ease-out' S |
-    'ease-in-out' S |
+    ('ease' S) |
+    ('ease-in' S) |
+    ('ease-out' S) |
+    ('ease-in-out' S) |
     (
-      'cubic-bezier' S
-      '(' S
+      ('cubic-bezier' S)
+      ('(' S)
       nonprop-number
       ',' S
       nonprop-number
-      ',' S
+      (',' S)
       nonprop-number
       ',' S
       nonprop-number
-      ')' S
+      (')' S)
     )
   ) ;
 
 nonprop-deprecated-system-color =
   (
-    'ActiveBorder' S |
-    'ActiveCaption' S |
-    'AppWorkspace' S |
-    'Background' S |
-    'ButtonFace' S |
-    'ButtonHighlight' S |
-    'ButtonShadow' S |
-    'ButtonText' S |
-    'CaptionText' S |
-    'GrayText' S |
-    'Highlight' S |
-    'HighlightText' S |
-    'InactiveBorder' S |
-    'InactiveCaption' S |
-    'InactiveCaptionText' S |
-    'InfoBackground' S |
-    'InfoText' S |
-    'Menu' S |
-    'MenuText' S |
-    'Scrollbar' S |
-    'ThreeDDarkShadow' S |
-    'ThreeDFace' S |
-    'ThreeDHighlight' S |
-    'ThreeDLightShadow' S |
-    'ThreeDShadow' S |
-    'Window' S |
-    'WindowFrame' S |
-    'WindowText' S
+    ('ActiveBorder' S) |
+    ('ActiveCaption' S) |
+    ('AppWorkspace' S) |
+    ('Background' S) |
+    ('ButtonFace' S) |
+    ('ButtonHighlight' S) |
+    ('ButtonShadow' S) |
+    ('ButtonText' S) |
+    ('CaptionText' S) |
+    ('GrayText' S) |
+    ('Highlight' S) |
+    ('HighlightText' S) |
+    ('InactiveBorder' S) |
+    ('InactiveCaption' S) |
+    ('InactiveCaptionText' S) |
+    ('InfoBackground' S) |
+    ('InfoText' S) |
+    ('Menu' S) |
+    ('MenuText' S) |
+    ('Scrollbar' S) |
+    ('ThreeDDarkShadow' S) |
+    ('ThreeDFace' S) |
+    ('ThreeDHighlight' S) |
+    ('ThreeDLightShadow' S) |
+    ('ThreeDShadow' S) |
+    ('Window' S) |
+    ('WindowFrame' S) |
+    ('WindowText' S)
   ) ;
 
 nonprop-discretionary-lig-values =
   (
-    'discretionary-ligatures' S |
-    'no-discretionary-ligatures' S
+    ('discretionary-ligatures' S) |
+    ('no-discretionary-ligatures' S)
   ) ;
 
 nonprop-display-box =
   (
-    'contents' S |
-    'none' S
+    ('contents' S) |
+    ('none' S)
   ) ;
 
 nonprop-display-inside =
   (
-    'flow' S |
-    'flow-root' S |
-    'table' S |
-    'flex' S |
-    'grid' S |
-    'ruby' S
+    ('flow' S) |
+    ('flow-root' S) |
+    ('table' S) |
+    ('flex' S) |
+    ('grid' S) |
+    ('ruby' S)
   ) ;
 
 nonprop-display-internal =
   (
-    'table-row-group' S |
-    'table-header-group' S |
-    'table-footer-group' S |
-    'table-row' S |
-    'table-cell' S |
-    'table-column-group' S |
-    'table-column' S |
-    'table-caption' S |
-    'ruby-base' S |
-    'ruby-text' S |
-    'ruby-base-container' S |
-    'ruby-text-container' S
+    ('table-row-group' S) |
+    ('table-header-group' S) |
+    ('table-footer-group' S) |
+    ('table-row' S) |
+    ('table-cell' S) |
+    ('table-column-group' S) |
+    ('table-column' S) |
+    ('table-caption' S) |
+    ('ruby-base' S) |
+    ('ruby-text' S) |
+    ('ruby-base-container' S) |
+    ('ruby-text-container' S)
   ) ;
 
 nonprop-display-legacy =
   (
-    'inline-block' S |
-    'inline-list-item' S |
-    'inline-table' S |
-    'inline-flex' S |
-    'inline-grid' S
+    ('inline-block' S) |
+    ('inline-list-item' S) |
+    ('inline-table' S) |
+    ('inline-flex' S) |
+    ('inline-grid' S)
   ) ;
 
 nonprop-display-listitem =
   (
     nonprop-display-outside?
     (
-      'flow' S |
-      'flow-root' S
+      ('flow' S) |
+      ('flow-root' S)
     )?
-    'list-item' S
+    ('list-item' S)
   ) ;
 
 nonprop-display-outside =
   (
-    'block' S |
-    'inline' S |
-    'run-in' S
+    ('block' S) |
+    ('inline' S) |
+    ('run-in' S)
   ) ;
 
 func-drop-shadow =
   (
-    'drop-shadow' S
-    '(' S
+    ('drop-shadow' S)
+    ('(' S)
     (
       (
         nonprop-length rS
@@ -5149,37 +5149,37 @@ func-drop-shadow =
       )
     )
     nonprop-color?
-    ')' S
+    (')' S)
   ) ;
 
 nonprop-east-asian-variant-values =
   (
-    'jis78' S |
-    'jis83' S |
-    'jis90' S |
-    'jis04' S |
-    'simplified' S |
-    'traditional' S
+    ('jis78' S) |
+    ('jis83' S) |
+    ('jis90' S) |
+    ('jis04' S) |
+    ('simplified' S) |
+    ('traditional' S)
   ) ;
 
 nonprop-east-asian-width-values =
   (
-    'full-width' S |
-    'proportional-width' S
+    ('full-width' S) |
+    ('proportional-width' S)
   ) ;
 
 func-element =
   (
-    'element' S
-    '(' S
+    ('element' S)
+    ('(' S)
     nonprop-id-selector
-    ')' S
+    (')' S)
   ) ;
 
 func-ellipse =
   (
-    'ellipse' S
-    '(' S
+    ('ellipse' S)
+    ('(' S)
     (
       (
         nonprop-shape-radius rS
@@ -5187,26 +5187,26 @@ func-ellipse =
       )
     )?
     (
-      'at' S
+      ('at' S)
       nonprop-position
     )?
-    ')' S
+    (')' S)
   ) ;
 
 nonprop-ending-shape =
   (
-    'circle' S |
-    'ellipse' S
+    ('circle' S) |
+    ('ellipse' S)
   ) ;
 
 func-env =
   (
-    'env' S
-    '(' S
+    ('env' S)
+    ('(' S)
     nonprop-custom-ident
-    ',' S
+    (',' S)
     nonprop-declaration-value?
-    ')' S
+    (')' S)
   ) ;
 
 nonprop-explicit-track-list =
@@ -5229,28 +5229,28 @@ nonprop-feature-tag-value =
     nonprop-string
     (
       nonprop-integer |
-      'on' S |
-      'off' S
+      ('on' S) |
+      ('off' S)
     )?
   ) ;
 
 nonprop-feature-type =
   (
-    '@stylistic' S |
-    '@historical-forms' S |
-    '@styleset' S |
-    '@character-variant' S |
-    '@swash' S |
-    '@ornaments' S |
-    '@annotation' S
+    ('@stylistic' S) |
+    ('@historical-forms' S) |
+    ('@styleset' S) |
+    ('@character-variant' S) |
+    ('@swash' S) |
+    ('@ornaments' S) |
+    ('@annotation' S)
   ) ;
 
 nonprop-feature-value-block =
   (
     nonprop-feature-type
-    '{' S
+    ('{' S)
     nonprop-feature-value-declaration-list
-    '}' S
+    ('}' S)
   ) ;
 
 nonprop-feature-value-block-list =
@@ -5259,9 +5259,9 @@ nonprop-feature-value-block-list =
 nonprop-feature-value-declaration =
   (
     nonprop-custom-ident
-    ':' S
+    (':' S)
     nonprop-integer+
-    ';' S
+    (';' S)
   ) ;
 
 nonprop-feature-value-declaration-list =
@@ -5272,8 +5272,8 @@ nonprop-feature-value-name =
 
 nonprop-fill-rule =
   (
-    'nonzero' S |
-    'evenodd' S
+    ('nonzero' S) |
+    ('evenodd' S)
   ) ;
 
 nonprop-filter-function =
@@ -5303,7 +5303,7 @@ nonprop-final-bg-layer =
     (
       nonprop-bg-position
       (
-        '/' S
+        ('/' S)
         nonprop-bg-size
       )?
     ) |
@@ -5315,13 +5315,13 @@ nonprop-final-bg-layer =
 
 func-fit-content =
   (
-    'fit-content' S
-    '(' S
+    ('fit-content' S)
+    ('(' S)
     (
       nonprop-length |
       nonprop-percentage
     )
-    ')' S
+    (')' S)
   ) ;
 
 nonprop-fixed-breadth =
@@ -5329,72 +5329,72 @@ nonprop-fixed-breadth =
 
 nonprop-fixed-repeat =
   (
-    'repeat' S
-    '(' S
+    ('repeat' S)
+    ('(' S)
     nonprop-positive-integer
-    ',' S
+    (',' S)
     (
       nonprop-line-names?
       nonprop-fixed-size
     )+
     nonprop-line-names?
-    ')' S
+    (')' S)
   ) ;
 
 nonprop-fixed-size =
   (
     nonprop-fixed-breadth |
     (
-      'minmax' S
-      '(' S
+      ('minmax' S)
+      ('(' S)
       nonprop-fixed-breadth
-      ',' S
+      (',' S)
       nonprop-track-breadth
-      ')' S
+      (')' S)
     ) |
     (
-      'minmax' S
-      '(' S
+      ('minmax' S)
+      ('(' S)
       nonprop-inflexible-breadth
-      ',' S
+      (',' S)
       nonprop-fixed-breadth
-      ')' S
+      (')' S)
     )
   ) ;
 
 nonprop-font-display =
   (
-    'auto' S |
-    'block' S |
-    'swap' S |
-    'fallback' S |
-    'optional' S
+    ('auto' S) |
+    ('block' S) |
+    ('swap' S) |
+    ('fallback' S) |
+    ('optional' S)
   ) ;
 
 nonprop-font-stretch-absolute =
   (
-    'normal' S |
-    'ultra-condensed' S |
-    'extra-condensed' S |
-    'condensed' S |
-    'semi-condensed' S |
-    'semi-expanded' S |
-    'expanded' S |
-    'extra-expanded' S |
-    'ultra-expanded' S |
+    ('normal' S) |
+    ('ultra-condensed' S) |
+    ('extra-condensed' S) |
+    ('condensed' S) |
+    ('semi-condensed' S) |
+    ('semi-expanded' S) |
+    ('expanded' S) |
+    ('extra-expanded' S) |
+    ('ultra-expanded' S) |
     nonprop-percentage
   ) ;
 
 nonprop-font-variant-css21 =
   (
-    'normal' S |
-    'small-caps' S
+    ('normal' S) |
+    ('small-caps' S)
   ) ;
 
 nonprop-font-weight-absolute =
   (
-    'normal' S |
-    'bold' S |
+    ('normal' S) |
+    ('bold' S) |
     nonprop-number
   ) ;
 
@@ -5409,40 +5409,40 @@ nonprop-general-enclosed =
     (
       nonprop-function-token
       nonprop-any-value
-      ')' S
+      (')' S)
     ) |
     (
-      '(' S
+      ('(' S)
       nonprop-ident
       nonprop-any-value
-      ')' S
+      (')' S)
     )
   ) ;
 
 nonprop-generic-family =
   (
-    'serif' S |
-    'sans-serif' S |
-    'cursive' S |
-    'fantasy' S |
-    'monospace' S
+    ('serif' S) |
+    ('sans-serif' S) |
+    ('cursive' S) |
+    ('fantasy' S) |
+    ('monospace' S)
   ) ;
 
 nonprop-generic-name =
   (
-    'serif' S |
-    'sans-serif' S |
-    'cursive' S |
-    'fantasy' S |
-    'monospace' S
+    ('serif' S) |
+    ('sans-serif' S) |
+    ('cursive' S) |
+    ('fantasy' S) |
+    ('monospace' S)
   ) ;
 
 nonprop-geometry-box =
   (
     nonprop-shape-box |
-    'fill-box' S |
-    'stroke-box' S |
-    'view-box' S
+    ('fill-box' S) |
+    ('stroke-box' S) |
+    ('view-box' S)
   ) ;
 
 nonprop-gradient =
@@ -5456,22 +5456,22 @@ nonprop-gradient =
 
 func-grayscale =
   (
-    'grayscale' S
-    '(' S
+    ('grayscale' S)
+    ('(' S)
     nonprop-number-percentage
-    ')' S
+    (')' S)
   ) ;
 
 nonprop-grid-line =
   (
-    'auto' S |
+    ('auto' S) |
     nonprop-custom-ident |
     (
       nonprop-integer
       nonprop-custom-ident?
     ) |
     (
-      'span' S
+      ('span' S)
       ( (
         nonprop-integer |
         nonprop-custom-ident
@@ -5481,63 +5481,63 @@ nonprop-grid-line =
 
 nonprop-historical-lig-values =
   (
-    'historical-ligatures' S |
-    'no-historical-ligatures' S
+    ('historical-ligatures' S) |
+    ('no-historical-ligatures' S)
   ) ;
 
 func-hsl =
   (
     (
-      'hsl' S
-      '(' S
+      ('hsl' S)
+      ('(' S)
       nonprop-hue
       nonprop-percentage
       nonprop-percentage
       (
-        '/' S
+        ('/' S)
         nonprop-alpha-value
       )?
-      ')' S
+      (')' S)
     ) |
     (
-      'hsl' S
-      '(' S
+      ('hsl' S)
+      ('(' S)
       nonprop-hue
-      ',' S
+      (',' S)
       nonprop-percentage
-      ',' S
+      (',' S)
       nonprop-percentage
-      ',' S
+      (',' S)
       nonprop-alpha-value?
-      ')' S
+      (')' S)
     )
   ) ;
 
 func-hsla =
   (
     (
-      'hsla' S
-      '(' S
+      ('hsla' S)
+      ('(' S)
       nonprop-hue
       nonprop-percentage
       nonprop-percentage
       (
-        '/' S
+        ('/' S)
         nonprop-alpha-value
       )?
-      ')' S
+      (')' S)
     ) |
     (
-      'hsla' S
-      '(' S
+      ('hsla' S)
+      ('(' S)
       nonprop-hue
-      ',' S
+      (',' S)
       nonprop-percentage
-      ',' S
+      (',' S)
       nonprop-percentage
       ',' S
       nonprop-alpha-value?
-      ')' S
+      (')' S)
     )
   ) ;
 
@@ -5549,10 +5549,10 @@ nonprop-hue =
 
 func-hue-rotate =
   (
-    'hue-rotate' S
-    '(' S
+    ('hue-rotate' S)
+    ('(' S)
     nonprop-angle
-    ')' S
+    (')' S)
   ) ;
 
 nonprop-id-selector =
@@ -5570,26 +5570,26 @@ nonprop-image =
 
 func-image =
   (
-    'image' S
-    '(' S
+    ('image' S)
+    ('(' S)
     nonprop-image-tags?
     (
       nonprop-image-src?
-      ',' S
+      (',' S)
       nonprop-color?
     )
-    ')' S
+    (')' S)
   ) ;
 
 func-image-set =
   (
-    'image-set' S
-    '(' S
+    ('image-set' S)
+    ('(' S)
     nonprop-image-set-option (
       ',' S
       nonprop-image-set-option
     )*
-    ')' S
+    (')' S)
   ) ;
 
 nonprop-image-set-option =
@@ -5609,23 +5609,23 @@ nonprop-image-src =
 
 nonprop-image-tags =
   (
-    'ltr' S |
-    'rtl' S
+    ('ltr' S) |
+    ('rtl' S)
   ) ;
 
 nonprop-inflexible-breadth =
   (
     nonprop-length |
     nonprop-percentage |
-    'min-content' S |
-    'max-content' S |
-    'auto' S
+    ('min-content' S) |
+    ('max-content' S) |
+    ('auto' S)
   ) ;
 
 func-inset =
   (
-    'inset' S
-    '(' S
+    ('inset' S)
+    ('(' S)
     (
       (
         nonprop-length-percentage |
@@ -5641,18 +5641,18 @@ func-inset =
       )
     )
     (
-      'round' S
+      ('round' S)
       nonprop-border-radius
     )?
-    ')' S
+    (')' S)
   ) ;
 
 func-invert =
   (
-    'invert' S
-    '(' S
+    ('invert' S)
+    ('(' S)
     nonprop-number-percentage
-    ')' S
+    (')' S)
   ) ;
 
 nonprop-keyframe-block =
@@ -5671,8 +5671,8 @@ nonprop-keyframe-block-list =
 
 nonprop-keyframe-selector =
   (
-    'from' S |
-    'to' S |
+    ('from' S) |
+    ('to' S) |
     nonprop-percentage
   ) ;
 
@@ -5684,17 +5684,17 @@ nonprop-keyframes-name =
 
 func-leader =
   (
-    'leader' S
-    '(' S
+    ('leader' S)
+    ('(' S)
     nonprop-leader-type
-    ')' S
+    (')' S)
   ) ;
 
 nonprop-leader-type =
   (
-    'dotted' S |
-    'solid' S |
-    'space' S |
+    ('dotted' S) |
+    ('solid' S) |
+    ('space' S) |
     nonprop-string
   ) ;
 
@@ -5712,31 +5712,31 @@ nonprop-line-name-list =
 
 nonprop-line-names =
   (
-    '[' S
+    ('[' S)
     nonprop-custom-ident*
-    ']' S
+    (']' S)
   ) ;
 
 nonprop-line-style =
   (
-    'none' S |
-    'hidden' S |
-    'dotted' S |
-    'dashed' S |
-    'solid' S |
-    'double' S |
-    'groove' S |
-    'ridge' S |
-    'inset' S |
-    'outset' S
+    ('none' S) |
+    ('hidden' S) |
+    ('dotted' S) |
+    ('dashed' S) |
+    ('solid' S) |
+    ('double' S) |
+    ('groove' S) |
+    ('ridge' S) |
+    ('inset' S) |
+    ('outset' S)
   ) ;
 
 nonprop-line-width =
   (
     nonprop-length |
-    'thin' S |
-    'medium' S |
-    'thick' S
+    ('thin' S) |
+    ('medium' S) |
+    ('thick' S)
   ) ;
 
 nonprop-linear-color-hint =
@@ -5750,18 +5750,18 @@ nonprop-linear-color-stop =
 
 func-linear-gradient =
   (
-    'linear-gradient' S
-    '(' S
+    ('linear-gradient' S)
+    ('(' S)
     (
       nonprop-angle |
       (
-        'to' S
+        ('to' S)
         nonprop-side-or-corner
       )
     )?
-    ',' S
+    (',' S)
     nonprop-color-stop-list
-    ')' S
+    (')' S)
   ) ;
 
 nonprop-mask-layer =
@@ -5770,7 +5770,7 @@ nonprop-mask-layer =
     (
       nonprop-position
       (
-        '/' S
+        ('/' S)
         nonprop-bg-size
       )?
     ) |
@@ -5778,7 +5778,7 @@ nonprop-mask-layer =
     nonprop-geometry-box |
     (
       nonprop-geometry-box |
-      'no-clip' S
+      ('no-clip' S)
     ) |
     nonprop-compositing-operator |
     nonprop-masking-mode
@@ -5788,21 +5788,21 @@ nonprop-mask-position =
   (
     (
       nonprop-length-percentage |
-      'left' S |
-      'center' S |
-      'right' S
+      ('left' S) |
+      ('center' S) |
+      ('right' S)
     )
     (
       nonprop-length-percentage |
-      'top' S |
-      'center' S |
-      'bottom' S
+      ('top' S) |
+      ('center' S) |
+      ('bottom' S)
     )?
   ) ;
 
 nonprop-mask-reference =
   (
-    'none' S |
+    ('none' S) |
     nonprop-image |
     nonprop-mask-source
   ) ;
@@ -5812,131 +5812,131 @@ nonprop-mask-source =
 
 nonprop-masking-mode =
   (
-    'alpha' S |
-    'luminance' S |
-    'match-source' S
+    ('alpha' S) |
+    ('luminance' S) |
+    ('match-source' S)
   ) ;
 
 func-matrix =
   (
-    'matrix' S
-    '(' S
+    ('matrix' S)
+    ('(' S)
     nonprop-number
     (
       (
         (
-          ',' S
+          (',' S)
           nonprop-number
         ) rS
         (
-          ',' S
+          (',' S)
           nonprop-number
         ) rS
         (
-          ',' S
+          (',' S)
           nonprop-number
         ) rS
         (
-          ',' S
+          (',' S)
           nonprop-number
         ) rS
         (
-          ',' S
+          (',' S)
           nonprop-number
         )
       )
     )
-    ')' S
+    (')' S)
   ) ;
 
 func-matrix3d =
   (
-    'matrix3d' S
-    '(' S
+    ('matrix3d' S)
+    ('(' S)
     nonprop-number
     (
       (
         (
-          ',' S
+          (',' S)
           nonprop-number
         ) |
         (
-          ',' S
+          (',' S)
           nonprop-number
         ) rS
         (
-          ',' S
+          (',' S)
           nonprop-number
         ) |
         (
-          ',' S
+          (',' S)
           nonprop-number
         ) rS
         (
-          ',' S
+          (',' S)
           nonprop-number
         ) rS
         (
-          ',' S
+          (',' S)
           nonprop-number
         ) |
         (
-          ',' S
+          (',' S)
           nonprop-number
         ) rS
         (
-          ',' S
+          (',' S)
           nonprop-number
         ) rS
         (
-          ',' S
+          (',' S)
           nonprop-number
         ) rS
         (
-          ',' S
+          (',' S)
           nonprop-number
         ) |
         (
-          ',' S
+          (',' S)
           nonprop-number
         ) rS
         (
-          ',' S
+          (',' S)
           nonprop-number
         ) rS
         (
-          ',' S
+          (',' S)
           nonprop-number
         ) rS
         (
-          ',' S
+          (',' S)
           nonprop-number
         ) rS
         (
-          ',' S
+          (',' S)
           nonprop-number
         )
       )
     )
-    ')' S
+    (')' S)
   ) ;
 
 func-max =
   (
-    'max' S
-    '(' S
+    ('max' S)
+    ('(' S)
     nonprop-calc-sum (
       ',' S
       nonprop-calc-sum
     )*
-    ')' S
+    (')' S)
   ) ;
 
 nonprop-media-and =
   (
     nonprop-media-in-parens
     (
-      'and' S
+      ('and' S)
       nonprop-media-in-parens
     )+
   ) ;
@@ -5944,12 +5944,12 @@ nonprop-media-and =
 nonprop-media-condition =
   (
     (
-      'not' S?
+      ('not' S)?
       (
         (
-          '(' S
+          ('(' S)
           nonprop-media-condition
-          ')' S
+          (')' S)
         ) |
         nonprop-media-feature |
         nonprop-general-enclosed
@@ -5958,23 +5958,23 @@ nonprop-media-condition =
     (
       (
         (
-          '(' S
+          ('(' S)
           nonprop-media-condition
-          ')' S
+          (')' S)
         ) |
         nonprop-media-feature |
         nonprop-general-enclosed
       )
       (
         (
-          'and' S |
-          'or' S
+          ('and' S) |
+          ('or' S)
         )
         (
           (
-            '(' S
+            ('(' S)
             nonprop-media-condition
-            ')' S
+            (')' S)
           ) |
           nonprop-media-feature |
           nonprop-general-enclosed
@@ -5992,21 +5992,21 @@ nonprop-media-condition-without-or =
 
 nonprop-media-feature =
   (
-    '(' S
+    ('(' S)
     (
       nonprop-mf-plain |
       nonprop-mf-boolean |
       nonprop-mf-range
     )
-    ')' S
+    (')' S)
   ) ;
 
 nonprop-media-in-parens =
   (
     (
-      '(' S
+      ('(' S)
       nonprop-media-condition
-      ')' S
+      (')' S)
     ) |
     nonprop-media-feature |
     nonprop-general-enclosed
@@ -6014,7 +6014,7 @@ nonprop-media-in-parens =
 
 nonprop-media-not =
   (
-    'not' S
+    ('not' S)
     nonprop-media-in-parens
   ) ;
 
@@ -6022,7 +6022,7 @@ nonprop-media-or =
   (
     nonprop-media-in-parens
     (
-      'or' S
+      ('or' S)
       nonprop-media-in-parens
     )+
   ) ;
@@ -6032,12 +6032,12 @@ nonprop-media-query =
     nonprop-media-condition |
     (
       (
-        'not' S |
-        'only' S
+        ('not' S) |
+        ('only' S)
       )?
       nonprop-media-type
       (
-        'and' S
+        ('and' S)
         nonprop-media-condition-without-or
       )?
     )
@@ -6061,7 +6061,7 @@ nonprop-mf-name =
 nonprop-mf-plain =
   (
     nonprop-mf-name
-    ':' S
+    (':' S)
     nonprop-mf-value
   ) ;
 
@@ -6070,37 +6070,37 @@ nonprop-mf-range =
     (
       nonprop-mf-name
       (
-        '<' S |
-        '>' S
+        ('<' S) |
+        ('>' S)
       )?
-      '=' S?
+      ('=' S)?
       nonprop-mf-value
     ) |
     (
       nonprop-mf-value
       (
-        '<' S |
-        '>' S
+        ('<' S) |
+        ('>' S)
       )?
-      '=' S?
+      ('=' S)?
       nonprop-mf-name
     ) |
     (
       nonprop-mf-value
-      '<' S
-      '=' S?
+      ('<' S)
+      ('=' S)?
       nonprop-mf-name
-      '<' S
-      '=' S?
+      ('<' S)
+      ('=' S)?
       nonprop-mf-value
     ) |
     (
       nonprop-mf-value
-      '>' S
-      '=' S?
+      ('>' S)
+      ('=' S)?
       nonprop-mf-name
-      '>' S
-      '=' S?
+      ('>' S)
+      ('=' S)?
       nonprop-mf-value
     )
   ) ;
@@ -6115,190 +6115,190 @@ nonprop-mf-value =
 
 func-min =
   (
-    'min' S
-    '(' S
+    ('min' S)
+    ('(' S)
     nonprop-calc-sum (
       ',' S
       nonprop-calc-sum
     )*
-    ')' S
+    (')' S)
   ) ;
 
 func-minmax =
   (
-    'minmax' S
-    '(' S
+    ('minmax' S)
+    ('(' S)
     (
       nonprop-length |
       nonprop-percentage |
       nonprop-flex |
-      'min-content' S |
-      'max-content' S |
-      'auto' S
+      ('min-content' S) |
+      ('max-content' S) |
+      ('auto' S)
     )
-    ',' S
+    (',' S)
     (
       nonprop-length |
       nonprop-percentage |
       nonprop-flex |
-      'min-content' S |
-      'max-content' S |
-      'auto' S
+      ('min-content' S) |
+      ('max-content' S) |
+      ('auto' S)
     )
-    ')' S
+    (')' S)
   ) ;
 
 nonprop-named-color =
   (
-    'transparent' S |
-    'aliceblue' S |
-    'antiquewhite' S |
-    'aqua' S |
-    'aquamarine' S |
-    'azure' S |
-    'beige' S |
-    'bisque' S |
-    'black' S |
-    'blanchedalmond' S |
-    'blue' S |
-    'blueviolet' S |
-    'brown' S |
-    'burlywood' S |
-    'cadetblue' S |
-    'chartreuse' S |
-    'chocolate' S |
-    'coral' S |
-    'cornflowerblue' S |
-    'cornsilk' S |
-    'crimson' S |
-    'cyan' S |
-    'darkblue' S |
-    'darkcyan' S |
-    'darkgoldenrod' S |
-    'darkgray' S |
-    'darkgreen' S |
-    'darkgrey' S |
-    'darkkhaki' S |
-    'darkmagenta' S |
-    'darkolivegreen' S |
-    'darkorange' S |
-    'darkorchid' S |
-    'darkred' S |
-    'darksalmon' S |
-    'darkseagreen' S |
-    'darkslateblue' S |
-    'darkslategray' S |
-    'darkslategrey' S |
-    'darkturquoise' S |
-    'darkviolet' S |
-    'deeppink' S |
-    'deepskyblue' S |
-    'dimgray' S |
-    'dimgrey' S |
-    'dodgerblue' S |
-    'firebrick' S |
-    'floralwhite' S |
-    'forestgreen' S |
-    'fuchsia' S |
-    'gainsboro' S |
-    'ghostwhite' S |
-    'gold' S |
-    'goldenrod' S |
-    'gray' S |
-    'green' S |
-    'greenyellow' S |
-    'grey' S |
-    'honeydew' S |
-    'hotpink' S |
-    'indianred' S |
-    'indigo' S |
-    'ivory' S |
-    'khaki' S |
-    'lavender' S |
-    'lavenderblush' S |
-    'lawngreen' S |
-    'lemonchiffon' S |
-    'lightblue' S |
-    'lightcoral' S |
-    'lightcyan' S |
-    'lightgoldenrodyellow' S |
-    'lightgray' S |
-    'lightgreen' S |
-    'lightgrey' S |
-    'lightpink' S |
-    'lightsalmon' S |
-    'lightseagreen' S |
-    'lightskyblue' S |
-    'lightslategray' S |
-    'lightslategrey' S |
-    'lightsteelblue' S |
-    'lightyellow' S |
-    'lime' S |
-    'limegreen' S |
-    'linen' S |
-    'magenta' S |
-    'maroon' S |
-    'mediumaquamarine' S |
-    'mediumblue' S |
-    'mediumorchid' S |
-    'mediumpurple' S |
-    'mediumseagreen' S |
-    'mediumslateblue' S |
-    'mediumspringgreen' S |
-    'mediumturquoise' S |
-    'mediumvioletred' S |
-    'midnightblue' S |
-    'mintcream' S |
-    'mistyrose' S |
-    'moccasin' S |
-    'navajowhite' S |
-    'navy' S |
-    'oldlace' S |
-    'olive' S |
-    'olivedrab' S |
-    'orange' S |
-    'orangered' S |
-    'orchid' S |
-    'palegoldenrod' S |
-    'palegreen' S |
-    'paleturquoise' S |
-    'palevioletred' S |
-    'papayawhip' S |
-    'peachpuff' S |
-    'peru' S |
-    'pink' S |
-    'plum' S |
-    'powderblue' S |
-    'purple' S |
-    'rebeccapurple' S |
-    'red' S |
-    'rosybrown' S |
-    'royalblue' S |
-    'saddlebrown' S |
-    'salmon' S |
-    'sandybrown' S |
-    'seagreen' S |
-    'seashell' S |
-    'sienna' S |
-    'silver' S |
-    'skyblue' S |
-    'slateblue' S |
-    'slategray' S |
-    'slategrey' S |
-    'snow' S |
-    'springgreen' S |
-    'steelblue' S |
-    'tan' S |
-    'teal' S |
-    'thistle' S |
-    'tomato' S |
-    'turquoise' S |
-    'violet' S |
-    'wheat' S |
-    'white' S |
-    'whitesmoke' S |
-    'yellow' S |
-    'yellowgreen' S
+    ('transparent' S) |
+    ('aliceblue' S) |
+    ('antiquewhite' S) |
+    ('aqua' S) |
+    ('aquamarine' S) |
+    ('azure' S) |
+    ('beige' S) |
+    ('bisque' S) |
+    ('black' S) |
+    ('blanchedalmond' S) |
+    ('blue' S) |
+    ('blueviolet' S) |
+    ('brown' S) |
+    ('burlywood' S) |
+    ('cadetblue' S) |
+    ('chartreuse' S) |
+    ('chocolate' S) |
+    ('coral' S) |
+    ('cornflowerblue' S) |
+    ('cornsilk' S) |
+    ('crimson' S) |
+    ('cyan' S) |
+    ('darkblue' S) |
+    ('darkcyan' S) |
+    ('darkgoldenrod' S) |
+    ('darkgray' S) |
+    ('darkgreen' S) |
+    ('darkgrey' S) |
+    ('darkkhaki' S) |
+    ('darkmagenta' S) |
+    ('darkolivegreen' S) |
+    ('darkorange' S) |
+    ('darkorchid' S) |
+    ('darkred' S) |
+    ('darksalmon' S) |
+    ('darkseagreen' S) |
+    ('darkslateblue' S) |
+    ('darkslategray' S) |
+    ('darkslategrey' S) |
+    ('darkturquoise' S) |
+    ('darkviolet' S) |
+    ('deeppink' S) |
+    ('deepskyblue' S) |
+    ('dimgray' S) |
+    ('dimgrey' S) |
+    ('dodgerblue' S) |
+    ('firebrick' S) |
+    ('floralwhite' S) |
+    ('forestgreen' S) |
+    ('fuchsia' S) |
+    ('gainsboro' S) |
+    ('ghostwhite' S) |
+    ('gold' S) |
+    ('goldenrod' S) |
+    ('gray' S) |
+    ('green' S) |
+    ('greenyellow' S) |
+    ('grey' S) |
+    ('honeydew' S) |
+    ('hotpink' S) |
+    ('indianred' S) |
+    ('indigo' S) |
+    ('ivory' S) |
+    ('khaki' S) |
+    ('lavender' S) |
+    ('lavenderblush' S) |
+    ('lawngreen' S) |
+    ('lemonchiffon' S) |
+    ('lightblue' S) |
+    ('lightcoral' S) |
+    ('lightcyan' S) |
+    ('lightgoldenrodyellow' S) |
+    ('lightgray' S) |
+    ('lightgreen' S) |
+    ('lightgrey' S) |
+    ('lightpink' S) |
+    ('lightsalmon' S) |
+    ('lightseagreen' S) |
+    ('lightskyblue' S) |
+    ('lightslategray' S) |
+    ('lightslategrey' S) |
+    ('lightsteelblue' S) |
+    ('lightyellow' S) |
+    ('lime' S) |
+    ('limegreen' S) |
+    ('linen' S) |
+    ('magenta' S) |
+    ('maroon' S) |
+    ('mediumaquamarine' S) |
+    ('mediumblue' S) |
+    ('mediumorchid' S) |
+    ('mediumpurple' S) |
+    ('mediumseagreen' S) |
+    ('mediumslateblue' S) |
+    ('mediumspringgreen' S) |
+    ('mediumturquoise' S) |
+    ('mediumvioletred' S) |
+    ('midnightblue' S) |
+    ('mintcream' S) |
+    ('mistyrose' S) |
+    ('moccasin' S) |
+    ('navajowhite' S) |
+    ('navy' S) |
+    ('oldlace' S) |
+    ('olive' S) |
+    ('olivedrab' S) |
+    ('orange' S) |
+    ('orangered' S) |
+    ('orchid' S) |
+    ('palegoldenrod' S) |
+    ('palegreen' S) |
+    ('paleturquoise' S) |
+    ('palevioletred' S) |
+    ('papayawhip' S) |
+    ('peachpuff' S) |
+    ('peru' S) |
+    ('pink' S) |
+    ('plum' S) |
+    ('powderblue' S) |
+    ('purple' S) |
+    ('rebeccapurple' S) |
+    ('red' S) |
+    ('rosybrown' S) |
+    ('royalblue' S) |
+    ('saddlebrown' S) |
+    ('salmon' S) |
+    ('sandybrown' S) |
+    ('seagreen' S) |
+    ('seashell' S) |
+    ('sienna' S) |
+    ('silver' S) |
+    ('skyblue' S) |
+    ('slateblue' S) |
+    ('slategray' S) |
+    ('slategrey' S) |
+    ('snow' S) |
+    ('springgreen' S) |
+    ('steelblue' S) |
+    ('tan' S) |
+    ('teal' S) |
+    ('thistle' S) |
+    ('tomato' S) |
+    ('turquoise' S) |
+    ('violet' S) |
+    ('wheat' S) |
+    ('white' S) |
+    ('whitesmoke' S) |
+    ('yellow' S) |
+    ('yellowgreen' S)
   ) ;
 
 nonprop-namespace-prefix =
@@ -6308,16 +6308,16 @@ nonprop-ns-prefix =
   (
     (
       nonprop-ident-token |
-      '*' S
+      ('*' S)
     )?
-    '|' S
+    ('|' S)
   ) ;
 
 nonprop-nth =
   (
     nonprop-an-plus-b |
-    'even' S |
-    'odd' S
+    ('even' S) |
+    ('odd' S)
   ) ;
 
 nonprop-number-percentage =
@@ -6328,28 +6328,28 @@ nonprop-number-percentage =
 
 nonprop-numeric-figure-values =
   (
-    'lining-nums' S |
-    'oldstyle-nums' S
+    ('lining-nums' S) |
+    ('oldstyle-nums' S)
   ) ;
 
 nonprop-numeric-fraction-values =
   (
-    'diagonal-fractions' S |
-    'stacked-fractions' S
+    ('diagonal-fractions' S) |
+    ('stacked-fractions' S)
   ) ;
 
 nonprop-numeric-spacing-values =
   (
-    'proportional-nums' S |
-    'tabular-nums' S
+    ('proportional-nums' S) |
+    ('tabular-nums' S)
   ) ;
 
 func-opacity =
   (
-    'opacity' S
-    '(' S
+    ('opacity' S)
+    ('(' S)
     nonprop-number-percentage
-    ')' S
+    (')' S)
   ) ;
 
 nonprop-outline-radius =
@@ -6360,36 +6360,36 @@ nonprop-outline-radius =
 
 nonprop-overflow-position =
   (
-    'unsafe' S |
-    'safe' S
+    ('unsafe' S) |
+    ('safe' S)
   ) ;
 
 nonprop-page-margin-box =
   (
     nonprop-page-margin-box-type
-    '{' S
+    ('{' S)
     nonprop-declaration-list
-    '}' S
+    ('}' S)
   ) ;
 
 nonprop-page-margin-box-type =
   (
-    '@top-left-corner' S |
-    '@top-left' S |
-    '@top-center' S |
-    '@top-right' S |
-    '@top-right-corner' S |
-    '@bottom-left-corner' S |
-    '@bottom-left' S |
-    '@bottom-center' S |
-    '@bottom-right' S |
-    '@bottom-right-corner' S |
-    '@left-top' S |
-    '@left-middle' S |
-    '@left-bottom' S |
-    '@right-top' S |
-    '@right-middle' S |
-    '@right-bottom' S
+    ('@top-left-corner' S) |
+    ('@top-left' S) |
+    ('@top-center' S) |
+    ('@top-right' S) |
+    ('@top-right-corner' S) |
+    ('@bottom-left-corner' S) |
+    ('@bottom-left' S) |
+    ('@bottom-center' S) |
+    ('@bottom-right' S) |
+    ('@bottom-right-corner' S) |
+    ('@left-top' S) |
+    ('@left-middle' S) |
+    ('@left-bottom' S) |
+    ('@right-top' S) |
+    ('@right-middle' S) |
+    ('@right-bottom' S)
   ) ;
 
 nonprop-page-selector =
@@ -6409,18 +6409,18 @@ nonprop-page-selector-list =
 
 func-perspective =
   (
-    'perspective' S
-    '(' S
+    ('perspective' S)
+    ('(' S)
     nonprop-length
-    ')' S
+    (')' S)
   ) ;
 
 func-polygon =
   (
-    'polygon' S
-    '(' S
+    ('polygon' S)
+    ('(' S)
     nonprop-fill-rule?
-    ',' S
+    (',' S)
     (
       nonprop-length-percentage
       nonprop-length-percentage
@@ -6431,49 +6431,49 @@ func-polygon =
         nonprop-length-percentage
       )
     )*
-    ')' S
+    (')' S)
   ) ;
 
 nonprop-position =
   (
     ( (
       (
-        'left' S |
-        'center' S |
-        'right' S
+        ('left' S) |
+        ('center' S) |
+        ('right' S)
       ) |
       (
-        'top' S |
-        'center' S |
-        'bottom' S
+        ('top' S) |
+        ('center' S) |
+        ('bottom' S)
       )
     )+ ) |
     (
       (
-        'left' S |
-        'center' S |
-        'right' S |
+        ('left' S) |
+        ('center' S) |
+        ('right' S) |
         nonprop-length-percentage
       )
       (
-        'top' S |
-        'center' S |
-        'bottom' S |
+        ('top' S) |
+        ('center' S) |
+        ('bottom' S) |
         nonprop-length-percentage
       )?
     ) |
     (
       (
         (
-          'left' S |
-          'right' S
+          ('left' S) |
+          ('right' S)
         )
         nonprop-length-percentage
       )
       (
         (
-          'top' S |
-          'bottom' S
+          ('top' S) |
+          ('bottom' S)
         )
         nonprop-length-percentage
       )
@@ -6483,57 +6483,57 @@ nonprop-position =
 nonprop-pseudo-class-selector =
   (
     (
-      ':' S
+      (':' S)
       nonprop-ident-token
     ) |
     (
-      ':' S
+      (':' S)
       nonprop-function-token
       nonprop-any-value
-      ')' S
+      (')' S)
     )
   ) ;
 
 nonprop-pseudo-element-selector =
   (
-    ':' S
+    (':' S)
     nonprop-pseudo-class-selector
   ) ;
 
 nonprop-pseudo-page =
   (
-    ':' S
+    (':' S)
     (
-      'left' S |
-      'right' S |
-      'first' S |
-      'blank' S
+      ('left' S) |
+      ('right' S) |
+      ('first' S) |
+      ('blank' S)
     )
   ) ;
 
 nonprop-quote =
   (
-    'open-quote' S |
-    'close-quote' S |
-    'no-open-quote' S |
-    'no-close-quote' S
+    ('open-quote' S) |
+    ('close-quote' S) |
+    ('no-open-quote' S) |
+    ('no-close-quote' S)
   ) ;
 
 func-radial-gradient =
   (
-    'radial-gradient' S
-    '(' S
+    ('radial-gradient' S)
+    ('(' S)
     ( (
       nonprop-ending-shape |
       nonprop-size
     )+ )?
     (
-      'at' S
+      ('at' S)
       nonprop-position
     )?
-    ',' S
+    (',' S)
     nonprop-color-stop-list
-    ')' S
+    (')' S)
   ) ;
 
 nonprop-relative-selector =
@@ -6550,33 +6550,33 @@ nonprop-relative-selector-list =
 
 nonprop-relative-size =
   (
-    'larger' S |
-    'smaller' S
+    ('larger' S) |
+    ('smaller' S)
   ) ;
 
 nonprop-repeat-style =
   (
-    'repeat-x' S |
-    'repeat-y' S |
+    ('repeat-x' S) |
+    ('repeat-y' S) |
     (
       (
         (
-          'repeat' S |
-          'space' S |
-          'round' S |
-          'no-repeat' S
+          ('repeat' S) |
+          ('space' S) |
+          ('round' S) |
+          ('no-repeat' S)
         ) |
         (
-          'repeat' S |
-          'space' S |
-          'round' S |
-          'no-repeat' S
+          ('repeat' S) |
+          ('space' S) |
+          ('round' S) |
+          ('no-repeat' S)
         ) rS
         (
-          'repeat' S |
-          'space' S |
-          'round' S |
-          'no-repeat' S
+          ('repeat' S) |
+          ('space' S) |
+          ('round' S) |
+          ('no-repeat' S)
         )
       )
     )
@@ -6584,42 +6584,42 @@ nonprop-repeat-style =
 
 func-repeating-linear-gradient =
   (
-    'repeating-linear-gradient' S
-    '(' S
+    ('repeating-linear-gradient' S)
+    ('(' S)
     (
       nonprop-angle |
       (
-        'to' S
+        ('to' S)
         nonprop-side-or-corner
       )
     )?
-    ',' S
+    (',' S)
     nonprop-color-stop-list
-    ')' S
+    (')' S)
   ) ;
 
 func-repeating-radial-gradient =
   (
-    'repeating-radial-gradient' S
-    '(' S
+    ('repeating-radial-gradient' S)
+    ('(' S)
     ( (
       nonprop-ending-shape |
       nonprop-size
     )+ )?
     (
-      'at' S
+      ('at' S)
       nonprop-position
     )?
-    ',' S
+    (',' S)
     nonprop-color-stop-list
-    ')' S
+    (')' S)
   ) ;
 
 func-rgb =
   (
     (
-      'rgb' S
-      '(' S
+      ('rgb' S)
+      ('(' S)
       (
         (
           nonprop-percentage rS
@@ -6628,14 +6628,14 @@ func-rgb =
         )
       )
       (
-        '/' S
+        ('/' S)
         nonprop-alpha-value
       )?
-      ')' S
+      (')' S)
     ) |
     (
-      'rgb' S
-      '(' S
+      ('rgb' S)
+      ('(' S)
       (
         (
           nonprop-number rS
@@ -6644,14 +6644,14 @@ func-rgb =
         )
       )
       (
-        '/' S
+        ('/' S)
         nonprop-alpha-value
       )?
-      ')' S
+      (')' S)
     ) |
     (
-      'rgb' S
-      '(' S
+      ('rgb' S)
+      ('(' S)
       (
         (
           nonprop-percentage ',' S
@@ -6659,13 +6659,13 @@ func-rgb =
           nonprop-percentage
         )
       )
-      ',' S
+      (',' S)
       nonprop-alpha-value?
-      ')' S
+      (')' S)
     ) |
     (
-      'rgb' S
-      '(' S
+      ('rgb' S)
+      ('(' S)
       (
         (
           nonprop-number ',' S
@@ -6673,17 +6673,17 @@ func-rgb =
           nonprop-number
         )
       )
-      ',' S
+      (',' S)
       nonprop-alpha-value?
-      ')' S
+      (')' S)
     )
   ) ;
 
 func-rgba =
   (
     (
-      'rgba' S
-      '(' S
+      ('rgba' S)
+      ('(' S)
       (
         (
           nonprop-percentage rS
@@ -6692,14 +6692,14 @@ func-rgba =
         )
       )
       (
-        '/' S
+        ('/' S)
         nonprop-alpha-value
       )?
-      ')' S
+      (')' S)
     ) |
     (
-      'rgba' S
-      '(' S
+      ('rgba' S)
+      ('(' S)
       (
         (
           nonprop-number rS
@@ -6708,14 +6708,14 @@ func-rgba =
         )
       )
       (
-        '/' S
+        ('/' S)
         nonprop-alpha-value
       )?
-      ')' S
+      (')' S)
     ) |
     (
-      'rgba' S
-      '(' S
+      ('rgba' S)
+      ('(' S)
       (
         (
           nonprop-percentage ',' S
@@ -6723,13 +6723,13 @@ func-rgba =
           nonprop-percentage
         )
       )
-      ',' S
+      (',' S)
       nonprop-alpha-value?
-      ')' S
+      (')' S)
     ) |
     (
-      'rgba' S
-      '(' S
+      ('rgba' S)
+      ('(' S)
       (
         (
           nonprop-number ',' S
@@ -6737,136 +6737,136 @@ func-rgba =
           nonprop-number
         )
       )
-      ',' S
+      (',' S)
       nonprop-alpha-value?
-      ')' S
+      (')' S)
     )
   ) ;
 
 func-rotate =
   (
-    'rotate' S
-    '(' S
+    ('rotate' S)
+    ('(' S)
     nonprop-angle
-    ')' S
+    (')' S)
   ) ;
 
 func-rotate3d =
   (
-    'rotate3d' S
-    '(' S
+    ('rotate3d' S)
+    ('(' S)
     nonprop-number
-    ',' S
+    (',' S)
     nonprop-number
-    ',' S
+    (',' S)
     nonprop-number
-    ',' S
+    (',' S)
     nonprop-angle
-    ')' S
+    (')' S)
   ) ;
 
 func-rotateX =
   (
-    'rotateX' S
-    '(' S
+    ('rotateX' S)
+    ('(' S)
     nonprop-angle
-    ')' S
+    (')' S)
   ) ;
 
 func-rotateY =
   (
-    'rotateY' S
-    '(' S
+    ('rotateY' S)
+    ('(' S)
     nonprop-angle
-    ')' S
+    (')' S)
   ) ;
 
 func-rotateZ =
   (
-    'rotateZ' S
-    '(' S
+    ('rotateZ' S)
+    ('(' S)
     nonprop-angle
-    ')' S
+    (')' S)
   ) ;
 
 func-saturate =
   (
-    'saturate' S
-    '(' S
+    ('saturate' S)
+    ('(' S)
     nonprop-number-percentage
-    ')' S
+    (')' S)
   ) ;
 
 func-scale =
   (
-    'scale' S
-    '(' S
+    ('scale' S)
+    ('(' S)
     nonprop-number
     (
-      ',' S
+      (',' S)
       nonprop-number
     )?
-    ')' S
+    (')' S)
   ) ;
 
 func-scale3d =
   (
-    'scale3d' S
-    '(' S
+    ('scale3d' S)
+    ('(' S)
     nonprop-number
-    ',' S
+    (',' S)
     nonprop-number
-    ',' S
+    (',' S)
     nonprop-number
-    ')' S
+    (')' S)
   ) ;
 
 func-scaleX =
   (
-    'scaleX' S
-    '(' S
+    ('scaleX' S)
+    ('(' S)
     nonprop-number
-    ')' S
+    (')' S)
   ) ;
 
 func-scaleY =
   (
-    'scaleY' S
-    '(' S
+    ('scaleY' S)
+    ('(' S)
     nonprop-number
-    ')' S
+    (')' S)
   ) ;
 
 func-scaleZ =
   (
-    'scaleZ' S
-    '(' S
+    ('scaleZ' S)
+    ('(' S)
     nonprop-number
-    ')' S
+    (')' S)
   ) ;
 
 nonprop-self-position =
   (
-    'center' S |
-    'start' S |
-    'end' S |
-    'self-start' S |
-    'self-end' S |
-    'flex-start' S |
-    'flex-end' S
+    ('center' S) |
+    ('start' S) |
+    ('end' S) |
+    ('self-start' S) |
+    ('self-end' S) |
+    ('flex-start' S) |
+    ('flex-end' S)
   ) ;
 
 func-sepia =
   (
-    'sepia' S
-    '(' S
+    ('sepia' S)
+    ('(' S)
     nonprop-number-percentage
-    ')' S
+    (')' S)
   ) ;
 
 nonprop-shadow =
   (
-    'inset' S?
+    ('inset' S)?
     (
       (
         nonprop-length rS
@@ -6900,50 +6900,50 @@ nonprop-shadow-t =
 nonprop-shape =
   (
     (
-      'rect' S
-      '(' S
+      ('rect' S)
+      ('(' S)
       nonprop-top
-      ',' S
+      (',' S)
       nonprop-right
-      ',' S
+      (',' S)
       nonprop-bottom
       ',' S
       nonprop-left
-      ')' S
+      (')' S)
     ) |
     (
-      'rect' S
-      '(' S
+      ('rect' S)
+      ('(' S)
       nonprop-top
       nonprop-right
       nonprop-bottom
       nonprop-left
-      ')' S
+      (')' S)
     )
   ) ;
 
 nonprop-shape-box =
   (
     nonprop-box |
-    'margin-box' S
+    ('margin-box' S)
   ) ;
 
 nonprop-shape-radius =
   (
     nonprop-length-percentage |
-    'closest-side' S |
-    'farthest-side' S
+    ('closest-side' S) |
+    ('farthest-side' S)
   ) ;
 
 nonprop-side-or-corner =
   ( (
     (
-      'left' S |
-      'right' S
+      ('left' S) |
+      ('right' S)
     ) |
     (
-      'top' S |
-      'bottom' S
+      ('top' S) |
+      ('bottom' S)
     )
   )+ ) ;
 
@@ -6957,43 +6957,43 @@ nonprop-single-animation =
     nonprop-single-animation-fill-mode |
     nonprop-single-animation-play-state |
     (
-      'none' S |
+      ('none' S) |
       nonprop-keyframes-name
     )
   )+ ) ;
 
 nonprop-single-animation-direction =
   (
-    'normal' S |
-    'reverse' S |
-    'alternate' S |
-    'alternate-reverse' S
+    ('normal' S) |
+    ('reverse' S) |
+    ('alternate' S) |
+    ('alternate-reverse' S)
   ) ;
 
 nonprop-single-animation-fill-mode =
   (
-    'none' S |
-    'forwards' S |
-    'backwards' S |
-    'both' S
+    ('none' S) |
+    ('forwards' S) |
+    ('backwards' S) |
+    ('both' S)
   ) ;
 
 nonprop-single-animation-iteration-count =
   (
-    'infinite' S |
+    ('infinite' S) |
     nonprop-number
   ) ;
 
 nonprop-single-animation-play-state =
   (
-    'running' S |
-    'paused' S
+    ('running' S) |
+    ('paused' S)
   ) ;
 
 nonprop-single-transition =
   ( (
     (
-      'none' S |
+      ('none' S) |
       nonprop-single-transition-property
     ) |
     nonprop-time |
@@ -7003,16 +7003,16 @@ nonprop-single-transition =
 
 nonprop-single-transition-property =
   (
-    'all' S |
+    ('all' S) |
     nonprop-custom-ident
   ) ;
 
 nonprop-size =
   (
-    'closest-side' S |
-    'farthest-side' S |
-    'closest-corner' S |
-    'farthest-corner' S |
+    ('closest-side' S) |
+    ('farthest-side' S) |
+    ('closest-corner' S) |
+    ('farthest-corner' S) |
     nonprop-length |
     (
       (
@@ -7024,30 +7024,30 @@ nonprop-size =
 
 func-skew =
   (
-    'skew' S
-    '(' S
+    ('skew' S)
+    ('(' S)
     nonprop-angle
     (
-      ',' S
+      (',' S)
       nonprop-angle
     )?
-    ')' S
+    (')' S)
   ) ;
 
 func-skewX =
   (
-    'skewX' S
-    '(' S
+    ('skewX' S)
+    ('(' S)
     nonprop-angle
-    ')' S
+    (')' S)
   ) ;
 
 func-skewY =
   (
-    'skewY' S
-    '(' S
+    ('skewY' S)
+    ('(' S)
     nonprop-angle
-    ')' S
+    (')' S)
   ) ;
 
 nonprop-src =
@@ -7055,20 +7055,20 @@ nonprop-src =
     (
       nonprop-url
       (
-        'format' S
-        '(' S
+        ('format' S)
+        ('(' S)
         nonprop-string (
           ',' S
           nonprop-string
         )*
-        ')' S
+        (')' S)
       )?
     ) |
     (
-      'local' S
-      '(' S
+      ('local' S)
+      ('(' S)
       nonprop-family-name
-      ')' S
+      (')' S)
     )
   ) (
     ',' S
@@ -7076,47 +7076,47 @@ nonprop-src =
       (
         nonprop-url
         (
-          'format' S
-          '(' S
+          ('format' S)
+          ('(' S)
           nonprop-string (
             ',' S
             nonprop-string
           )*
-          ')' S
+          (')' S)
         )?
       ) |
       (
-        'local' S
-        '(' S
+        ('local' S)
+        ('(' S)
         nonprop-family-name
-        ')' S
+        (')' S)
       )
     )
   )* ;
 
 nonprop-step-position =
   (
-    'jump-start' S |
-    'jump-end' S |
-    'jump-none' S |
-    'jump-both' S |
-    'start' S |
-    'end' S
+    ('jump-start' S) |
+    ('jump-end' S) |
+    ('jump-none' S) |
+    ('jump-both' S) |
+    ('start' S) |
+    ('end' S)
   ) ;
 
 nonprop-step-timing-function =
   (
-    'step-start' S |
-    'step-end' S |
+    ('step-start' S) |
+    ('step-end' S) |
     (
-      'steps' S
-      '(' S
+      ('steps' S)
+      ('(' S)
       nonprop-integer
       (
-        ',' S
+        (',' S)
         nonprop-step-position
       )?
-      ')' S
+      (')' S)
     )
   ) ;
 
@@ -7131,12 +7131,12 @@ nonprop-subclass-selector =
 nonprop-supports-condition =
   (
     (
-      'not' S
+      ('not' S)
       (
         (
-          '(' S
+          ('(' S)
           nonprop-supports-condition
-          ')' S
+          (')' S)
         ) |
         nonprop-supports-feature |
         nonprop-general-enclosed
@@ -7145,20 +7145,20 @@ nonprop-supports-condition =
     (
       (
         (
-          '(' S
+          ('(' S)
           nonprop-supports-condition
-          ')' S
+          (')' S)
         ) |
         nonprop-supports-feature |
         nonprop-general-enclosed
       )
       (
-        'and' S
+        ('and' S)
         (
           (
-            '(' S
+            ('(' S)
             nonprop-supports-condition
-            ')' S
+            (')' S)
           ) |
           nonprop-supports-feature |
           nonprop-general-enclosed
@@ -7168,20 +7168,20 @@ nonprop-supports-condition =
     (
       (
         (
-          '(' S
+          ('(' S)
           nonprop-supports-condition
-          ')' S
+          (')' S)
         ) |
         nonprop-supports-feature |
         nonprop-general-enclosed
       )
       (
-        'or' S
+        ('or' S)
         (
           (
-            '(' S
+            ('(' S)
             nonprop-supports-condition
-            ')' S
+            (')' S)
           ) |
           nonprop-supports-feature |
           nonprop-general-enclosed
@@ -7192,9 +7192,9 @@ nonprop-supports-condition =
 
 nonprop-supports-decl =
   (
-    '(' S
+    ('(' S)
     nonprop-declaration
-    ')' S
+    (')' S)
   ) ;
 
 nonprop-supports-feature =
@@ -7206,9 +7206,9 @@ nonprop-supports-feature =
 nonprop-supports-in-parens =
   (
     (
-      '(' S
+      ('(' S)
       nonprop-supports-condition
-      ')' S
+      (')' S)
     ) |
     nonprop-supports-feature |
     nonprop-general-enclosed
@@ -7216,10 +7216,10 @@ nonprop-supports-in-parens =
 
 nonprop-supports-selector-fn =
   (
-    'selector' S
-    '(' S
+    ('selector' S)
+    ('(' S)
     nonprop-complex-selector
-    ')' S
+    (')' S)
   ) ;
 
 nonprop-symbol =
@@ -7238,52 +7238,52 @@ nonprop-target =
 
 func-target-counter =
   (
-    'target-counter' S
-    '(' S
+    ('target-counter' S)
+    ('(' S)
     (
       nonprop-string |
       nonprop-url
     )
-    ',' S
+    (',' S)
     nonprop-custom-ident
-    ',' S
+    (',' S)
     nonprop-counter-style?
-    ')' S
+    (')' S)
   ) ;
 
 func-target-counters =
   (
-    'target-counters' S
-    '(' S
+    ('target-counters' S)
+    ('(' S)
     (
       nonprop-string |
       nonprop-url
     )
-    ',' S
+    (',' S)
     nonprop-custom-ident
-    ',' S
+    (',' S)
     nonprop-string
-    ',' S
+    (',' S)
     nonprop-counter-style?
-    ')' S
+    (')' S)
   ) ;
 
 func-target-text =
   (
-    'target-text' S
-    '(' S
+    ('target-text' S)
+    ('(' S)
     (
       nonprop-string |
       nonprop-url
     )
-    ',' S
+    (',' S)
     (
-      'content' S |
-      'before' S |
-      'after' S |
-      'first-letter' S
+      ('content' S) |
+      ('before' S) |
+      ('after' S) |
+      ('first-letter' S)
     )?
-    ')' S
+    (')' S)
   ) ;
 
 nonprop-time-percentage =
@@ -7294,7 +7294,7 @@ nonprop-time-percentage =
 
 nonprop-timing-function =
   (
-    'linear' S |
+    ('linear' S) |
     nonprop-cubic-bezier-timing-function |
     nonprop-step-timing-function
   ) ;
@@ -7303,9 +7303,9 @@ nonprop-track-breadth =
   (
     nonprop-length-percentage |
     nonprop-flex |
-    'min-content' S |
-    'max-content' S |
-    'auto' S
+    ('min-content' S) |
+    ('max-content' S) |
+    ('auto' S)
   ) ;
 
 nonprop-track-list =
@@ -7322,37 +7322,37 @@ nonprop-track-list =
 
 nonprop-track-repeat =
   (
-    'repeat' S
-    '(' S
+    ('repeat' S)
+    ('(' S)
     nonprop-positive-integer
-    ',' S
+    (',' S)
     (
       nonprop-line-names?
       nonprop-track-size
     )+
     nonprop-line-names?
-    ')' S
+    (')' S)
   ) ;
 
 nonprop-track-size =
   (
     nonprop-track-breadth |
     (
-      'minmax' S
-      '(' S
+      ('minmax' S)
+      ('(' S)
       nonprop-inflexible-breadth
-      ',' S
+      (',' S)
       nonprop-track-breadth
-      ')' S
+      (')' S)
     ) |
     (
-      'fit-content' S
-      '(' S
+      ('fit-content' S)
+      ('(' S)
       (
         nonprop-length |
         nonprop-percentage
       )
-      ')' S
+      (')' S)
     )
   ) ;
 
@@ -7386,86 +7386,86 @@ nonprop-transform-list =
 
 func-translate =
   (
-    'translate' S
-    '(' S
+    ('translate' S)
+    ('(' S)
     nonprop-length-percentage
     (
-      ',' S
+      (',' S)
       nonprop-length-percentage
     )?
-    ')' S
+    (')' S)
   ) ;
 
 func-translate3d =
   (
-    'translate3d' S
-    '(' S
+    ('translate3d' S)
+    ('(' S)
     nonprop-length-percentage
-    ',' S
+    (',' S)
     nonprop-length-percentage
-    ',' S
+    (',' S)
     nonprop-length
-    ')' S
+    (')' S)
   ) ;
 
 func-translateX =
   (
-    'translateX' S
-    '(' S
+    ('translateX' S)
+    ('(' S)
     nonprop-length-percentage
-    ')' S
+    (')' S)
   ) ;
 
 func-translateY =
   (
-    'translateY' S
-    '(' S
+    ('translateY' S)
+    ('(' S)
     nonprop-length-percentage
-    ')' S
+    (')' S)
   ) ;
 
 func-translateZ =
   (
-    'translateZ' S
-    '(' S
+    ('translateZ' S)
+    ('(' S)
     nonprop-length
-    ')' S
+    (')' S)
   ) ;
 
 nonprop-type-or-unit =
   (
-    'string' S |
-    'integer' S |
-    'color' S |
-    'url' S |
-    'integer' S |
-    'number' S |
-    'length' S |
-    'angle' S |
-    'time' S |
-    'frequency' S |
-    'em' S |
-    'ex' S |
-    'px' S |
-    'rem' S |
-    'vw' S |
-    'vh' S |
-    'vmin' S |
-    'vmax' S |
-    'mm' S |
-    'q' S |
-    'cm' S |
-    'in' S |
-    'pt' S |
-    'pc' S |
-    'deg' S |
-    'grad' S |
-    'rad' S |
-    'ms' S |
-    's' S |
-    'Hz' S |
-    'kHz' S |
-    '%' S
+    ('string' S) |
+    ('integer' S) |
+    ('color' S) |
+    ('url' S) |
+    ('integer' S) |
+    ('number' S) |
+    ('length' S) |
+    ('angle' S) |
+    ('time' S) |
+    ('frequency' S) |
+    ('em' S) |
+    ('ex' S) |
+    ('px' S) |
+    ('rem' S) |
+    ('vw' S) |
+    ('vh' S) |
+    ('vmin' S) |
+    ('vmax' S) |
+    ('mm' S) |
+    ('q' S) |
+    ('cm' S) |
+    ('in' S) |
+    ('pt' S) |
+    ('pc' S) |
+    ('deg' S) |
+    ('grad' S) |
+    ('rad' S) |
+    ('ms' S) |
+    ('s' S) |
+    ('Hz' S) |
+    ('kHz' S) |
+    ('%' S)
   ) ;
 
 nonprop-type-selector =
@@ -7473,23 +7473,23 @@ nonprop-type-selector =
     nonprop-wq-name |
     (
       nonprop-ns-prefix?
-      '*' S
+      ('*' S)
     )
   ) ;
 
 func-var =
   (
-    'var' S
-    '(' S
+    ('var' S)
+    ('(' S)
     nonprop-custom-property-name
-    ',' S
+    (',' S)
     nonprop-declaration-value?
-    ')' S
+    (')' S)
   ) ;
 
 nonprop-viewport-length =
   (
-    'auto' S |
+    ('auto' S) |
     nonprop-length-percentage
   ) ;
 
@@ -7501,39 +7501,39 @@ nonprop-wq-name =
 
 (* Base CSS Types: https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Types *)
 
+nonprop-positive-integer = positive-integer ;
+
+nonprop-angle      = any-number ( 'deg' | 'grad' | 'rad' | 'turn' ) ;
+nonprop-flex       = any-number 'fr' S ;
+nonprop-frequency  = any-number ( 'Hz' | 'kHz' ) S ;
+nonprop-integer    = integer ;
+nonprop-length     = any-number length-unit S
+                   | '0' S ;
+nonprop-number     = any-number S ;
+nonprop-percentage = any-number '%' S ;
+nonprop-resolution = any-number ( 'dpi' | 'dpcm' | 'dppx' | 'px' ) S ;
+nonprop-time       = any-number ( 's' | 'ms' ) S ;
+
+nonprop-ratio      = positive-integer '/' positive-integer ;
+
+nonprop-string = string ;
+
 (* https://developer.mozilla.org/en-US/docs/Web/CSS/custom-ident *)
 nonprop-custom-ident = #'(?:[A-Za-z_]|-[A-Za-z_]|\\[0-9A-F]{1,6})(?:[A-Za-z0-9_-]|\\[0-9A-F]{1,6})+' S ;
-nonprop-flex = nonprop-number 'fr' S ;
 
-nonprop-angle = nonprop-number ( 'deg' | 'grad' | 'rad' | 'turn' ) ;
-nonprop-frequency = nonprop-number ( 'Hz' | 'kHz' ) S ;
-nonprop-integer = #'-?[0-9]+' ;
-nonprop-length = nonprop-number length-unit S
-               | '0' S ;
-nonprop-number = nonprop-integer | number-float ;
-nonprop-percentage = nonprop-number '%' S ;
-nonprop-time = nonprop-number ( 's' | 'ms' ) S ;
-
-nonprop-ratio = nonprop-positive-integer '/' nonprop-positive-integer ;
-nonprop-resolution = nonprop-number ( 'dpi' | 'dpcm' | 'dppx' | 'px' ) S ;
-(* TODO: improve strings: https://developer.mozilla.org/en-US/docs/Web/CSS/string *)
-nonprop-string = #"'[\"A-Za-z0-9 .,_:/%=#?+\-^]*'" S
-               | #"\"['A-Za-z0-9 .,_:/%=#?+\-^]*\"" S ;
-(* nonprop-transform-function = ; *)
 (* TODO: improve urls: https://developer.mozilla.org/en-US/docs/Web/CSS/url *)
 (*
 nonprop-url = ( 'url(' url ')' S | 'url("' url '")' S )
-            / 'url(' nonprop-string ')' S;
+            / 'url(' string ')' S;
 *)
-nonprop-url = 'url(' nonprop-string ')' S;
+nonprop-url = 'url(' string ')' S;
 
-nonprop-positive-integer = #'[0-9]+' ;
 
-nonprop-unicode-range = #'U[+](?:[0-9A-Fa-f]{1,4}-[0-9A-Fa-f]{1,4}|[0-9A-Fa-f?]{1,4})' ( ',' S nonprop-unicode-range )* ;
+nonprop-unicode-range = #'U[+](?:[0-9A-Fa-f]{1,4}-[0-9A-Fa-f]{1,4}|[0-9A-Fa-f?]{1,4})'
+                        ( ',' S nonprop-unicode-range )* ;
 
 nonprop-ident-token = "STUB_ident_token" ;
 nonprop-declaration = css-declaration ;
-(* nonprop-calc-sum = "STUB_calc_sum" ; *)
 
 nonprop-charset = charset ;
 
@@ -7672,21 +7672,27 @@ prop-group-rule-body = "STUB_prop_group_rule_body" ;
 nonprop-declaration-list = "STUB_declaration_list" ;
 
 
-S          = #'\s*' ;
+(* with * inside, "S rS" breaks, with *? nothing is matched *)
+S          = #'\s'* ;
 rS         = #'\s+' ;
 
-(* TODO: merge number rules *)
+(* TODO: merge all number rules *)
+integer = #"-?[0-9]+" ;
+non-negative-integer = #"[0-9]+" ;
+positive-integer = #"[1-9][0-9]*" ;
+floating-point-number = #"-?[0-9]*.[0-9]+" ;
+any-number = integer | floating-point-number ;
+
+(* TODO: improve strings: https://developer.mozilla.org/en-US/docs/Web/CSS/string *)
+string = #"'[\"A-Za-z0-9 .,_:/%=#?+\-^]*'" S
+       | #"\"['A-Za-z0-9 .,_:/%=#?+\-^]*\"" S ;
+
 
 (* HTML *)
 mime-type = #'[a-z]+/[a-z0-9+-]+'
 lang = #'[a-z]+(?:-[A-Za-z]+)?'
-integer = #"-?[0-9]+"
-non-negative-integer = #"[0-9]+"
-floating-point-number = #"-?[0-9]*.[0-9]+"
-any-number = integer | floating-point-number
 
 (* CSS *)
-number-float = #'-?[0-9]*.[0-9]+' ;
 length-unit = 'em' | 'ex' | 'ch' | 'ic' | 'rem' | 'lh' | 'rlh'
             | 'vh' | 'vw' | 'vi' | 'vb' | 'vmin' | 'vmax'
             | 'px' | 'mm' | 'q' | 'cm' | 'in' |  'pt' | 'pc' | 'mozmm' ;

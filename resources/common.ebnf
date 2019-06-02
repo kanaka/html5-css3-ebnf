@@ -1,18 +1,24 @@
-S          = #'\s*' ;
+(* with * inside, "S rS" breaks, with *? nothing is matched *)
+S          = #'\s'* ;
 rS         = #'\s+' ;
 
-(* TODO: merge number rules *)
+(* TODO: merge all number rules *)
+integer = #"-?[0-9]+" ;
+non-negative-integer = #"[0-9]+" ;
+positive-integer = #"[1-9][0-9]*" ;
+floating-point-number = #"-?[0-9]*.[0-9]+" ;
+any-number = integer | floating-point-number ;
+
+(* TODO: improve strings: https://developer.mozilla.org/en-US/docs/Web/CSS/string *)
+string = #"'[\"A-Za-z0-9 .,_:/%=#?+\-^]*'" S
+       | #"\"['A-Za-z0-9 .,_:/%=#?+\-^]*\"" S ;
+
 
 (* HTML *)
 mime-type = #'[a-z]+/[a-z0-9+-]+'
 lang = #'[a-z]+(?:-[A-Za-z]+)?'
-integer = #"-?[0-9]+"
-non-negative-integer = #"[0-9]+"
-floating-point-number = #"-?[0-9]*.[0-9]+"
-any-number = integer | floating-point-number
 
 (* CSS *)
-number-float = #'-?[0-9]*.[0-9]+' ;
 length-unit = 'em' | 'ex' | 'ch' | 'ic' | 'rem' | 'lh' | 'rlh'
             | 'vh' | 'vw' | 'vi' | 'vb' | 'vmin' | 'vmax'
             | 'px' | 'mm' | 'q' | 'cm' | 'in' |  'pt' | 'pc' | 'mozmm' ;
