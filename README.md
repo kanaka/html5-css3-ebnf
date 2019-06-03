@@ -18,7 +18,7 @@ cd ..
 Generate HTML5 EBNF grammar:
 
 ```
-time lein with-profile html5 run
+time leia with-profile html5 run
 ```
 
 ## Update CSS3 Grammar
@@ -32,7 +32,7 @@ git pull
 cd ..
 ```
 
-Generate CSS3 EBNF grammar and Clojure generator source:
+Generate CSS3 EBNF grammar:
 
 ```
 time lein with-profile css3 run
