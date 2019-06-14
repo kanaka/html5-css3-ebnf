@@ -6,7 +6,7 @@ rS         = #'\s+' ;
 integer = #"-?[0-9]+" ;
 non-negative-integer = #"[0-9]+" ;
 positive-integer = #"[1-9][0-9]*" ;
-floating-point-number = #"-?[0-9]*.[0-9]+" ;
+floating-point-number = #"-?[0-9]*[.][0-9]+" ;
 any-number = integer | floating-point-number ;
 
 (* TODO: improve strings: https://developer.mozilla.org/en-US/docs/Web/CSS/string *)
