@@ -55,10 +55,8 @@ css-negate = ':not(' S [ css-type | css-univ | css-hash | css-class | css-attr |
 (* TODO: these should be merged with common definitions *)
 NAME        = #'[_A-Za-z0-9-]+' ;
 IDENT       = #'-?[_A-Za-z][_A-Za-z0-9-]*' ;
-STRING      = #'"[^"]*"'
-            | #"'[^']*'" ;
-NUMBER      = #"[0-9]+"
-            | #"[0-9]*\.[0-9]+" ;
+STRING      = quoted-string ;
+NUMBER      = any-number ;
 
 
 (* Hand-crafted assignments sequence definition. *)

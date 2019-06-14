@@ -57,10 +57,8 @@ css-negate = ':not(' S [ css-type | css-univ | css-hash | css-class | css-attr |
 (* TODO: these should be merged with common definitions *)
 NAME        = #'[_A-Za-z0-9-]+' ;
 IDENT       = #'-?[_A-Za-z][_A-Za-z0-9-]*' ;
-STRING      = #'"[^"]*"'
-            | #"'[^']*'" ;
-NUMBER      = #"[0-9]+"
-            | #"[0-9]*\.[0-9]+" ;
+STRING      = quoted-string ;
+NUMBER      = any-number ;
 
 
 (* Hand-crafted assignments sequence definition. *)
@@ -7516,7 +7514,7 @@ nonprop-time       = any-number ( 's' | 'ms' ) S ;
 
 nonprop-ratio      = positive-integer '/' positive-integer ;
 
-nonprop-string = string ;
+nonprop-string = quoted-string ;
 
 (* https://developer.mozilla.org/en-US/docs/Web/CSS/custom-ident *)
 nonprop-custom-ident = #'(?:[A-Za-z_]|-[A-Za-z_]|\\[0-9A-F]{1,6})(?:[A-Za-z0-9_-]|\\[0-9A-F]{1,6})+' S ;
@@ -7524,9 +7522,9 @@ nonprop-custom-ident = #'(?:[A-Za-z_]|-[A-Za-z_]|\\[0-9A-F]{1,6})(?:[A-Za-z0-9_-
 (* TODO: improve urls: https://developer.mozilla.org/en-US/docs/Web/CSS/url *)
 (*
 nonprop-url = ( 'url(' url ')' S | 'url("' url '")' S )
-            / 'url(' string ')' S;
+            / 'url(' quoted-string ')' S;
 *)
-nonprop-url = 'url(' string ')' S;
+nonprop-url = 'url(' quoted-string ')' S;
 
 
 nonprop-unicode-range = #'U[+](?:[0-9A-Fa-f]{1,4}-[0-9A-Fa-f]{1,4}|[0-9A-Fa-f?]{1,4})'
@@ -7676,16 +7674,15 @@ nonprop-declaration-list = "STUB_declaration_list" ;
 S          = #'\s'* ;
 rS         = #'\s+' ;
 
-(* TODO: merge all number rules *)
 integer = #"-?[0-9]+" ;
 non-negative-integer = #"[0-9]+" ;
 positive-integer = #"[1-9][0-9]*" ;
-floating-point-number = #"-?[0-9]*.[0-9]+" ;
+floating-point-number = #"-?[0-9]*[.][0-9]+" ;
 any-number = integer | floating-point-number ;
 
 (* TODO: improve strings: https://developer.mozilla.org/en-US/docs/Web/CSS/string *)
-string = #"'[\"A-Za-z0-9 .,_:/%=#?+\-^]*'" S
-       | #"\"['A-Za-z0-9 .,_:/%=#?+\-^]*\"" S ;
+quoted-string = #"'[\"A-Za-z0-9 .,_:/%=#?+\-^]*'" S
+              | #"\"['A-Za-z0-9 .,_:/%=#?+\-^]*\"" S ;
 
 
 (* HTML *)

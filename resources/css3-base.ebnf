@@ -15,7 +15,7 @@ nonprop-time       = any-number ( 's' | 'ms' ) S ;
 
 nonprop-ratio      = positive-integer '/' positive-integer ;
 
-nonprop-string = string ;
+nonprop-string = quoted-string ;
 
 (* https://developer.mozilla.org/en-US/docs/Web/CSS/custom-ident *)
 nonprop-custom-ident = #'(?:[A-Za-z_]|-[A-Za-z_]|\\[0-9A-F]{1,6})(?:[A-Za-z0-9_-]|\\[0-9A-F]{1,6})+' S ;
@@ -23,9 +23,9 @@ nonprop-custom-ident = #'(?:[A-Za-z_]|-[A-Za-z_]|\\[0-9A-F]{1,6})(?:[A-Za-z0-9_-
 (* TODO: improve urls: https://developer.mozilla.org/en-US/docs/Web/CSS/url *)
 (*
 nonprop-url = ( 'url(' url ')' S | 'url("' url '")' S )
-            / 'url(' string ')' S;
+            / 'url(' quoted-string ')' S;
 *)
-nonprop-url = 'url(' string ')' S;
+nonprop-url = 'url(' quoted-string ')' S;
 
 
 nonprop-unicode-range = #'U[+](?:[0-9A-Fa-f]{1,4}-[0-9A-Fa-f]{1,4}|[0-9A-Fa-f?]{1,4})'
