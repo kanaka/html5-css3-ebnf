@@ -68,7 +68,7 @@ NUMBER      = #"[0-9]+"
 (* We start here if we only want to parse inline CSS properties. *)
 css-assignments = S | css-declaration S (';' S css-declaration S)* (';' S)* ;
 
-css-declaration = ( css-known-standard / css-unknown ) ( '!important' S )?
+css-declaration = ( css-known-standard / css-unknown ) ( '' | '!important' S )
                 | css-comment ;
 
 css-unknown = #'[A-Za-z-]+' S ':' S ( prop-all | prop-unknown ) ;
