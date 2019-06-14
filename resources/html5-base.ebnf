@@ -60,7 +60,7 @@ head-attribute = global-attribute
 title-attribute = global-attribute
 body-attribute = global-attribute
 
-attribute-data = #'[^"]*'  (* hickory convert '' strings to "" *)
+attribute-data = #'[^"]*'  (* hickory converts '' strings to "" *)
 
 custom-data-attribute = 'data-' name '="' attribute-data '"'
 aria-attribute = 'aria-' name '="' attribute-data '"'

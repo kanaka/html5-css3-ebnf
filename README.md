@@ -18,7 +18,7 @@ cd ..
 Generate HTML5 EBNF grammar:
 
 ```
-time leia with-profile html5 run
+time lein with-profile html5 run
 ```
 
 ## Update CSS3 Grammar
