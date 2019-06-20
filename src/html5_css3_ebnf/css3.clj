@@ -337,7 +337,7 @@
              (string/join
                (if hash? " ',' S\n" " rS\n")
                (if (= i 0)
-                 (str pre "''")
+                 [(str pre "    ''")]
                  (repeat i single)))))
          "\n"
          pre "  )\n"

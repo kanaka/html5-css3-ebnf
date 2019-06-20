@@ -2304,14 +2304,7 @@ prop-grid-area =
       nonprop-grid-line
       (
         (
-  rS
-  rS
-  rS
-  rS
-  rS
-  rS
-' rS
-' |
+          '' |
           (
             ('/' S)
             nonprop-grid-line
