@@ -1132,8 +1132,7 @@ attribute-value = <'"'> (#'[A-Za-z0-9_<>/\\ .]*' | reference)* <'"'>
                 | <"'"> (#"[A-Za-z0-9_<>/\\ .]*" | reference)* <"'">
 
 
-char-data-generic = #'[^<&]*' !(#'[^<&]'* ']]>' #'[^<&]*' )
-char-data = #'[A-Za-z0-9_<>/\\ .]*'
+char-data = #'[^<&]*' !(#'[^<&]'* ']]>' #'[^<&]*' )
 *)
 
 
@@ -1141,11 +1140,7 @@ content = char-data
         | reference
         | comment
 
-char-data-generic = #'[^<&]*'
-
-(* Just include the Ahem glyphs that render differently *)
-char-data = ' ' | 'p' | '&#x00c9;' | 'X'
-
+char-data     = #'[^<&]*'
 reference     = entity-ref
               | char-ref-dec
               | char-ref-hex
@@ -1156,8 +1151,7 @@ char-ref-hex  = #'&#x[0-9A-F]{1,6};'
 
 name      = #'[A-Za-z_:][A-Za-z_:\-.0-9]*'
 
-comment-generic = #'<!--(?:[^-]|-[^-])*-->'
-comment = #'<!--(?:[A-Za-z0-9_<>/\\ .]|-[A-Za-z0-9_<>/\\ .])*-->'
+comment = #'<!--(?:[^-]|-[^-])*-->'
 
 
 (*
@@ -1166,7 +1160,7 @@ This is lovingly hand-crafted (i.e. hard-coded) based on data
 from MDN: https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes
 *)
 
-html-attribute = 'xmlns="' url-generic '"'
+html-attribute = 'xmlns="' url '"'
                | 'xml:lang="' lang '"'
                | 'prefix="' #'[^"]*' '"'
                | global-attribute
@@ -1221,11 +1215,7 @@ length-unit = 'em' | 'ex' | 'ch' | 'ic' | 'rem' | 'lh' | 'rlh'
             | 'vh' | 'vw' | 'vi' | 'vb' | 'vmin' | 'vmax'
             | 'px' | 'mm' | 'q' | 'cm' | 'in' |  'pt' | 'pc' | 'mozmm' ;
 
-url = #'(?:https:|http:)?//[A-Za-z0-9._\-/&#=,?]+'
-    | #'[A-Za-z0-9._\-/#=]+'
-    | 'data:' mime-type ';base64,' #'[A-Za-z0-9+=/]*'
-
-url-generic = #'[A-Za-z0-9$-_@.&+%=;/#?:]+'
+url = #'[A-Za-z0-9$-_@.&+%=;/#?:]+'
 
 charset = 'UTF-8'
         | 'utf-8'
