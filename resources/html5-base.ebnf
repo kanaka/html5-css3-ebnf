@@ -32,7 +32,7 @@ reference     = entity-ref
               | char-ref-hex
 entity-ref    = <'&'> name <';'>
 char-ref-dec  = #'&#[0-9]{1,7};'
-char-ref-hex  = #'&#x[0-9A-F]{1,6};'
+char-ref-hex  = #'&#x[0-9A-Fa-f]{1,6};'
 
 
 name      = #'[A-Za-z_:][A-Za-z_:\-.0-9]*'
