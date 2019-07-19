@@ -11,7 +11,7 @@ head-elements = title
               | link
               | comment-or-space
 
-title = '<title' (<rS> title-attribute)* '>' content* '</title>' <S>
+title = '<title' (<rS> title-attribute)* '>' char-data* '</title>' <S>
 meta = '<meta' (<rS> meta-attribute)* '>' <S>
 link = '<link' (<rS> link-attribute)* '>' <S>
 
