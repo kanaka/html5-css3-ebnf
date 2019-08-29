@@ -64,6 +64,20 @@
                (= k "page-body")
                nil
 
+               ;; VDS has a comma combining syntax that is difficult
+               ;; to parse but only applies to rbg and rgba currently
+               ;; so fix them up to be easier to parse. A bug related
+               ;; to this: https://github.com/mdn/data/issues/341
+               ;; Original:
+               ;;     "rgb( <percentage>{3} [ / <alpha-value> ]? ) | rgb( <number>{3} [ / <alpha-value> ]? ) | rgb( <percentage>#{3} , <alpha-value>? ) | rgb( <number>#{3} , <alpha-value>? )"
+               (= k "rgb()")
+               [k {"syntax" "rgb( <percentage>{3} [ / <alpha-value> ]? ) | rgb( <number>{3} [ / <alpha-value> ]? ) | rgb( <percentage>#{3} [ , <alpha-value> ]? ) | rgb( <number>#{3} [ , <alpha-value> ]? )"}]
+
+               ;; Original:
+               ;;     "rgba( <percentage>{3} [ / <alpha-value> ]? ) | rgba( <number>{3} [ / <alpha-value> ]? ) | rgba( <percentage>#{3} , <alpha-value>? ) | rgba( <number>#{3} , <alpha-value>? )"
+               (= k "rgba()")
+               [k {"syntax" "rgba( <percentage>{3} [ / <alpha-value> ]? ) | rgba( <number>{3} [ / <alpha-value> ]? ) | rgba( <percentage>#{3} [ , <alpha-value> ]? ) | rgba( <number>#{3} [ , <alpha-value> ]? )" }]
+
                :else
                [k v]))))
 

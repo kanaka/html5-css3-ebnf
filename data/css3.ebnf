@@ -6650,8 +6650,10 @@ func-rgb =
           nonprop-percentage
         )
       )
-      (',' S)
-      nonprop-alpha-value?
+      (
+        (',' S)
+        nonprop-alpha-value
+      )?
       (')' S)
     ) |
     (
@@ -6664,8 +6666,10 @@ func-rgb =
           nonprop-number
         )
       )
-      (',' S)
-      nonprop-alpha-value?
+      (
+        (',' S)
+        nonprop-alpha-value
+      )?
       (')' S)
     )
   ) ;
@@ -6714,8 +6718,10 @@ func-rgba =
           nonprop-percentage
         )
       )
-      (',' S)
-      nonprop-alpha-value?
+      (
+        (',' S)
+        nonprop-alpha-value
+      )?
       (')' S)
     ) |
     (
@@ -6728,8 +6734,10 @@ func-rgba =
           nonprop-number
         )
       )
-      (',' S)
-      nonprop-alpha-value?
+      (
+        (',' S)
+        nonprop-alpha-value
+      )?
       (')' S)
     )
   ) ;
@@ -6894,11 +6902,11 @@ nonprop-shape =
       ('rect' S)
       ('(' S)
       nonprop-top
-      (',' S)
+      ',' S
       nonprop-right
       (',' S)
       nonprop-bottom
-      ',' S
+      (',' S)
       nonprop-left
       (')' S)
     ) |
