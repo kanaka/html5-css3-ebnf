@@ -18,7 +18,7 @@ nonprop-ratio      = positive-integer '/' positive-integer ;
 nonprop-string = quoted-string ;
 
 (* https://developer.mozilla.org/en-US/docs/Web/CSS/custom-ident *)
-nonprop-custom-ident = #'(?:[A-Za-z_]|-[A-Za-z_]|\\[0-9A-F]{1,6})(?:[A-Za-z0-9_-]|\\[0-9A-F]{1,6})+' S ;
+nonprop-custom-ident = #'(?:[A-Za-z_]|-[A-Za-z_]|\\[0-9A-F]{1,6})(?:[A-Za-z0-9_-]|\\[0-9A-F]{1,6})*' S ;
 
 (* TODO: improve urls: https://developer.mozilla.org/en-US/docs/Web/CSS/url *)
 (*
