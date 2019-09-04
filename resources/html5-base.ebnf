@@ -67,7 +67,7 @@ Other hand-crafted (i.e. hard-coded) defintions
 
 (* https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img *)
 srcset = url ( rS (any-number ( 'w' | 'x' ) ) )?
-         (',' S url ( rS (any-number ( 'w' | 'x' ) ) )? )* 
+         (',' rS url ( rS (any-number ( 'w' | 'x' ) ) )? )*
 
 encoding-label = 'utf-8'
 

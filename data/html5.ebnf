@@ -1181,7 +1181,7 @@ Other hand-crafted (i.e. hard-coded) defintions
 
 (* https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img *)
 srcset = url ( rS (any-number ( 'w' | 'x' ) ) )?
-         (',' S url ( rS (any-number ( 'w' | 'x' ) ) )? )* 
+         (',' rS url ( rS (any-number ( 'w' | 'x' ) ) )? )*
 
 encoding-label = 'utf-8'
 
@@ -1215,7 +1215,8 @@ length-unit = 'em' | 'ex' | 'ch' | 'ic' | 'rem' | 'lh' | 'rlh'
             | 'vh' | 'vw' | 'vi' | 'vb' | 'vmin' | 'vmax'
             | 'px' | 'mm' | 'q' | 'cm' | 'in' |  'pt' | 'pc' | 'mozmm' ;
 
-url = #'[A-Za-z0-9$-_@.&+%=;/#?:]+'
+url = #'[A-Za-z0-9$_@.,&+%=;/#?:-]*[A-Za-z0-9$_@.&+%=;/#?:-]'
+
 
 charset = 'UTF-8'
         | 'utf-8'
