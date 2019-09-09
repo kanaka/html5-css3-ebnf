@@ -181,15 +181,18 @@
 ;; Boolean only tags can appear without an assignment value
 (defn boolean-attribute [attr] (contains? (-> attr :value :metas) "Boolean attribute"))
 
+(defn content-only-element [elem] (#{"script" "style"} (:element elem)))
+
 ;; Special elements appear once and in specific order
 (defn special-element [elem] (#{"html" "head" "title" "body"} (:element elem)))
 
 (defn ebnf-tag-rhs
   [element]
   (let [tag-name (:element element)]
-    (if (void-element element)
-      [;; void tag (no end tag)
-       (str "'<" tag-name "' "
+    (cond
+      ;; void tag (no end tag)
+      (void-element element)
+      [(str "'<" tag-name "' "
             "(<rS> " tag-name "-attribute)* "
             "'>'")
 ;; For now don't emit self-closing void elements
@@ -198,8 +201,16 @@
 ;;          "(<rS> " tag-name "-attribute)* "
 ;;          "'/>'")
        ]
-      [;; normal tag (i.e. <tag ...> ... </tag>)
-       (str "'<" tag-name "' "
+
+      (content-only-element element)
+      [(str "'<" tag-name "' "
+            "(<rS> " tag-name "-attribute)* "
+            "'>' content* "
+            "'</" tag-name ">'")]
+
+      ;; normal tag (i.e. <tag ...> ... </tag>)
+      :else
+      [(str "'<" tag-name "' "
             "(<rS> " tag-name "-attribute)* "
             "'>' (element | content)* "
             "'</" tag-name ">'")])))
