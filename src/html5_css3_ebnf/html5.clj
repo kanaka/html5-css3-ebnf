@@ -226,7 +226,7 @@
         (mapcat ebnf-tag-rhs element)))))
 
 (defn ebnf-tag-attrs
-  [tag-name attrs & append]
+  [tag-name attrs prepend append]
   (let [lhs (str tag-name "-attribute ")
         pre (apply str (repeat (count lhs) " "))
         a-ids (fn [pred? as]
@@ -238,8 +238,9 @@
       (string/join
         (str "\n" pre "| ")
         (concat
+          prepend
           (for [a-id bool-attrs]
-            (str "'" (id->name a-id) "' opt-boolean "))
+            (str "'" (id->name a-id) "' opt-boolean"))
           (for [a-id other-attrs]
             (str "'" (id->name a-id)
                  "=\"' attr-val-" (id->terminal a-id) " '\"'"))
@@ -330,10 +331,11 @@
       (ebnf-element (sort-by :element elems))
       "\n\n"
       (ebnf-tag-attrs "global" (filter #(= "global" (:element %)) attributes)
-                      "custom-data-attribute"
-                      "aria-attribute"
-                      "role-attribute"
-                      "event-attribute")
+                      nil
+                      ["custom-data-attribute"
+                       "aria-attribute"
+                       "role-attribute"
+                       "event-attribute"])
       "\n\n"
       (string/join
         "\n"
@@ -341,7 +343,8 @@
               :let [elem (:element e)
                     attrs (filter #(= elem (:element %)) attributes)]]
           (ebnf-tag-attrs elem attrs
-                          "global-attribute")))
+                          ["global-attribute"]
+                          nil)))
       "\n\n"
       (string/join
         "\n"
