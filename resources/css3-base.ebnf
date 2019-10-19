@@ -36,95 +36,24 @@ nonprop-declaration = css-declaration ;
 
 nonprop-charset = charset ;
 
-(* non-standard needed by at-rules *)
+(* non-standard needed by font-face at-rules *)
+(* TODO: are these bugs? *)
 
+nonprop-font-variant = prop-font-variant ;
+nonprop-font-feature-settings = prop-font-feature-settings ;
 nonprop-font-variation-settings = prop-unknown ;
+nonprop-font-stretch = prop-font-stretch ;
+nonprop-font-weight = prop-font-weight ;
+nonprop-font-style = prop-font-style ;
 
 
 (* standard nonprop -> prop mappings *)
-(* TODO: fix so we don't have to do this *)
-
-nonprop-align-content = prop-align-content ;
-nonprop-align-items = prop-align-items ;
-nonprop-justify-content = prop-justify-content ;
-nonprop-justify-items = prop-justify-items ;
-nonprop-align-self = prop-align-self ;
-nonprop-justify-self = prop-justify-self ;
-nonprop-padding-left = prop-padding-left ;
-nonprop-row-gap = prop-row-gap ;
-nonprop-column-gap = prop-column-gap ;
+(* TODO: are these bugs? *)
 
 nonprop-top = prop-top ;
 nonprop-bottom = prop-bottom ;
 nonprop-left = prop-left ;
 nonprop-right = prop-right ;
-
-nonprop-background-color = prop-background-color ;
-
-nonprop-border-top-color = prop-border-top-color ;
-nonprop-border-top-width = prop-border-top-width ;
-nonprop-border-top-style = prop-border-top-style ;
-nonprop-border-width = prop-border-width ;
-nonprop-border-style = prop-border-style ;
-nonprop-border-radius = prop-border-radius ;
-nonprop-border-image-source = prop-border-image-source ;
-nonprop-border-image-slice = prop-border-image-slice ;
-nonprop-border-image-width = prop-border-image-width ;
-nonprop-border-image-outset = prop-border-image-outset ;
-nonprop-border-image-repeat = prop-border-image-repeat ;
-
-nonprop-column-width = prop-column-width ;
-nonprop-column-count = prop-column-count ;
-nonprop-column-rule-width = prop-column-rule-width ;
-nonprop-column-rule-style = prop-column-rule-style ;
-nonprop-column-rule-color = prop-column-rule-color ;
-
-nonprop-flex-direction = prop-flex-direction ;
-nonprop-flex-wrap = prop-flex-wrap ;
-nonprop-flex-grow = prop-flex-grow ;
-nonprop-flex-shrink = prop-flex-shrink ;
-nonprop-flex-basis = prop-flex-basis ;
-
-nonprop-font-feature-settings = prop-font-feature-settings ;
-nonprop-font-style = prop-font-style ;
-nonprop-font-weight = prop-font-weight ;
-nonprop-font-stretch = prop-font-stretch ;
-nonprop-font-size = prop-font-size ;
-nonprop-font-family = prop-font-family ;
-nonprop-font-variant = prop-font-variant ;
-
-nonprop-grid-template = prop-grid-template ;
-nonprop-grid-template-rows = prop-grid-template-rows ;
-nonprop-grid-template-columns = prop-grid-template-columns ;
-nonprop-grid-auto-rows = prop-grid-auto-rows ;
-nonprop-grid-auto-columns = prop-grid-auto-columns ;
-
-nonprop-line-height = prop-line-height ;
-
-nonprop-list-style-type = prop-list-style-type ;
-nonprop-list-style-position = prop-list-style-position ;
-nonprop-list-style-image = prop-list-style-image ;
-
-nonprop-margin-left = prop-margin-left ;
-
-nonprop-mask-image = prop-mask-image ;
-nonprop-mask-repeat = prop-mask-repeat ;
-nonprop-mask-origin = prop-mask-origin ;
-nonprop-mask-clip = prop-mask-clip ;
-
-nonprop-outline-color = prop-outline-color ;
-nonprop-outline-style = prop-outline-style ;
-nonprop-outline-width = prop-outline-width ;
-
-nonprop-text-emphasis-style = prop-text-emphasis-style ;
-nonprop-text-emphasis-color = prop-text-emphasis-color ;
-nonprop-text-decoration-line = prop-text-decoration-line ;
-nonprop-text-decoration-style = prop-text-decoration-style ;
-nonprop-text-decoration-color = prop-text-decoration-color ;
-
-nonprop-width = prop-width ;
-nonprop-max-width = prop-max-width ;
-nonprop-min-width = prop-min-width ;
 
 
 (* Other Misc Missing *)
@@ -166,6 +95,3 @@ nonprop-padding = "STUB_padding" ;
 nonprop-speak-as = "STUB_speak_as" ;
 nonprop-page-body = "STUB_page_body" ;
 
-nonprop-group-rule-body = "STUB_nonprop_group_rule_body" ;
-prop-group-rule-body = "STUB_prop_group_rule_body" ;
-nonprop-declaration-list = "STUB_declaration_list" ;

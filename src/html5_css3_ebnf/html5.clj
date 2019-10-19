@@ -1,7 +1,9 @@
 (ns html5-css3-ebnf.html5
   (:require [clojure.string :as string]
+            [clojure.pprint :refer [pprint]]
             [clojure.tools.cli :refer [parse-opts]]
 
+            [instacheck.core :as instacheck]
             [instaparse.core :as instaparse]
 
             [hickory.core :as hick]
@@ -371,6 +373,9 @@
   [[nil "--ebnf-output EBNF-OUTPUT"
     "Write intermediate EBNF to file"
     :default "./data/html5.ebnf"]
+   [nil "--grammar-output GRAMMAR-OUTPUT"
+    "Write cached EDN grammar tree to path."
+    :default "./data/html5.grammar"]
 
    [nil "--elements-include ELEMENTS-INCLUDE"
     "Path to W3C include section for HTML5 elements"
@@ -417,16 +422,21 @@
   "Generate an HTML 5 EBNF grammar based on specification data from
   the W3C.
 
-  This takes about 7 seconds to run"
+  This takes about 12 seconds to run"
   [& args]
   (let [opts (:options (opt-errors (parse-opts args cli-options)))
         input-opts (dissoc opts :ebnf-output)
         _ (println "Generating HTML5 EBNF based on:" (vals input-opts))
-        html5-ebnf-str (ebnf-combined-str input-opts)]
+        html5-ebnf-str (ebnf-combined-str input-opts)
+
+        _ (pr-err "Checking EBNF and converting to Parser")
+        html5-parser (instacheck/load-parser html5-ebnf-str)
+        _ (pr-err "Converting Parser to Cached Grammar")
+        html5-grammar (instacheck/parser->grammar html5-parser)]
 
     (println "Saving HTML5 EBNF to" (:ebnf-output opts))
     (spit (:ebnf-output opts) html5-ebnf-str)
 
-    (println "Verifying HTML5 EBNF grammar")
-    (instaparse/parser html5-ebnf-str)))
+    (println "Saving cached parser grammar EDN to" (:grammar-output opts))
+    (spit (:grammar-output opts) (with-out-str (pprint html5-grammar)))))
 

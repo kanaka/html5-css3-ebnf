@@ -80,3 +80,8 @@ prop-unknown = S ( nonprop-custom-ident |
                  )*
 nonprop-all = prop-all ;
 
+(* Recursive defintions *)
+
+nonprop-group-rule-body = stylesheet ;
+prop-group-rule-body = css-ruleset ;
+nonprop-declaration-list = css-assignments ;
