@@ -38,6 +38,16 @@ Generate CSS3 EBNF grammar:
 time lein with-profile css3 run
 ```
 
+## Parse a web page
+
+Parse a web page and output the grammar path frequency log (Instacheck
+wtrek) and the pruned EBNF for the HTML and CSS grammar based on the
+parsed path frequencies/weights.
+
+```
+time lein with-profile parse run --weights-output weights.edn --html-ebnf-output html.ebnf --css-ebnf-output css.ebnf page-to-parse.html
+```
+
 ## License
 
 Copyright © Joel Martin

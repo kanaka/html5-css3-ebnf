@@ -14,12 +14,13 @@
                  [hickory "0.7.0"]
                  [frankiesardo/linked "1.3.0"]
 
-                 [kanaka/instacheck "0.8.8"]
+                 [kanaka/instacheck "0.8.9"]
 
                  ;; Patched version (retain comments, parsed path log)
                  [kanaka/instaparse "1.4.9.1"]]
 
-  :profiles {:html5  {:main html5-css3-ebnf.html5}
+  :profiles {:parse  {:main html5-css3-ebnf.parse}
+             :html5  {:main html5-css3-ebnf.html5}
              :css3   {:main html5-css3-ebnf.css3}
              :mangle {:main html5-css3-ebnf.html-mangle}}
 
