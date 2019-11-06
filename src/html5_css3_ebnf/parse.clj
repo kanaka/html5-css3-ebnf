@@ -104,8 +104,7 @@
 
 (defn -main
   [& args]
-  (let [opts (opt-errors (parse-opts args
-                                     cli-options :in-order true))
+  (let [opts (opt-errors (parse-opts args cli-options))
         {:keys [parse-output weights-output
                 html-ebnf-output css-ebnf-output]} (:options opts)
         [& files] (:arguments opts)

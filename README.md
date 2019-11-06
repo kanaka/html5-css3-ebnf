@@ -45,7 +45,7 @@ wtrek) and the pruned EBNF for the HTML and CSS grammar based on the
 parsed path frequencies/weights.
 
 ```
-time lein with-profile parse run --weights-output weights.edn --html-ebnf-output html.ebnf --css-ebnf-output css.ebnf page-to-parse.html
+time lein run --weights-output weights.edn --html-ebnf-output html.ebnf --css-ebnf-output css.ebnf page-to-parse.html
 ```
 
 ## License

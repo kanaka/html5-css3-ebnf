@@ -379,13 +379,13 @@
 
    [nil "--elements-include ELEMENTS-INCLUDE"
     "Path to W3C include section for HTML5 elements"
-    :default "w3c_html/sections/elements.include"]
+    :default "./w3c_html/sections/elements.include"]
    [nil "--attributes-include ATTRIBUTES-INCLUDE"
     "Path to W3C include section for HTML5 attributes"
-    :default "w3c_html/sections/attributes.include"]
+    :default "./w3c_html/sections/attributes.include"]
    [nil "--form-semantics-include FORM-SEMANTICS-INCLUDE"
     "Path to W3C include section for HTML5 form semantics"
-    :default "w3c_html/sections/semantics-forms.include"]
+    :default "./w3c_html/sections/semantics-forms.include"]
 
    [nil "--ebnf-prefix EBNF-PREFIX"
     "Path to prefix file to include in EBNF output"
@@ -426,7 +426,8 @@
   [& args]
   (let [opts (:options (opt-errors (parse-opts args cli-options)))
         input-opts (dissoc opts :ebnf-output)
-        _ (println "Generating HTML5 EBNF based on:" (vals input-opts))
+        _ (println "Generating HTML5 EBNF based on:"
+                   (vals (dissoc input-opts :grammar-output)))
         html5-ebnf-str (ebnf-combined-str input-opts)
 
         _ (pr-err "Checking EBNF and converting to Parser")
