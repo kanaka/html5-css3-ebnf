@@ -1,4 +1,4 @@
-(defproject kanaka/html5-css3-ebnf "0.6.2"
+(defproject kanaka/html5-css3-ebnf "0.6.3"
   :description "Generate EBNF grammars for HTML5 and CSS3 using W3C spec data."
   :url "http://example.com/FIXME"
   :license {:name "Mozilla Public License version 2"
@@ -14,10 +14,10 @@
                  [hickory "0.7.0"]
                  [frankiesardo/linked "1.3.0"]
 
-                 [kanaka/instacheck "0.8.9"]
+                 [kanaka/instacheck "0.9.0"]
 
                  ;; Patched version (retain comments, parsed path log)
-                 [kanaka/instaparse "1.4.9.1"]]
+                 [kanaka/instaparse "1.4.9.3"]]
 
   :profiles {:parse  {:main html5-css3-ebnf.parse}
              :html5  {:main html5-css3-ebnf.html5}
