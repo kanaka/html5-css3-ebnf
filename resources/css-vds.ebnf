@@ -1,5 +1,5 @@
 assignments = assignment (<rS> assignment)* <S>?
-(*assignments = assignment (<delimeter> assignment)* <S>? *)
+(*assignments = assignment (<delimiter> assignment)* <S>? *)
 
 assignment = non-terminal <'='> <S> single-bar
 
@@ -7,7 +7,7 @@ assignment = non-terminal <'='> <S> single-bar
                | <S> property     <S>
 
 
-(* Operator precendence: mult, juxt, &&, ||, | *)
+(* Operator precedence: mult, juxt, &&, ||, | *)
 
 single-bar = double-bar (<rS> <'|'> <rS> double-bar)*
 
@@ -61,7 +61,7 @@ bang      = <'!'>
 
 digit = #'[0-9]'
 comma = ','
-delimeter = <S> ';' <S>
+delimiter = <S> ';' <S>
 literal = #'[-_a-zA-Z0-9,/:;%]+'
         | '"'
         | <"'"> #"[-_a-zA-Z0-9,~|^$.<>={}:\u0028\u0029/\u005B\u005D\u002A\u002B]*" <"'">
